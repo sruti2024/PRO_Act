@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}PRO_Act  ||  Add Project{% endblock title %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    
+{% if object %}
+    {%for things in object%}
+    <div class="col-sm">
+    <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://source.unsplash.com/100px180/?phone,contact,email" alt="Card image cap">
+    <div class="card-body">
+    <h5 class="card-title">{{things.name}}</h5>
+    <p class="card-text">{{things.desc}}<br>{{things.stack}}</p>
+    <a href="#" class="btn btn-primary">Manage</a>
+    </div>
+    </div>
+    </div>
+    {%endfor%}
+{%endif%}
+</div>
+</div>
+
+
+{% endblock body %}   
