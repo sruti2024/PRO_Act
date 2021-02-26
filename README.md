@@ -1,5 +1,7 @@
 # PRO_Act
 
+<img src="https://github.com/sruti2024/PRO_Act/blob/main/media/cover.png" height="400px" width="1000px">
+
 [![Issues](https://img.shields.io/github/issues/sruti2024/PRO_Act)](https://github.com/sruti2024/PRO_Act/issues)
 <img src="https://img.shields.io/badge/Front%20End-CSS%20JS-orange">
 <img src="https://img.shields.io/badge/Back%20End-DJango%20MySQLite-lightgrey">
