@@ -42,4 +42,14 @@ And then start the server (default: http://localhost:8000)
 
     python manage.py runserver
 
+
+## Work Flow
+
+* First the user needs to login to the page , if on is logged in they will be redirected to the dashboard else to the log in page.
+* If one has not signed up they may do it using the sign up page and then log in .
+* Now the dashboard contains a navbar and a welcome message in it's body.
+* In the project tab, there is option to add and view projects.
+* The add project consists of a form to enter the details of project.
+* The view page consists of cards containing project details.
+* This page will also have an option of adding sub tasks to the projects.
 ---
