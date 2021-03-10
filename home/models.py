@@ -10,7 +10,7 @@ class Project_add(models.Model):
     date = models.CharField(max_length=100)
 
     def save(self, *args, **kwargs):
-        self.pid = str(str(self.name[0:3])+'_'+str(self.date).split('/')[0])
+        self.pid = str(str(self.name[0:3])+'_'+str(self.date).split(' ')[0].split('-')[2])
         super(Project_add, self).save(*args, **kwargs)
 
     def __str__(self):
