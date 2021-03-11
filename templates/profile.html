@@ -140,7 +140,7 @@ h6 {
 </style>
 
 <div class="page-content page-container" id="page-content">
-    <h2 class="row container d-flex justify-content-center" style="color: green;padding-top: 5px;">Profile View :</h2>
+    <h2 class="row container d-flex justify-content-center" style="color: green;padding-top: 5px;">My Profile :</h2>
     <div class="padding">
         <div class="row container d-flex justify-content-center">
             <div class="col-xl-6 col-md-12">
@@ -159,16 +159,16 @@ h6 {
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">First Name</p>
-                                        {% if request.user.fname %}
-                                        <h6 class="text-muted f-w-400">{{request.user.fname}}</h6>
+                                        {% if request.user.first_name %}
+                                        <h6 class="text-muted f-w-400">{{request.user.first_name}}</h6>
                                         {% else %}
                                         <h6 class="text-muted f-w-400">John</h6>
                                         {% endif %}
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Last Name</p>
-                                        {% if request.user.lname %}
-                                        <h6 class="text-muted f-w-400">{{request.user.lname}}</h6>
+                                        {% if request.user.last_name %}
+                                        <h6 class="text-muted f-w-400">{{request.user.last_name}}</h6>
                                         {% else %}
                                         <h6 class="text-muted f-w-400">Doe</h6>
                                         {% endif %}
