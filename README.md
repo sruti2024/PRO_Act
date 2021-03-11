@@ -54,3 +54,8 @@ And then start the server (default: http://localhost:8000)
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub tasks to the projects.
 ---
+## Tech-Stacks
+<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>    <img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>    <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> 
+
+---
+
