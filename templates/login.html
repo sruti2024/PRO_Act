@@ -102,6 +102,38 @@ body {
 </head>
 <body>
 <div class="signup-form">
+	{% if error %}
+        <div
+          class="alert alert-danger alert-dismissible fade show text-center"
+          role="alert"
+        >
+          {{error}}
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %}
+	{% if message %}
+        <div
+          class="alert alert-success alert-dismissible fade show text-center"
+          role="alert"
+        >
+          {{message}}
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %}
     <form action="/login" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
@@ -132,6 +164,7 @@ body {
 
 		<div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
     </form>
 	<div class="text-center">Don't have an account? <a href="#">Create here</a></div>
