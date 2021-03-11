@@ -53,4 +53,7 @@ And then start the server (default: http://localhost:8000)
 * The add project consists of a form to enter the details of project.
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub tasks to the projects.
+
+For a better idea on how to contribute , click here!
+[link](./guidelines.md)
 ---
