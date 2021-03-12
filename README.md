@@ -55,9 +55,9 @@ And then start the server (default: http://localhost:8000)
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub tasks to the projects.
 
-## For a better idea on how to contribute , [click here!](./guidelines.md)
+## For a better idea on how to contribute , [click here!](./contributing.md)
 
----
+
 
 <h2 align="center"> Tech-Stacks </h2>
 <p>
