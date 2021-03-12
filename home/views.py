@@ -139,3 +139,10 @@ def project_add(request):
 def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
+
+
+def profile(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
+    return render(request,'profile.html')
+
