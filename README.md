@@ -1,4 +1,4 @@
-# PRO_Act
+<h1 align="center"> PRO_Act </h1>
 
 <img src="https://github.com/sruti2024/PRO_Act/blob/main/media/cover.png" height="400px" width="1000px">
 
@@ -14,7 +14,7 @@ Best when working with team to be updated about the tasks that are completed and
 Color scheme : https://colorhunt.co/palette/269111
 
 ---
-## Getting Started 
+<h2 align="center"> Getting Started </h2>
 
 * First `fork` this repository to your account
 * Clone it in your local machine using command `git clone url`
@@ -27,7 +27,8 @@ Color scheme : https://colorhunt.co/palette/269111
 
 
 
-## Explore
+<h2 align="center"> Explore</h2>
+
 Try it out by installing Django. (It is required to have Python installed , if not then download it from : [here](https://www.python.org/downloads/))
 
     python -m pip install Django
@@ -44,7 +45,7 @@ And then start the server (default: http://localhost:8000)
     python manage.py runserver
 
 
-## Work Flow
+<h2 align="center"> Work Flow</h2>
 
 * First the user needs to login to the page , if on is logged in they will be redirected to the dashboard else to the log in page.
 * If one has not signed up they may do it using the sign up page and then log in .
@@ -54,11 +55,37 @@ And then start the server (default: http://localhost:8000)
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub tasks to the projects.
 
-For a better idea on how to contribute , click here!
-[link](./guidelines.md)
+## For a better idea on how to contribute , [click here!](./guidelines.md)
+
 ---
-## Tech-Stacks
+
+<h2 align="center"> Tech-Stacks </h2>
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>    <img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>    <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>   	<img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>   <img alt="Django" src="https://img.shields.io/badge/django%20-%23092E20.svg?&style=for-the-badge&logo=django&logoColor=white"/>    <img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/> 
 
 ---
+<h2 align="center"> ❤️ Project Admin</h2>
+
+|                                   <a href="https://github.com/sruti2024" ><img src="https://avatars1.githubusercontent.com/u/56480052?s=400&u=164525456dc135ceefd83c5d4c6c0dd0984f5c12&v=4" width=150px height=150px /></a>                               |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                      **Sruti Chatterjee**     
+
+
+<h2 align="center"> Contributors ✨</h2>
+
+<h3 align="center"> Credits go to these wonderful peoples !!!</h3>
+
+
+            
+<table >
+	<tr>
+		<td >
+			<a href="https://github.com/sruti2024/PRO_Act/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sruti2024/PRO_Act" />
+</a>
+		</td>
+	</tr>
+</table>
+
+
+
 
