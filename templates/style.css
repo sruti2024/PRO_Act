@@ -30,7 +30,7 @@ footer{
     position:static;
     bottom: 0px;
     width: 100%;
-    background: rgb(122, 107, 79);
+    background: rgb(54, 88, 27);
   }
   .main-content{
     display: flex;
@@ -73,6 +73,7 @@ footer{
   }
   .left .content .social a{
     padding: 0 2px;
+    color:  #1e8d62;
   }
   .left .content .social a span{
     height: 40px;
@@ -89,7 +90,7 @@ footer{
   }
   .center .content .fas{
     font-size: 1.4375rem;
-    background: #2976e9;
+    background: #1e8d62;
     height: 45px;
     width: 45px;
     line-height: 45px;
