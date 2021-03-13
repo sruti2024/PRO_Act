@@ -18,7 +18,7 @@ import re
 
 def index(request):
     if request.user.is_anonymous:
-        return redirect("/login")
+        return redirect("login")
     return render(request, 'index.html')
 
 
@@ -145,4 +145,3 @@ def profile(request):
     if request.user.is_anonymous:
         return redirect("/login")
     return render(request,'profile.html')
-

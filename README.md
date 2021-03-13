@@ -15,7 +15,7 @@ Color scheme : https://colorhunt.co/palette/269111
 
 ---
 <h2 align="center"> Getting Started </h2>
-
+<h6> Before cloning the project it is good to create a Virtual Environment on your computer as follows:
 * First `fork` this repository to your account
 * Clone it in your local machine using command `git clone url`
 * After a copy of the project is made in your machine , follow the `Explore` section to run the project in your local server.
@@ -32,9 +32,9 @@ Color scheme : https://colorhunt.co/palette/269111
 Try it out by installing Django. (It is required to have Python installed , if not then download it from : [here](https://www.python.org/downloads/))
 
     python -m pip install Django
-    
-    
-After installation of Django, open this file in any text editor and in the teminal type the following commandes to migrate the file . 
+
+
+After installation of Django, open this file in any text editor and in the teminal type the following commandes to migrate the file .
 Migrate the files:
 
     python manage.py makemigrations
@@ -66,7 +66,7 @@ And then start the server (default: http://localhost:8000)
 <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>   	
 <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>   
 <img alt="Django" src="https://img.shields.io/badge/django%20-%23092E20.svg?&style=for-the-badge&logo=django&logoColor=white"/>    
-<img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/> 
+<img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/>
 </p>
 
 ---
@@ -82,7 +82,7 @@ And then start the server (default: http://localhost:8000)
 <h3 align="center"> Credits go to these wonderful peoples !!!</h3>
 
 
-            
+
 <table >
 	<tr>
 		<td >
@@ -92,7 +92,3 @@ And then start the server (default: http://localhost:8000)
 		</td>
 	</tr>
 </table>
-
-
-
-
