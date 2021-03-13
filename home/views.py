@@ -28,6 +28,8 @@ def loginUser(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
+            if not request.POST.get('remember', None):
+                request.session.set_expiry(0)
             login(request, user)
             return redirect("/")
         else:
