@@ -127,7 +127,7 @@ def project_add(request):
         name = request.POST.get('name')
         desc = request.POST.get('desc')
         link = request.POST.get('link')
-        stack = request.POST.get('stack')
+        stack = request.POST.getlist('stack')
         project_add = Project_add(
             name=name, desc=desc, link=link, stack=stack, date=datetime.today())
         project_add.save()
