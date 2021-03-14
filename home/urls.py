@@ -14,6 +14,7 @@ urlpatterns = [
     path('password/reset', views.forgot_password, name="forgot_password"),
     path('project_add', views.project_add, name="project_add"),
     path('project_view', views.project_view, name="project_view"),
-    path('profile/', views.profile , name="profile")
+    path('profile/', views.profile , name="profile"),
+    path('profile_update/',views.profile_update,name="profile_update"),
 
 ]
