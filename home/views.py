@@ -145,6 +145,12 @@ def project_view(request):
 
 @login_required
 def profile(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
+    return render(request,'profile.html')
+
+
+def profile_update(request):
     if request.method=="POST":
         u_form=UserUpdateForm(request.POST,request.FILES,instance=request.user)
         p_form=ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
@@ -165,4 +171,4 @@ def profile(request):
         'u_form':u_form,
         'p_form':p_form,
     }
-    return render(request,'profile.html',context)
+    return render(request,'profile_update.html',context)
