@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
 from home import views
 from django.views.decorators.csrf import csrf_exempt
 
@@ -16,11 +14,6 @@ urlpatterns = [
     path('password/reset', views.forgot_password, name="forgot_password"),
     path('project_add', views.project_add, name="project_add"),
     path('project_view', views.project_view, name="project_view"),
-    path('profile/', views.profile , name="profile"),
-    path('profile_update/',views.profile_update,name="profile_update"),
+    path('profile', views.profile , name="profile")
 
 ]
-
-
-
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

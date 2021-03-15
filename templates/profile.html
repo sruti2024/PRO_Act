@@ -1,37 +1,75 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title %}PRO_Act  |  Profile{% endblock title %}
-
+{% block title %}PRO_Act  ||  Profile{% endblock title %}
 
 {% block body %}
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
 
-        <!-- Main Content Here -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
+
+<div class="container my-5">
+
+    <section>
+      
+      <div class="card mb-4">
+        
         <div class="row">
-          <div class="col-lg-2"></div>
-          <div class="col-lg-3 my-5">
-            <img class="img-fluid rounded-left" src="{{ user.profile.image.url }}">          
+  
+          <div class="col-md-6">
+            <img class="img-fluid rounded-left" src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" style="width: 472px;height: 708px;" alt="profile image">
           </div>
-          <div class="card o-hidden border-0 shadow-lg my-5 col-lg-5 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
-            <div class="card-body">
+  
+          <div class="col-md-6 p-5 align-self-center">
+  
+            <h3 class="font-weight-normal mb-3"><b>My Profile</b></h3>
+            <ul class="list-unstyled font-small mt-5 mb-0">
+              <li>
+                <p class="text-uppercase mb-2"><strong>User-Name</strong></p>
+                <p class="text-muted mb-4">{{request.user.username}}</p>
+              </li>
+              
+              <li>
+                <p class="text-uppercase mb-2"><strong>First Name</strong></p>
+                <p class="text-muted mb-4">{{request.user.first_name}}</p>
+              </li>
+
+              <li>
+                <p class="text-uppercase mb-2"><strong>Last Name</strong></p>
+                <p class="text-muted mb-4">{{request.user.last_name}}</p>
+              </li>
+
+              <li>
+                <p class="text-uppercase mb-2"><strong>Email</strong></p>
+                <p class="text-muted mb-4">{{request.user.email}}</p>
+              </li>
+
+              <li>
+                <p class="text-uppercase mb-2"><strong>Phone No</strong></p>
+                {% if request.user.phone %}
+                <p class="text-muted mb-4">{{request.user.phone}}</p>
+                {% else %}
+                <p class="text-muted mb-4">9875684268</p>
+                {% endif %}
+              </li>
                 
-      <div class="content-section mt-3">
-       <p> Username: {{user.username}} </p>
-       <p>First Name: {{user.firstname}} </p>
-       <p>Last Name: {{user.lastname}} </p>
-       <p>Email Address: {{user.email}} </p>
-        
-    <div class="text-center">
-               <div class="text-center">
-                <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/profile_update'">Update Profile</a>
-                <a type="button" onclick="window.location.href='/project_view'" class="btn btn-sm btn-primary shadow-sm">View Projects</a>              
-              </div>
-              </div>
+            </ul>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="text-uppercase mb-2"><strong>All Projects</strong></p>
+                    <button type="button" onclick="window.location.href='/project_view'" class="btn btn-success">View</button>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-uppercase mb-2"><strong>Update Profile</strong></p>
+                    <button type="button" class="btn btn-warning">Update</button>
+                </div>
+            </div>
+  
           </div>
+  
         </div>
-        
-        
-        
-    </div>
-{% endblock body %}
+  
+      </div>
+  
+    </section>
+  
+  </div>
+
+{% endblock body%}
