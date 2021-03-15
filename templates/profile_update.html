@@ -10,22 +10,24 @@
         <!-- Main Content Here -->
         <div class="row">
           <div class="col-lg-2"></div>
-          <div class="col-lg-3 my-5">
-            <img class="img-fluid rounded-left" src="{{ user.profile.image.url }}">          
-          </div>
           <div class="card o-hidden border-0 shadow-lg my-5 col-lg-5 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
             <div class="card-body">
                 
-      <div class="content-section mt-3">
-       <p> Username: {{user.username}} </p>
-       <p>First Name: {{user.firstname}} </p>
-       <p>Last Name: {{user.lastname}} </p>
-       <p>Email Address: {{user.email}} </p>
+    <!-- FORM HERE -->
+    <div class="content-section mt-3">
+      <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class='border-bottom mb-4 text-center'>Edit Profile</legend>
+        {{ u_form|crispy  }}
+        <br>
+        {{ p_form|crispy  }}
         
+    </fieldset>
     <div class="text-center">
                <div class="text-center">
-                <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/profile_update'">Update Profile</a>
-                <a type="button" onclick="window.location.href='/project_view'" class="btn btn-sm btn-primary shadow-sm">View Projects</a>              
+                <button class='btn btn-sm btn-outline-primary mb-2' type='submit'>Update</button>         
+        </form>
               </div>
               </div>
           </div>
