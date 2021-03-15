@@ -13,6 +13,16 @@ class Project_add(models.Model):
         self.pid = str(str(self.name[0:3])+'_'+str(self.date).split(' ')[0].split('-')[2])
         super(Project_add, self).save(*args, **kwargs)
 
+    # to return list of tech stack for each project
+    def stack_list(self):
+        str(self.stack) #convert charField to string
+        self.stack = self.stack.replace("'", "") #removing ' from the stack field
+        self.stack = self.stack.replace("[", "") #removing [ from the stack field   
+        self.stack = self.stack.replace("]", "") #removing ] from the stack field   
+
+        return self.stack.split(',') #split at , to get each stack
+       
+
     def __str__(self):
         return self.name
 
