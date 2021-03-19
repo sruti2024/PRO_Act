@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,40 +13,8 @@
   </head>
 
   <body>
+<div class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">PRO_Act</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Project
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/project_add">Add Project</a></li>
-                <li><a class="dropdown-item" href="#">View Projects</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            
-          </ul>
-          
-            <a href="/logout"><button class="btn btn-outline-success">Log Out</button></a>
-         
-        </div>
-      </div>
-    </nav>
 
 <div class="backg" style="background-image: url(todo3.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center; background-attachment: fixed;"></div>
 
@@ -73,6 +42,9 @@
        <h3 style="font-family:cursive; text-align: center;">And many more...</h3>
         
     </div>
+
+      
+</div>
  <!--<div class="prog" style="align-content: center;"></div>
   <progress max="10" value="5" style="align-content: center;"></progress>
    <script>

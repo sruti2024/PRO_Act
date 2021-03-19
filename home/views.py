@@ -174,3 +174,6 @@ def profile_update(request):
         'p_form':p_form,
     }
     return render(request,'profile_update.html',context)
+
+def about(request):
+    return render(request, 'about.html')
