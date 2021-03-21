@@ -17,8 +17,8 @@ Color scheme : https://colorhunt.co/palette/269111
 <h2 align="center"> Getting Started </h2>
 
 * Create and activate the Virtual Environment at your desired path as follows :
-`py -m venv env`.
-* Activate the Virtual Environment : `.\env\Scripts\activate`
+`py -m venv env`(on Windows) or `python3 -m venv env`(on Mac and Linux)
+* Activate the Virtual Environment : `.\env\Scripts\activate`(for Windows) or `source env/bin/activate`(on Mac and Linux)
 * Then `fork` this repository to your account
 * Clone it in your local machine using command `git clone url`
 * Navigate to the project directory and install the project requirements using `pip install -r requirements.txt`
