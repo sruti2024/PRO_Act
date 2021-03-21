@@ -15,7 +15,7 @@ Color scheme : https://colorhunt.co/palette/269111
 
 ---
 <h2 align="center"> Getting Started </h2>
-<h6> Before cloning the project it is good to create a Virtual Environment on your computer as follows:
+
 * First `fork` this repository to your account
 * Clone it in your local machine using command `git clone url`
 * After a copy of the project is made in your machine , follow the `Explore` section to run the project in your local server.
