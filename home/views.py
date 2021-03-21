@@ -128,6 +128,18 @@ def forgot_password(request):
 
 
 def project_add(request):
+    context = {
+        "tags": {
+            "Java": "java",
+            "cpp": "C++",
+            "React":"react",
+            "Django":"django",
+            "Html":"html",
+            "CSS":"css",
+            "Angular":"angular",
+            "Python":"python",
+        }
+    }
     if request.method == 'POST':
         name = request.POST.get('name')
         desc = request.POST.get('desc')
@@ -138,7 +150,7 @@ def project_add(request):
         project_add.save()
         messages.success(request, 'Your Project has been added')
 
-    return render(request, 'project_add.html')
+    return render(request, 'project_add.html',context)
 
 
 def project_view(request):
