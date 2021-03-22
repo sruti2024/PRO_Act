@@ -18,6 +18,7 @@ urlpatterns = [
     path('project_view', views.project_view, name="project_view"),
     path('profile/', views.profile , name="profile"),
     path('profile_update/',views.profile_update,name="profile_update"),
+    path('about/',views.about,name="About"),
 
 ]
 

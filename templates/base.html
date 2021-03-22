@@ -7,7 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <!-- Animate on scroll link  -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome CDN Link @ Version 5.10.0-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
 
@@ -36,6 +37,10 @@
     #title{
         background-color: #ff4c68;
     }
+    
+
+{% block css %} {% endblock css %}
+
 
 </style>
   </head>
@@ -92,7 +97,7 @@
 {% block body %}{% endblock body %}
 
     <!-- Footer Starts -->
-    <footer class="text-center text-white fixed-bottom" style="background-color: rgb(59, 57, 57);">
+    <footer class="text-center text-white " style="background-color: rgb(59, 57, 57);">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Social media -->
@@ -139,6 +144,8 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+ <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  {% block script %} {% endblock script %}
   </body>
 </html>
 
