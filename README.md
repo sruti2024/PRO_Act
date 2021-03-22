@@ -55,9 +55,9 @@ And then start the server (default: http://localhost:8000)
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub tasks to the projects.
 
-## For a better idea on how to contribute , [click here!](./guidelines.md)
+## For a better idea on how to contribute , [click here!](./contributing.md)
 
----
+
 
 <h2 align="center"> Tech-Stacks </h2>
 <p>
@@ -69,7 +69,7 @@ And then start the server (default: http://localhost:8000)
 <img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/> 
 </p>
 
----
+
 <h2 align="center"> ❤️ Project Admin</h2>
 
 |                                   <a href="https://github.com/sruti2024" ><img src="https://avatars1.githubusercontent.com/u/56480052?s=400&u=164525456dc135ceefd83c5d4c6c0dd0984f5c12&v=4" width=150px height=150px /></a>                               |

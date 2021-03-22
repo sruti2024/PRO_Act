@@ -23,12 +23,29 @@
   </div>
 
   <div class="form-group">
-    <label for="stack">Technical Stack</label>
-    <input type="text" class="form-control" id="stack" name="stack" placeholder="Ex : HTML , CSS, C++ ,Python ,...">
+    <label for="stack">Technical Stack</label> <br>
+    <!----- add tech stack choices ------->
+    <div class="dropdown">
+      <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose tech stack
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <input type="checkbox" value="Java" name="stack" id="java"> <label for="java"> Java</label> <br />
+        <input type="checkbox" value="C++" name="stack" id="cpp"> <label for="cpp">  C++</label><br />
+        <input type="checkbox" value="React" name="stack" id="react"> <label for="react"> React</label><br />
+        <input type="checkbox" value="Django" name="stack" id="django"> <label for="django"> Django</label><br />
+        <input type="checkbox" value="Html" name="stack" id="html"> <label for="html"> HTML</label><br />
+        <input type="checkbox" value="CSS" name="stack" id="css"> <label for="css"> CSS</label><br />
+        <input type="checkbox" value="Angular" name="stack" id="angular"> <label for="angular"> Angular</label><br />
+        <input type="checkbox" value="Python" name="stack" id="python"> <label for="python"> Python</label><br />
+      </div>
+    </div>
   </div>
-  
-<br>
+
+  <br>
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 </div>
-{% endblock body %}   
+{% endblock body %}
+
+  

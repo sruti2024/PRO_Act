@@ -15,6 +15,9 @@ import json
 import urllib
 import re
 
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm,UserUpdateForm
+
 
 # Create your views here.
 
@@ -42,6 +45,8 @@ def loginUser(request):
         result = json.loads(response.read().decode())
         ''' End reCAPTCHA validation '''
         if user is not None:
+            if not request.POST.get('remember', None):
+                request.session.set_expiry(0)
             login(request, user)
             return redirect("/")
         else:
@@ -141,7 +146,7 @@ def project_add(request):
         name = request.POST.get('name')
         desc = request.POST.get('desc')
         link = request.POST.get('link')
-        stack = request.POST.get('stack')
+        stack = request.POST.getlist('stack')
         project_add = Project_add(
             name=name, desc=desc, link=link, stack=stack, date=datetime.today())
         project_add.save()
@@ -154,8 +159,11 @@ def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
 
-
+@login_required
 def profile(request):
     if request.user.is_anonymous:
         return redirect("/login")
     return render(request,'profile.html')
+
+
+  
