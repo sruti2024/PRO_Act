@@ -8,8 +8,8 @@
 <img src="https://img.shields.io/badge/Open%20Source-Connect%20Contribute-blueviolet">
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Pro_Act provides you with an efficient way of managing your tasks. It works on the principals of divide and conquer, allows the user to enter tasks and then divide them into further sub-tasks and handle them efficiently!
-Best when working with team to be updated about the tasks that are completed and those that are yet to be done.
+Pro_Act provides you with an efficient way of managing your tasks. It works on the principles of divide and conquer, allows the user to enter tasks, and then divide them into further sub-tasks and handle them efficiently!
+Best when working with a team to be updated about the tasks that are completed and those that are yet to be done.
 
 Color scheme : https://colorhunt.co/palette/269111
 
@@ -17,13 +17,13 @@ Color scheme : https://colorhunt.co/palette/269111
 <h2 align="center"> Getting Started </h2>
 
 * First `fork` this repository to your account
-* Clone it in your local machine using command `git clone url`
-* After a copy of the project is made in your machine , follow the `Explore` section to run the project in your local server.
-* All pages are present in the `templates` folder , project files in the `pro_act` folder.
-* Make the required changes and run it in the server to see the working.
-* `git add .` to add all the changes and `git add filename.txt` to add changes to a perticular file.
+* Clone it in your local machine using the command `git clone url`
+* After a copy of the project is made in your machine, follow the `Explore` section to run the project on your local server.
+* All pages are present in the `templates` folder, project files in the `pro_act` folder.
+* Make the required changes and run them on the server to see the working.
+* `git add .` to add all the changes and `git add filename.txt` to add changes to a particular file.
 * `git commit -m "message"` it is recommended to commit with a message to tell what are the things you have changed.
-* `git push` to push all changes to main branch from local branch.
+* `git push` to push all changes to the main branch from the local branch.
 
 
 
@@ -47,13 +47,13 @@ And then start the server (default: http://localhost:8000)
 
 <h2 align="center"> Work Flow</h2>
 
-* First the user needs to login to the page , if on is logged in they will be redirected to the dashboard else to the log in page.
-* If one has not signed up they may do it using the sign up page and then log in .
-* Now the dashboard contains a navbar and a welcome message in it's body.
-* In the project tab, there is option to add and view projects.
-* The add project consists of a form to enter the details of project.
+* First the user needs to login to the page, if one is logged in they will be redirected to the dashboard else to the log-in page.
+* If one has not signed up they may do it using the sign-up page and then log in.
+* Now the dashboard contains a navbar and a welcome message in its body.
+* In the project tab, there is an option to add and view projects.
+* The added project consists of a form to enter the details of the project.
 * The view page consists of cards containing project details.
-* This page will also have an option of adding sub tasks to the projects.
+* This page will also have an option of adding sub-tasks to the projects.
 
 ## For a better idea on how to contribute , [click here!](./contributing.md)
 
