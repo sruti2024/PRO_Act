@@ -15,6 +15,7 @@ import re
 
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -23,6 +24,25 @@ def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
     return render(request, 'index.html')
+
+def contact(request):
+	if request.method == "POST":
+		message_name = request.POST['message-name']
+		message_email = request.POST['message-email']
+		message = request.POST['message']
+
+		# send an email
+		send_mail(
+			message_name, # subject
+			message, # message
+			message_email, # from email
+			['PRO_ACT@gmail.com'], # To Email
+			)
+
+		return render(request, 'contact.html', {'message_name': message_name})
+
+	else:
+		return render(request, 'contact.html', {})
 
 
 def loginUser(request):
@@ -179,7 +199,7 @@ def profile_update(request):
     else:
         u_form=UserUpdateForm(instance=request.user)
         p_form=ProfileUpdateForm(instance=request.user.profile)
-        
+
 
     context={
         'u_form':u_form,
