@@ -16,6 +16,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     
     <title>{% block title %}{% endblock title %}</title>
+    <style >
+.navbar{
+    padding:0 0 0 0;
+    }
+    .navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    }
+    .nav-item{
+    padding: 10px;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:520;
+    }
+
+   
+
+{% block css %} {% endblock css %}
+
+
+</style>
+
   </head>
   <body>
   {% comment %} navbar {% endcomment %}
@@ -26,7 +50,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="ms-auto navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
