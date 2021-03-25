@@ -13,6 +13,10 @@ from django.core.mail import EmailMultiAlternatives
 import json
 import re
 
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm,UserUpdateForm
+from django.core.mail import send_mail
+
 
 # Create your views here.
 
@@ -21,6 +25,25 @@ def index(request):
         return redirect("/login")
     return render(request, 'index.html')
 
+def contact(request):
+	if request.method == "POST":
+		message_name = request.POST['message-name']
+		message_email = request.POST['message-email']
+		message = request.POST['message']
+
+		# send an email
+		send_mail(
+			message_name, # subject
+			message, # message
+			message_email, # from email
+			['PRO_ACT@gmail.com'], # To Email
+			)
+
+		return render(request, 'contact.html', {'message_name': message_name})
+
+	else:
+		return render(request, 'contact.html', {})
+
 
 def loginUser(request):
     if request.method == 'POST':
@@ -28,6 +51,8 @@ def loginUser(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
+            if not request.POST.get('remember', None):
+                request.session.set_expiry(0)
             login(request, user)
             return redirect("/")
         else:
@@ -123,26 +148,61 @@ def forgot_password(request):
 
 
 def project_add(request):
+    context = {
+        "tags": {
+            "Java": "java",
+            "cpp": "C++",
+            "React":"react",
+            "Django":"django",
+            "Html":"html",
+            "CSS":"css",
+            "Angular":"angular",
+            "Python":"python",
+        }
+    }
     if request.method == 'POST':
         name = request.POST.get('name')
         desc = request.POST.get('desc')
         link = request.POST.get('link')
-        stack = request.POST.get('stack')
+        stack = request.POST.getlist('stack')
         project_add = Project_add(
             name=name, desc=desc, link=link, stack=stack, date=datetime.today())
         project_add.save()
         messages.success(request, 'Your Project has been added')
 
-    return render(request, 'project_add.html')
+    return render(request, 'project_add.html',context)
 
 
 def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
 
-
+@login_required
 def profile(request):
     if request.user.is_anonymous:
         return redirect("/login")
     return render(request,'profile.html')
 
+
+def profile_update(request):
+    if request.method=="POST":
+        u_form=UserUpdateForm(request.POST,request.FILES,instance=request.user)
+        p_form=ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,f'You account has been updated.')
+            return redirect('profile')
+
+
+    else:
+        u_form=UserUpdateForm(instance=request.user)
+        p_form=ProfileUpdateForm(instance=request.user.profile)
+
+
+    context={
+        'u_form':u_form,
+        'p_form':p_form,
+    }
+    return render(request,'profile_update.html',context)
