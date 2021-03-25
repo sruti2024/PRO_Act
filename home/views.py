@@ -6,6 +6,7 @@ from datetime import datetime
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from home.models import Project_add
+from home.models import modules_add
 from random import randint
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -138,11 +139,18 @@ def project_add(request):
 
 def project_view(request):
     obj = Project_add.objects.all
-    return render(request, 'project_view.html', {'object': obj})
+    return render(request, 'project_view.html' , {'object': obj})
 
 
+def modules(request, p_id):
+    obj = Project_add.objects.get(pid = p_id)
+    context= {"obj": obj}
+    return render(request, 'modules.html', context)
+    
+    
 def profile(request):
     if request.user.is_anonymous:
         return redirect("/login")
     return render(request,'profile.html')
+
 

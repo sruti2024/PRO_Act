@@ -13,7 +13,7 @@
     <div class="card-body">
     <h5 class="card-title">{{things.name}}</h5>
     <p class="card-text">{{things.desc}}<br>{{things.stack}}</p>
-    <a href="#" class="btn btn-primary">Manage</a>
+    <a href="{% url 'modules' things.pid %}" class="btn btn-primary">Manage</a>
     </div>
     </div>
     </div>

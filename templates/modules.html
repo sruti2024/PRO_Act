@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/module.css' %}" type="text/css">
+
+{% endblock head %}
+
+{% block title %}PRO_Act || Modules{% endblock title %}
+
+{% block body %}
+
+ <header>
+   <h2 style="display: inline;">{{obj.name}}</h2>
+   <p style="display: inline;"> &nbsp PID: {{obj.pid}}</p>
+   <button style="display: inline;" class="btn btn-primary float-end" id="myBtn">+ Add Subtask </button>
+  </header>
+ <div class= "main">
+   <section>
+      <h3>No subtask added yet !!</h3>
+   </section>
+   <aside class="right">
+     <h5>Project ID</h5>
+     <p>{{obj.pid}}</p>
+     <h5>Project Description</h5>
+     <p>{{obj.desc}}</p>
+     <h5>Technology Stack</h1>
+      <p>{{obj.stack}}</p>
+      <h5>Link</h5>
+      <p>{{obj.link}}</p>
+      <h5>Date</h5>
+      <p>{{obj.date}}</p>
+   </aside>
+ </div>
+ <footer>
+   <a href="{% url 'project_view'%}" class="btn btn-primary ">Back</a> 
+  </footer>
+  
+  <div id="myModel" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Subtask Description</h4>  
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="desc"><h5>Description</h5></label>
+            <textarea id="desc" name="txtarea" rows="4" cols="50"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer" >
+        <button type="button" class="btn btn-secondary" id="cls">Close</button>
+        <button class="btn btn-primary" id="save">Save changes</buttom>
+      </div>
+    </div>
+  </div>
+  
+  <script src="{% static 'js/set-module.js' %}"></script>
+
+{% endblock %}
+
+
+
+
