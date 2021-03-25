@@ -5,12 +5,14 @@ from .models import OTPModel
 from datetime import datetime
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
+from django.conf import settings
 from home.models import Project_add
 from random import randint
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 import json
+import urllib
 import re
 
 from django.contrib.auth.decorators import login_required
@@ -50,6 +52,18 @@ def loginUser(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
+        ''' Begin reCAPTCHA validation '''
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        values = {
+            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(values).encode()
+        req =  urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
+        ''' End reCAPTCHA validation '''
         if user is not None:
             if not request.POST.get('remember', None):
                 request.session.set_expiry(0)
