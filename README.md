@@ -30,15 +30,7 @@ Color scheme : https://colorhunt.co/palette/269111
 * `git commit -m "message"` it is recommended to commit with a message to tell what are the things you have changed.
 * `git push` to push all changes to main branch from local branch.
 ### PS: Virtual Environment can be installed on windows by `py -m pip install --user virtualenv`
-=======
-* First `fork` this repository to your account
-* Clone it in your local machine using the command `git clone url`
-* After a copy of the project is made in your machine, follow the `Explore` section to run the project on your local server.
-* All pages are present in the `templates` folder, project files in the `pro_act` folder.
-* Make the required changes and run them on the server to see the working.
-* `git add .` to add all the changes and `git add filename.txt` to add changes to a particular file.
-* `git commit -m "message"` it is recommended to commit with a message to tell what are the things you have changed.
-* `git push` to push all changes to the main branch from the local branch.
+
 
 
 
