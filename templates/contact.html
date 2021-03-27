@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-
-{% block body %}
 {% load static %}
-<style>
+{% block css %}
+#textarea
+{
+  width: 36rem;
+}
 .section-heading {
   position: relative;
   z-index: 1;
@@ -139,7 +141,20 @@
       background-color: #ffffff;
       color: rgba(25,170,141,1) !important; }
 
-</style>
+@media screen and (max-width:990px) {
+    #textarea
+{
+  width: 17rem;
+}
+.contact
+{
+  margin-bottom:30vh;
+}
+}
+
+{% endblock css %}
+{% block body %}
+  <!-- *****move css to block css which should be in head tag ***** -->
 
 
   <!-- ***** Contact Area Start ***** -->
@@ -150,7 +165,7 @@
     </center>
     <br/><br/><br/>
   {% else %}
-
+<div class="container-fluid contact">
   <section class="dento-contact-area mt-50 mb-100">
     <div class="container">
       <div class="row">
@@ -186,10 +201,10 @@
                   <input type="text" name="message-name"  class="form-control mb-30" placeholder="Your Name">
                 </div><br><br>
                 <div class="col-lg-4">
-                  <input type="email" name="message-email"  style="width: 305px;" class="form-control mb-30" placeholder="Your Email">
+                  <input type="email" name="message-email" class="form-control mb-30" placeholder="Your Email">
                 </div><br><br><br>
                 <div class="col-12">
-                  <textarea name="message" class="form-control mb-30" style="width: 600px;" placeholder="Your Message"></textarea>
+                  <textarea name="message" id="textarea" class="form-control mb-30" placeholder="Your Message"></textarea>
                 </div><br><br><br><br><br><br>
                 <div class="col-12">
                   <button type="submit" class="btn dento-btn">Send Message</button><br><br>
@@ -202,6 +217,7 @@
       </div>
     </div>
   </section>
+</div>
   {% endif %}
   <!-- ***** Contact Area End ***** -->
 
