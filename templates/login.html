@@ -212,7 +212,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="/login" method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -251,11 +251,11 @@ body {
 		<div class="form-group">
 			<script src='https://www.google.com/recaptcha/api.js'></script>
     <div class="g-recaptcha" data-sitekey="6Leyjo4aAAAAALGq2q-nzNwg-7G7hrudNhqDHOMk"></div>
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Sign In</button>
 			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
     </form>
-	<div class="text-center">Don't have an account? <a href="#">Create here</a></div>
+	<div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create here</a></div>
 	<p class="text-center">or</p>
 </div>
 <center>
