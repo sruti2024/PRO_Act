@@ -53,7 +53,13 @@ usernameField.addEventListener("keyup", (e) => {
           usernameField.classList.add("is-invalid");
           usernameFeedBackArea.style.display = "block";
           usernameFeedBackArea.innerHTML = `<p>${data.username_error}</p>`;
-        } else {
+        } else if (data.username_length_error) {
+            sendOtpBtn.disabled = true;
+            usernameField.classList.add("is-invalid");
+            usernameFeedBackArea.style.display = "block";
+            usernameFeedBackArea.innerHTML = `<p>${data.username_length_error}</p>`;
+        }
+        else {
           sendOtpBtn.removeAttribute("disabled");
         }
       });

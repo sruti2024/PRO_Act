@@ -117,7 +117,7 @@ def username_validation(request):
     if User.objects.filter(username=username).exists():
         return JsonResponse({'username_error': 'Username is already taken. Please choose another'}, status=409)
     if len(username) < 5:
-        return JsonResponse({'username_error': 'Username must be atleast 5 characters long'})
+        return JsonResponse({'username_length_error': 'Username must be atleast 5 characters long'})
     return JsonResponse({'username_valid': True})
 
 
