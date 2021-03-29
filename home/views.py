@@ -220,3 +220,10 @@ def profile_update(request):
         'p_form':p_form,
     }
     return render(request,'profile_update.html',context)
+
+
+
+def modules(request, p_id):
+    obj = Project_add.objects.get(pid = p_id)
+    context= {"obj": obj}
+    return render(request, 'modules.html', context)
