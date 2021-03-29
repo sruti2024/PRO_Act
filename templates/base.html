@@ -33,6 +33,9 @@
     ></script>
 
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+    {% block css %}{% endblock css %}
+    </style>
   </head>
   <body>
     {% comment %} navbar {% endcomment %}
@@ -110,13 +113,27 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    {% endfor %} {% endif %} {% block body %}{% endblock body %}
+  </div>
+</nav>
+{% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    {% endfor %}
+
+{% endif %}
+
+
+{% block body %}{% endblock body %}
 
     <!-- Footer Starts -->
-    <footer
-      class="text-center text-white"
-      style="background-color: rgb(59, 57, 57)"
-    >
+    <footer class="footer container-fluid text-center text-white fixed-bottom" style="
+        background-color: rgb(59, 57, 57);">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Social media -->

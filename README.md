@@ -16,14 +16,21 @@ Color scheme : https://colorhunt.co/palette/269111
 ---
 <h2 align="center"> Getting Started </h2>
 
-* First `fork` this repository to your account
-* Clone it in your local machine using the command `git clone url`
-* After a copy of the project is made in your machine, follow the `Explore` section to run the project on your local server.
-* All pages are present in the `templates` folder, project files in the `pro_act` folder.
-* Make the required changes and run them on the server to see the working.
-* `git add .` to add all the changes and `git add filename.txt` to add changes to a particular file.
+
+* Create and activate the Virtual Environment at your desired path as follows :
+`py -m venv env`(on Windows) or `python3 -m venv env`(on Mac and Linux)
+* Activate the Virtual Environment : `.\env\Scripts\activate`(for Windows) or `source env/bin/activate`(on Mac and Linux)
+* Then `fork` this repository to your account
+* Clone it in your local machine using command `git clone url`
+* Navigate to the project directory and install the project requirements using `pip install -r requirements.txt`
+* After a copy of the project is made in your machine , follow the `Explore` section to run the project in your local server.
+* All pages are present in the `templates` folder , project files in the `pro_act` folder.
+* Make the required changes and run it in the server to see the working.
+* `git add .` to add all the changes and `git add filename.txt` to add changes to a perticular file.
 * `git commit -m "message"` it is recommended to commit with a message to tell what are the things you have changed.
-* `git push` to push all changes to the main branch from the local branch.
+* `git push` to push all changes to main branch from local branch.
+### PS: Virtual Environment can be installed on windows by `py -m pip install --user virtualenv`
+
 
 
 

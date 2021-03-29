@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}PRO_Act  ||  Home{% endblock title %}
+{% block css %}
+.jumbotron
+{
+  height:70vh;
+}
+@media screen and (max-width:990px) {
+.jumbotron
+{
+  height:auto;
+}
+.main
+{
+  margin-bottom:22vh;
+}
+}
 
+{% endblock css %}
 {% block body %}
-<main role="main">
+<main role="main" class="main">
 <div class="container-fluid px-0">
 <div class="jumbotron py:6" style="background-color:#8ADFCA;margin:0px;padding: 2rem 4rem;">
   <h1 class="display-4">Welcome {{request.user}} !!</h1>

@@ -165,10 +165,10 @@ body {
 }
 .disable-select {
     user-select: none;
-   -webkit-user-select: none; 
+   -webkit-user-select: none;
    -khtml-user-select: none;
-   -moz-user-select: none; 
-   -ms-user-select: none; 
+   -moz-user-select: none;
+   -ms-user-select: none;
 }
 </style>
 </head>
@@ -212,7 +212,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="/login" method="post">
+    <form action="/login/" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -249,6 +249,8 @@ body {
 
 
 		<div class="form-group">
+			<script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6Leyjo4aAAAAALGq2q-nzNwg-7G7hrudNhqDHOMk"></div>
             <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
 			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
