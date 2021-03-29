@@ -1,81 +1,76 @@
-
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-@media (min-width: 576px)
-.backgr{
+.container {
+  min-height: 100%;
+}
+@media (min-width: 576px) {
+  .backgr {
     width: 100%;
-}
-html,body{
+  }
+  html,
+  body {
     height: 100%;
     width: 100%;
-}
+  }
 
-.backg{
-    
+  .backg {
     height: 32rem;
     width: 100%;
     background-repeat: no-repeat;
-    background-position:center center;
+    background-position: center center;
     background-size: cover;
     background: url("todo2.jpg");
     color: rgb(27, 35, 70);
     padding: 0;
     margin: 0;
-    background-attachment:inherit;
-}
-
-footer{
-    position:static;
-    bottom: 0px;
-    width: 100%;
-    background: rgb(54, 88, 27);
+    background-attachment: inherit;
   }
-  .main-content{
+  .main-content {
     display: flex;
   }
-  .main-content .box{
+  .main-content .box {
     flex-basis: 50%;
     padding: 10px 20px;
   }
-  .box h2{
+  .box h2 {
     font-size: 1.125rem;
     font-weight: 600;
     text-transform: uppercase;
     color: rgb(250, 246, 243);
   }
-  .box .content{
+  .box .content {
     margin: 20px 0 0 0;
     position: relative;
   }
-  .box .content:before{
+  .box .content:before {
     position: absolute;
-    content: '';
+    content: "";
     top: -10px;
     height: 2px;
     width: 100%;
     background: #1a1a1a;
   }
-  .box .content:after{
+  .box .content:after {
     position: absolute;
-    content: '';
+    content: "";
     height: 2px;
     width: 15%;
     background: #f12020;
     top: -10px;
   }
-  .left .content p{
+  .left .content p {
     text-align: justify;
   }
-  .left .content .social{
+  .left .content .social {
     margin: 20px 0 0 0;
   }
-  .left .content .social a{
+  .left .content .social a {
     padding: 0 2px;
-    color:  #1e8d62;
+    color: #1e8d62;
   }
-  .left .content .social a span{
+  .left .content .social a span {
     height: 40px;
     width: 40px;
     background: #1a1a1a;
@@ -85,10 +80,10 @@ footer{
     border-radius: 5px;
     transition: 0.3s;
   }
-  .left .content .social a span:hover{
+  .left .content .social a span:hover {
     background: #f17420;
   }
-  .center .content .fas{
+  .center .content .fas {
     font-size: 1.4375rem;
     background: #1e8d62;
     height: 45px;
@@ -99,26 +94,27 @@ footer{
     transition: 0.3s;
     cursor: pointer;
   }
-  .center .content .fas:hover{
+  .center .content .fas:hover {
     background: #f17420;
   }
-  .center .content .text{
+  .center .content .text {
     font-size: 1.0625rem;
     font-weight: 500;
     padding-left: 10px;
   }
-  .center .content .phone{
+  .center .content .phone {
     margin: 15px 0;
   }
-  .right form .text{
+  .right form .text {
     font-size: 1.0625rem;
     margin-bottom: 2px;
     color: #1b1515;
   }
-  .right form .msg{
+  .right form .msg {
     margin-top: 10px;
   }
-  .right form input, .right form textarea{
+  .right form input,
+  .right form textarea {
     width: 100%;
     font-size: 1.0625rem;
     background: #d8cece;
@@ -126,59 +122,61 @@ footer{
     border: 1px solid #222222;
   }
   .right form input:focus,
-  .right form textarea:focus{
+  .right form textarea:focus {
     outline-color: #3498db;
   }
-  .right form input{
+  .right form input {
     height: 35px;
   }
-  .right form .btn{
+  .right form .btn {
     margin-top: 10px;
   }
-  .right form .btn button{
+  .right form .btn button {
     height: 40px;
     width: 47px;
     border: none;
     outline: none;
-    background:  #799ab6;
+    background: #799ab6;
     font-size: 1.0625rem;
     font-weight: 500;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
   }
-  .right form .btn button:hover{
+  .right form .btn button:hover {
     background: rgb(217, 253, 54);
   }
-  .bottom center{
+  .bottom center {
     padding: 5px;
     font-size: 0.9375rem;
     background: #c0b9b9;
   }
-  .bottom center span{
+  .bottom center span {
     color: #656565;
   }
-  .bottom center a{
+  .bottom center a {
     color: #f12020;
     text-decoration: none;
   }
-  .bottom center a:hover{
+  .bottom center a:hover {
     text-decoration: underline;
   }
-  @media screen and (max-width: 900px) {
-    footer{
-      position: relative;
-      bottom: 0px;
-    }
-    .main-content{
-      flex-wrap: wrap;
-      flex-direction: column;
-    }
-    .main-content .box{
-      margin: 5px 0;
-    }
+}
+
+@media screen and (max-width: 900px) {
+  footer {
+    position: relative;
+    bottom: 0px;
   }
-  
-  /*progress{
+  .main-content {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .main-content .box {
+    margin: 5px 0;
+  }
+}
+
+/*progress{
     -webkit-apperance:none;
     width: 50%;
     height: 15px;
