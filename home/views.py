@@ -266,3 +266,27 @@ def profile_update(request):
         'p_form':p_form,
     }
     return render(request,'profile_update.html',context)
+
+def changepassword(request):
+    users = User.objects.all()
+    curr = 0
+    for user in users:
+        if request.user.is_authenticated:
+            curr = user
+            break
+    if curr == 0:
+        return redirect("login")
+    error=""
+    if request.method == 'POST':
+        o = request.POST['old']
+        n = request.POST['new']
+        c = request.POST['confirm']
+        if c==n:
+            u = User.objects.get(username__exact = request.user.username)
+            u.set_password(n)
+            u.save()
+            error="no"
+        else:
+            error="yes"
+    context={'error':error}
+    return render(request, 'changepassword.html',context)

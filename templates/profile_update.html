@@ -1,39 +1,41 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}PRO_Act  |  Profile{% endblock title %}
+{% block title %}PRO_Act | Profile{% endblock title %}
 
+{% block css %}
+@media screen and (max-width:990px) {
+.update-profile
+{
+  margin-bottom:27vh;
+}
+}
+{% endblock css %}
 
 {% block body %}
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+<!-- Begin Page Content -->
+<div class="container col-lg-6 mx-auto update-profile">
+  <!-- Main Content Here -->
+  <div class="card o-hidden border-0 shadow-lg my-5"
+    style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
+    <div class="card-body">
 
-        <!-- Main Content Here -->
-        <div class="row">
-          <div class="col-lg-2"></div>
-          <div class="card o-hidden border-0 shadow-lg my-5 col-lg-5 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
-            <div class="card-body">
-                
-    <!-- FORM HERE -->
-    <div class="content-section mt-3">
-      <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class='border-bottom mb-4 text-center'>Edit Profile</legend>
-        {{ u_form|crispy  }}
-        <br>
-        {{ p_form|crispy  }}
-        
-    </fieldset>
-    <div class="text-center">
-               <div class="text-center">
-                <button class='btn btn-sm btn-outline-primary mb-2' type='submit'>Update</button>         
+      <!-- FORM HERE -->
+      <div class="content-section mt-3 px-3">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class='border-bottom mb-4 text-center'>Edit Profile</legend>
+            {{ u_form|crispy }}
+            <br>
+            {{ p_form|crispy }}
+
+          </fieldset>
+          <div class="text-center">
+            <div class="text-center">
+              <button class='btn btn-sm btn-outline-primary mb-2' type='submit'>Update</button>
         </form>
-              </div>
-              </div>
-          </div>
-        </div>
-        
-        
-        
+      </div>
     </div>
+  </div>
+</div>
 {% endblock body %}

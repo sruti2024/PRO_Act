@@ -23,6 +23,7 @@ urlpatterns = [
     path('profile/', views.profile , name="profile"),
     path('profile_update/',views.profile_update,name="profile_update"),
     path('contact/', views.contact , name="contact"),
+    path('changepassword/', views.changepassword, name='changepassword'),
 
 ]
 
