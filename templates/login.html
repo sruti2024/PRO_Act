@@ -212,7 +212,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="/login" method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -224,8 +224,9 @@ body {
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Username" required="required">
 			</div>
+      <div class="usernameFeedBackArea invalid-feedback" style="display:none"></div>
         </div>
 
 		<div class="form-group">
@@ -251,11 +252,11 @@ body {
 		<div class="form-group">
 			<script src='https://www.google.com/recaptcha/api.js'></script>
     <div class="g-recaptcha" data-sitekey="6Leyjo4aAAAAALGq2q-nzNwg-7G7hrudNhqDHOMk"></div>
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+            <button type="submit" id="loginBtn" class="btn btn-primary btn-lg mt-3">Sign In</button>
 			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
     </form>
-	<div class="text-center">Don't have an account? <a href="#">Create here</a></div>
+	<div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create here</a></div>
 	<p class="text-center">or</p>
 </div>
 <center>
@@ -271,5 +272,35 @@ body {
 </div>
 </center>
 {% endif %}
+<script>
+  const usernameField = document.querySelector("#username");
+  const usernameFeedBackArea = document.querySelector(".usernameFeedBackArea");
+  const loginBtn = document.querySelector("#loginBtn");
+  usernameField.addEventListener("keyup", (e) => {
+  const usernameVal = e.target.value;
+
+  usernameField.classList.remove("is-invalid");
+  usernameFeedBackArea.style.display = "none";
+
+  if (usernameVal.length > 0) {
+    fetch("/validate-username/", {
+      body: JSON.stringify({ username: usernameVal }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.username_error) {
+          loginBtn.removeAttribute("disabled");
+        } else {
+          loginBtn.disabled = true;
+          usernameField.classList.add("is-invalid");
+          usernameFeedBackArea.style.display = "block";
+          usernameFeedBackArea.innerHTML = `<p>User doesn't exist.</p>`;
+        }
+      });
+  }
+});
+
+</script>
 </body>
 </html>

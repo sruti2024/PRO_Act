@@ -2,36 +2,50 @@
 {% load crispy_forms_tags %}
 {% block title %}PRO_Act  |  Profile{% endblock title %}
 
-
+{% block css %}
+img
+{
+  width:100%;
+  height:50vh;
+  border-radius:50%;
+}
+@media screen and (max-width:990px) {
+.profile
+{
+  margin-bottom:25vh;
+}
+}
+{% endblock css %}
 {% block body %}
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid px-4 profile">
 
         <!-- Main Content Here -->
-        <div class="row">
-          <div class="col-lg-2"></div>
-          <div class="col-lg-3 my-5">
-            <img class="img-fluid rounded-left" src="{{ user.profile.image.url }}">          
+        <div class="row my-4">
+          <div class="col-lg-2 col-sm-0"></div>
+          <div class="col-lg-3 col-sm-10 my-2">
+            <img class="rounded-left" src="{{ user.profile.image.url }}">
           </div>
-          <div class="card o-hidden border-0 shadow-lg my-5 col-lg-5 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
+          <div class="card o-hidden border-0 shadow-lg col-lg-5 my-2 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
             <div class="card-body">
-                
+
       <div class="content-section mt-3">
        <p> Username: {{user.username}} </p>
        <p>First Name: {{user.firstname}} </p>
        <p>Last Name: {{user.lastname}} </p>
        <p>Email Address: {{user.email}} </p>
-        
+
     <div class="text-center">
                <div class="text-center">
                 <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/profile_update'">Update Profile</a>
-                <a type="button" onclick="window.location.href='/project_view'" class="btn btn-sm btn-primary shadow-sm">View Projects</a>              
+                <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/changepassword'">Change Password</a>
+                <a type="button" onclick="window.location.href='/project_view'" class="btn btn-sm btn-primary shadow-sm">View Projects</a>
               </div>
               </div>
           </div>
         </div>
-        
-        
-        
+
+
+
     </div>
 {% endblock body %}
