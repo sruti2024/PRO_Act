@@ -290,3 +290,9 @@ def changepassword(request):
             error="yes"
     context={'error':error}
     return render(request, 'changepassword.html',context)
+
+def modules(request, p_id):
+    obj = Project_add.objects.get(pid = p_id)
+    context= {"obj": obj}
+    return render(request, 'modules.html', context)
+
