@@ -206,7 +206,8 @@ def forgot_password(request):
             return render(request, "forgot-password.html", {"error": "Password could not be changed, please try again."})
     return render(request, "forgot-password.html")
 
-
+# making login required for project add page and redirecting it to the login page
+@login_required(login_url="/login")
 def project_add(request):
     context = {
         "tags": {
@@ -237,10 +238,10 @@ def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
 
-@login_required
+
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def profile(request):
-    if request.user.is_anonymous:
-        return redirect("/login")
     return render(request,'profile.html')
 
 
