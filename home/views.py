@@ -27,7 +27,6 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource
 from bokeh.palettes import Viridis9,Viridis3
 
-# import datetime
 
 
 
@@ -41,18 +40,13 @@ def index(request):
     labels = []
     data = []
     now = datetime.now()
-
-    dates=[now.year,now.year-1,now.year-2]
-
-
     queryset = Project_add.objects.all()
     
     lstProj=queryset[len(queryset)-1]
-    for city in queryset:
-        labels.append(city.name)
-        dateStr=city.date.split(' ')[0].split('-')[1]
-        curYear=city.date.split(' ')[0].split('-')[0]
-        print(curYear,now.year,type(curYear),type(now.year))
+    for proj in queryset:
+        labels.append(proj.name)
+        dateStr=proj.date.split(' ')[0].split('-')[1]
+        curYear=proj.date.split(' ')[0].split('-')[0]
         if curYear==str(now.year):
             if dateStr[0]=='0':
                 data.append(dateStr[1])
@@ -60,14 +54,13 @@ def index(request):
                 data.append(dateStr)
 
 
-    # Your sample data
+
     df = DataFrame({
                     'month':data ,
                     })
 
-    # Get counts of groups of 'class' and fill in 'year_month_id' column
     df2 = DataFrame({'count': df.groupby(["month"]).size()}).reset_index()
-    # Create new column to make plotting easier
+    
     df2['class-date'] = df2['month'].map(str)
 
     # x and y axes
@@ -96,8 +89,19 @@ def index(request):
     }
 
     class_date = [replacements.get(x, x) for x in class_date]
-    print(count)
-    print(class_date)
+    monDict=dict()
+    counts=[]
+    for idx,c in enumerate(count):
+        if c !=0:
+            monDict[class_date[idx]]=[]
+            counts.append(c)
+        
+    startIdx=0
+    for idx,item in enumerate(monDict.keys()):
+        print(item,monDict[item],labels[startIdx:startIdx+counts[idx]])
+        monDict[item]=labels[startIdx:startIdx+counts[idx]]
+        startIdx+=counts[idx]
+
     # Bokeh's mapping of column names and data lists 
     source = ColumnDataSource(data=dict(class_date=class_date, count=count, color=Viridis3+Viridis9))
 
@@ -109,7 +113,7 @@ def index(request):
     p.vbar(x='class_date', top='count', width=0.9, color='color', source=source)
     script, div=components(p)
 
-    return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'dates':dates})
+    return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'monDict':monDict})
 
 
 def loginUser(request):
