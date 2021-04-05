@@ -16,13 +16,100 @@ import re
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm
 
+from django.shortcuts import render
+
+from bokeh.plotting import figure,output_file,show
+from bokeh.embed import components 
+
+from pandas import DataFrame
+from bokeh.io import show
+from bokeh.plotting import figure
+from bokeh.models import ColumnDataSource
+from bokeh.palettes import Viridis9,Viridis3
+
+# import datetime
+
+
+
 
 # Create your views here.
 
 def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
-    return render(request, 'index.html')
+
+    labels = []
+    data = []
+    now = datetime.now()
+
+    dates=[now.year,now.year-1,now.year-2]
+
+
+    queryset = Project_add.objects.all()
+    
+    lstProj=queryset[len(queryset)-1]
+    for city in queryset:
+        labels.append(city.name)
+        dateStr=city.date.split(' ')[0].split('-')[1]
+        curYear=city.date.split(' ')[0].split('-')[0]
+        print(curYear,now.year,type(curYear),type(now.year))
+        if curYear==str(now.year):
+            if dateStr[0]=='0':
+                data.append(dateStr[1])
+            else:
+                data.append(dateStr)
+
+
+    # Your sample data
+    df = DataFrame({
+                    'month':data ,
+                    })
+
+    # Get counts of groups of 'class' and fill in 'year_month_id' column
+    df2 = DataFrame({'count': df.groupby(["month"]).size()}).reset_index()
+    # Create new column to make plotting easier
+    df2['class-date'] = df2['month'].map(str)
+
+    # x and y axes
+    class_date = df2['class-date'].tolist()
+    count = df2['count'].tolist()
+
+    for i in range (1,13):
+        if not(str(i) in class_date):
+            class_date.insert(i-1,str(i))
+            count.insert(i-1,0)
+
+
+    replacements = {
+    '1': 'Jan',
+    '2': 'Feb',
+    '3': 'Mar',
+    '4':'Apr',
+    '5':'May',
+    '6':'Jun',
+    '7':'Jul',
+    '8':'Aug',
+    '9':'Sep',
+    '10':'Oct',
+    '11':'Nov',
+    '12':'Dec'
+    }
+
+    class_date = [replacements.get(x, x) for x in class_date]
+    print(count)
+    print(class_date)
+    # Bokeh's mapping of column names and data lists 
+    source = ColumnDataSource(data=dict(class_date=class_date, count=count, color=Viridis3+Viridis9))
+
+    # Bokeh's convenience function for creating a Figure object
+    p = figure(x_range=class_date, plot_height=350, title="# Projects created per month in "+str(now.year),
+            toolbar_location="below")
+
+    # Render and show the vbar plot
+    p.vbar(x='class_date', top='count', width=0.9, color='color', source=source)
+    script, div=components(p)
+
+    return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'dates':dates})
 
 
 def loginUser(request):
