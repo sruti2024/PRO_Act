@@ -170,6 +170,20 @@ body {
    -moz-user-select: none;
    -ms-user-select: none;
 }
+#span{
+  position: absolute;
+  right:15px;
+  transform: translate(0,-50%);
+  top:50%;
+  color:#495057;
+  cursor: pointer;
+}
+.form-group{
+  z-index: 2;
+}
+#span{
+  z-index: 3;
+}
 </style>
 </head>
 <body>
@@ -236,7 +250,10 @@ body {
 						<i class="fa fa-lock"></i>
 					</span>
 				</div>
-				<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password">
+        <span id="span">
+          <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
+        </span>
 			</div>
         </div>
 
@@ -301,6 +318,19 @@ body {
   }
 });
 
+var state=false;
+function toggle()
+{
+  if (state) {
+    document.getElementById("password").setAttribute("type", "text");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye-slash")
+    state = false;
+  } else {
+    document.getElementById("password").setAttribute("type", "password");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye")
+    state = true;
+  }
+}
 </script>
 </body>
 </html>
