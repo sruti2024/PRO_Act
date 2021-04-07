@@ -156,4 +156,4 @@ Thumbs.db #thumbnail cache on Windows
 # End of https://www.toptal.com/developers/gitignore/api/django
 
 #vscode settings
-.vscode/settings.json
+.vscode/
