@@ -182,6 +182,21 @@ body {
 .form-group{
 	z-index: 2;
 }
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
 </style>
 </head>
 <body>
@@ -340,6 +355,7 @@ body {
 	<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div>
 	<!-- <p class="text-center">or</p> -->
 	<center>
+		<!-- Google -->
 <div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
 	<div class=content-wrapper>
 		<div class='logo-wrapper'>
@@ -349,7 +365,11 @@ body {
 			<span>Login with Google</span>
 		</span>
 	</div>
-</div>
+</div> <br>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+	<i class="fa fa-facebook "></i>Log in with facebook
+</button>
 </center>
 </div>
 

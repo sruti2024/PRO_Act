@@ -184,6 +184,21 @@ body {
 #span{
   z-index: 3;
 }
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
 </style>
 </head>
 <body>
@@ -277,6 +292,7 @@ body {
 	<p class="text-center">or</p>
 </div>
 <center>
+  <!-- Google -->
 <div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
 	<div class=content-wrapper>
 		<div class='logo-wrapper'>
@@ -286,7 +302,11 @@ body {
 			<span>Sign in with Google</span>
 		</span>
 	</div>
-</div>
+</div> <br>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+  <i class="fa fa-facebook "></i>Log in with facebook
+</button> <br><br>
 </center>
 {% endif %}
 <script>
