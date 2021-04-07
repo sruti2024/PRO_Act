@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: 0px;
+    padding:10px;
+  }
+  
+  header,footer{
+    padding: 20px;
+    margin-top: 5px;
+    background-color: #C0C0C0;
+    border-radius: 7px;
+  }
+  footer{
+    text-align: center; 
+  }
+  
+  section{
+    width:60%;
+    float: left;
+    height: 550px;
+    padding: 20px;
+  }
+  
+  .right{
+    width: 40%;
+    float: left;
+    height: 550px;
+    border-left: 2px solid rgb(179, 157, 157);
+    padding: 20px;
+  }
+  
+  
+  .main *{
+  border-radius: 20px;
+  }
+  
+  .main{
+    margin: 10px 0px;
+  }
+  
+  .main::after{
+    content: "";
+    clear: both;
+    display: table;
+  }  
+  
+    /* FOR MODEL POPUP */
+  
+    .modal {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+  
+    .modal-content {
+      height: 300px;
+      width: 500px;
+      background-color: white;
+      text-align: center;
+      position: relative;
+      border-radius: 4px;
+  
+    }
+  
+    .form-group{
+      text-align: left;
+      padding:20px;
+    }
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    .modal-header {
+      padding: 1px 16px;
+      background-color: #1d68f3;
+      color: black;
+    }
+  
+    .modal-body {
+      padding: 5px 16px;
+      background-color: white;
+    }
+  
+    .modal-footer {
+      padding: 2px 16px;
+      color: white;
+    }
+  

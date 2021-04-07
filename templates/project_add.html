@@ -5,7 +5,7 @@
 <div class="container">
 <h1 class="text-center">Add Project !</h1>
 
-<form method="post" action="/project_add">
+<form method="post" action="/project_add/">
 {% csrf_token %}
   <div class="form-group">
     <label for="name" class="control-label">Name of the Project</label>
@@ -25,19 +25,14 @@
   <div class="form-group">
     <label for="stack">Technical Stack</label> <br>
     <!----- add tech stack choices ------->
-    <div class="dropdown">
+    <div class="dropdown" style="">
       <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Choose tech stack
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <input type="checkbox" value="Java" name="stack" id="java"> <label for="java"> Java</label> <br />
-        <input type="checkbox" value="C++" name="stack" id="cpp"> <label for="cpp">  C++</label><br />
-        <input type="checkbox" value="React" name="stack" id="react"> <label for="react"> React</label><br />
-        <input type="checkbox" value="Django" name="stack" id="django"> <label for="django"> Django</label><br />
-        <input type="checkbox" value="Html" name="stack" id="html"> <label for="html"> HTML</label><br />
-        <input type="checkbox" value="CSS" name="stack" id="css"> <label for="css"> CSS</label><br />
-        <input type="checkbox" value="Angular" name="stack" id="angular"> <label for="angular"> Angular</label><br />
-        <input type="checkbox" value="Python" name="stack" id="python"> <label for="python"> Python</label><br />
+        {% for key,value in tags.items %}
+        <input type="checkbox" value={{key}} name="stack" id="{{value}}"> <label for="{{value}}"> {{key}}</label> <br />
+        {% endfor %}
       </div>
     </div>
   </div>

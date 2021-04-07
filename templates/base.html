@@ -21,12 +21,15 @@
 <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.0.min.js"
     crossorigin="anonymous"></script>
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+    {% block css %}{% endblock css %}
+    </style>
   </head>
   <body>
-  {% comment %} navbar {% endcomment %}
+   <!-- navbar  -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">PRO_Act</a>
+    <a class="navbar-brand" href="/">PRO_Act</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,11 +52,13 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
       </ul>
-      
+
         <a href="/logout"><button class="btn btn-outline-success">Log Out</button></a>
-     
+
     </div>
   </div>
 </nav>
@@ -71,11 +76,11 @@
 {% endif %}
 
 
-
 {% block body %}{% endblock body %}
 
     <!-- Footer Starts -->
-    <footer class="text-center text-white fixed-bottom" style="background-color: rgb(59, 57, 57);">
+    <footer class="footer container-fluid text-center text-white fixed-bottom" style="
+        background-color: rgb(59, 57, 57);">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Social media -->
@@ -84,22 +89,22 @@
           <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
             ><i class="fab fa-facebook-f"></i
           ></a>
-    
+
           <!-- Twitter -->
           <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
             ><i class="fab fa-twitter"></i
           ></a>
-    
+
           <!-- Instagram -->
           <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
             ><i class="fab fa-instagram"></i
           ></a>
-    
+
           <!-- Linkedin -->
           <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
             ><i class="fab fa-linkedin-in"></i
           ></a>
-    
+
           <!-- Github -->
           <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/sruti2024/PRO_Act" target="_blank" role="button"
             ><i class="fab fa-github"></i
@@ -113,7 +118,7 @@
         <span class="text-white">Made with ❤</span>
       </div>
     </footer>
-      
+
 
 
     <!-- Footer Ends -->

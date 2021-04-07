@@ -165,11 +165,40 @@ body {
 }
 .disable-select {
     user-select: none;
-   -webkit-user-select: none; 
+   -webkit-user-select: none;
    -khtml-user-select: none;
-   -moz-user-select: none; 
-   -ms-user-select: none; 
+   -moz-user-select: none;
+   -ms-user-select: none;
 }
+#span{
+  position: absolute;
+  right:15px;
+  transform: translate(0,-50%);
+  top:50%;
+  color:#495057;
+  cursor: pointer;
+}
+.form-group{
+  z-index: 2;
+}
+#span{
+  z-index: 3;
+}
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
 </style>
 </head>
 <body>
@@ -212,7 +241,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="/login" method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -224,8 +253,9 @@ body {
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Username" required="required">
 			</div>
+      <div class="usernameFeedBackArea invalid-feedback" style="display:none"></div>
         </div>
 
 		<div class="form-group">
@@ -235,7 +265,10 @@ body {
 						<i class="fa fa-lock"></i>
 					</span>
 				</div>
-				<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password">
+        <span id="span">
+          <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
+        </span>
 			</div>
         </div>
 
@@ -249,14 +282,17 @@ body {
 
 
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+			<script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6Leyjo4aAAAAALGq2q-nzNwg-7G7hrudNhqDHOMk"></div>
+            <button type="submit" id="loginBtn" class="btn btn-primary btn-lg mt-3">Sign In</button>
 			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
     </form>
-	<div class="text-center">Don't have an account? <a href="#">Create here</a></div>
+	<div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create here</a></div>
 	<p class="text-center">or</p>
 </div>
 <center>
+  <!-- Google -->
 <div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
 	<div class=content-wrapper>
 		<div class='logo-wrapper'>
@@ -266,8 +302,55 @@ body {
 			<span>Sign in with Google</span>
 		</span>
 	</div>
-</div>
+</div> <br>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+  <i class="fa fa-facebook "></i>Log in with facebook
+</button> <br><br>
 </center>
 {% endif %}
+<script>
+  const usernameField = document.querySelector("#username");
+  const usernameFeedBackArea = document.querySelector(".usernameFeedBackArea");
+  const loginBtn = document.querySelector("#loginBtn");
+  usernameField.addEventListener("keyup", (e) => {
+  const usernameVal = e.target.value;
+
+  usernameField.classList.remove("is-invalid");
+  usernameFeedBackArea.style.display = "none";
+
+  if (usernameVal.length > 0) {
+    fetch("/validate-username/", {
+      body: JSON.stringify({ username: usernameVal }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.username_error) {
+          loginBtn.removeAttribute("disabled");
+        } else {
+          loginBtn.disabled = true;
+          usernameField.classList.add("is-invalid");
+          usernameFeedBackArea.style.display = "block";
+          usernameFeedBackArea.innerHTML = `<p>User doesn't exist.</p>`;
+        }
+      });
+  }
+});
+
+var state=false;
+function toggle()
+{
+  if (state) {
+    document.getElementById("password").setAttribute("type", "text");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye-slash")
+    state = false;
+  } else {
+    document.getElementById("password").setAttribute("type", "password");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye")
+    state = true;
+  }
+}
+</script>
 </body>
 </html>

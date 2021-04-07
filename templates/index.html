@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}PRO_Act  ||  Home{% endblock title %}
+{% block css %}
+.jumbotron
+{
+  height:70vh;
+}
+@media screen and (max-width:990px) {
+.jumbotron
+{
+  height:auto;
+}
+.main
+{
+  margin-bottom:22vh;
+}
+}
 
+{% endblock css %}
 {% block body %}
 <style>
 div.step-wrapper{

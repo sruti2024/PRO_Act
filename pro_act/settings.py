@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #Google login
+    #Google
     'allauth.socialaccount.providers.google',
+    #facebook
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -165,6 +167,12 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
+#facebook-auth
+SOCIAL_AUTH_FACEBOOK_KEY = '1180950695658575'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ab9a447566e71d032ef40bc6d0741a3c'
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Leyjo4aAAAAAAXeI5fn3ou2pk732fUayMcx9ZbZ'
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
@@ -174,7 +182,29 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
-    }
+    },
+    'facebook':
+    {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'
+        }
 }
 
 LOGIN_URl = 'app/user_login'
