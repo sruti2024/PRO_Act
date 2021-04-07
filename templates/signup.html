@@ -170,6 +170,18 @@ body {
    -moz-user-select: none;
    -ms-user-select: none;
 }
+.span{
+	position: absolute;
+	right:15px;
+	transform: translate(0,-50%);
+	top:50%;
+	color:#495057;
+	cursor: pointer;
+	z-index: 3;
+}
+.form-group{
+	z-index: 2;
+}
 </style>
 </head>
 <body>
@@ -273,6 +285,9 @@ body {
 					</span>
 				</div>
 				<input type="password" class="form-control" id="password1" name="password1" placeholder="Password" required="required">
+				<span class="span">
+					<i class="fa fa-eye" aria-hidden="true" onclick="toggle1()" id="eye1"></i>
+				</span>
 			</div>
 			
         </div>
@@ -285,6 +300,9 @@ body {
 					</span>
 				</div>
 				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" required="required">
+				<span class="span">
+					<i class="fa fa-eye" aria-hidden="true" onclick="toggle2()" id="eye2"></i>
+				</span>
 			</div>
         </div>
 		<div class="col-md-12 text-center">
@@ -334,6 +352,35 @@ body {
 </div>
 </center>
 </div>
+
+<script>
+	pwdState=false
+	cpwdState=false
+	function toggle1()
+	{
+		if (pwdState) {
+			document.getElementById("password1").setAttribute("type", "text");
+			document.getElementById("eye1").setAttribute("class", "fa fa-eye-slash")
+			pwdState = false;
+		} else {
+			document.getElementById("password1").setAttribute("type", "password");
+			document.getElementById("eye1").setAttribute("class", "fa fa-eye")
+			pwdState = true;
+		}
+	}
+
+	function toggle2() {
+			if (cpwdState) {
+				document.getElementById("password2").setAttribute("type", "text");
+				document.getElementById("eye2").setAttribute("class", "fa fa-eye-slash")
+				cpwdState = false;
+			} else {
+				document.getElementById("password2").setAttribute("type", "password");
+				document.getElementById("eye2").setAttribute("class", "fa fa-eye")
+				cpwdState = true;
+			}
+		}
+</script>
 
 {% endif %}
 <script src="{% static 'js/register.js' %}"></script>
