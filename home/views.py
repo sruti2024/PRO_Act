@@ -63,7 +63,7 @@ def index(request):
     
     df2['class-date'] = df2['month'].map(str)
 
-    # x and y axes
+    # x (months) and y(count of projects) axes
     class_date = df2['class-date'].tolist()
     count = df2['count'].tolist()
 
