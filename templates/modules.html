@@ -8,8 +8,9 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="{% static 'css/moduleStyle.css' %}" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
 
+  <link rel="stylesheet" href="{% static 'css/moduleStyle.css' %}" type="text/css">
   <title>PRO_Act || Modules</title>
 </head>
 <body>
@@ -20,7 +21,26 @@
    </header>
   <div class= "main">
     <section>
-       <h3>No subtask added yet !!</h3>
+       <form id="todo-list">
+        {% for subtask in all_subtasks %}
+        <span class="todo-wrap">
+          {% if subtask.status == "incomplete" %}
+          <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)"/>
+          {% else %}
+          <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)" checked/>
+          {% endif %}
+          <label for="{{subtask.id}}" class="todo">
+            <i class="fa fa-check"></i>
+            {{subtask.name}}
+          </label>
+          <span class="delete-item" title="remove" id="{{subtask.id}}">
+            <i class="fa fa-times-circle"></i>
+          </span>
+        </span>
+        {% endfor %}
+      </form>
+      </ul>
+
     </section>
     <aside class="right">
       <h4>Project ID</h4>
@@ -42,22 +62,73 @@
    <div id="myModel" class="modal">
      <div class="modal-content">
        <div class="modal-header">
-         <h4 class="modal-title">Subtask Description</h4>  
-         <span class="close">&times;</span>
+         <h4 class="modal-title">Add Subtask</h4>  
+         <span class="close" id="cls">&times;</span>
        </div>
        <div class="modal-body">
+         <form action="{% url 'modules' obj.pid %}" method="POST">{% csrf_token %}
+            <div class="form-group">
+                <label for="name"><h5>Name</h5></label>
+                <input id="name" name="name"/>
+            </div>
            <div class="form-group">
              <label for="desc"><h5>Description</h5></label>
-             <textarea id="desc" name="txtarea" rows="4" cols="50"></textarea>
+             <textarea id="desc" name="desc" rows="4" cols="40"></textarea>
            </div>
-       </div>
-       <div class="modal-footer" >
-         <button type="button" class="btn btn-secondary" id="cls">Close</button>
-         <button class="btn btn-primary" id="save">Save changes</buttom>
+           <button type="submit" id="save" class="btn btn-success">Add</button>
+          </form>
        </div>
      </div>
    </div>
 
    <script src="{% static 'js/modules.js' %}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script>
+    // remove items 
+    $('.delete-item').click(function () {
+      var parentItem = $(this).parent();
+      $.ajax({
+          type: 'GET',
+          url: '{% url 'subtaskaction' %}',
+          data: {"action":"delete",'id': this.id},
+        })
+      parentItem.animate({
+        left: "-30%",
+        height: 0,
+        opacity: 0
+      }, 200);
+      setTimeout(function () { $(parentItem).remove(); }, 1000);
+    });
+
+    // Enter Key detect
+
+    $.fn.enterKey = function (fnc) {
+      return this.each(function () {
+        $(this).keypress(function (ev) {
+          var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+          if (keycode == '13') {
+            fnc.call(this, ev);
+          }
+        })
+      })
+    }
+
+    function checkme(ele){
+      if (ele.checked == true){
+        $.ajax({
+          type: 'GET',
+          url: '{% url 'subtaskaction' %}',
+          data: {"action":"check",'id': ele.id},
+        })
+      }
+      else{
+        $.ajax({
+          type: 'GET',
+          url: '{% url 'subtaskaction' %}',
+          data: {"action":"uncheck",'id': ele.id},
+        })
+      }
+    }
+  </script>
 </body>
 </html> 
