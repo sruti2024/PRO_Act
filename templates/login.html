@@ -170,6 +170,35 @@ body {
    -moz-user-select: none;
    -ms-user-select: none;
 }
+#span{
+  position: absolute;
+  right:15px;
+  transform: translate(0,-50%);
+  top:50%;
+  color:#495057;
+  cursor: pointer;
+}
+.form-group{
+  z-index: 2;
+}
+#span{
+  z-index: 3;
+}
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
 </style>
 </head>
 <body>
@@ -236,7 +265,10 @@ body {
 						<i class="fa fa-lock"></i>
 					</span>
 				</div>
-				<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password">
+        <span id="span">
+          <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
+        </span>
 			</div>
         </div>
 
@@ -260,6 +292,7 @@ body {
 	<p class="text-center">or</p>
 </div>
 <center>
+  <!-- Google -->
 <div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
 	<div class=content-wrapper>
 		<div class='logo-wrapper'>
@@ -269,7 +302,11 @@ body {
 			<span>Sign in with Google</span>
 		</span>
 	</div>
-</div>
+</div> <br>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+  <i class="fa fa-facebook "></i>Log in with facebook
+</button> <br><br>
 </center>
 {% endif %}
 <script>
@@ -301,6 +338,19 @@ body {
   }
 });
 
+var state=false;
+function toggle()
+{
+  if (state) {
+    document.getElementById("password").setAttribute("type", "text");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye-slash")
+    state = false;
+  } else {
+    document.getElementById("password").setAttribute("type", "password");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye")
+    state = true;
+  }
+}
 </script>
 </body>
 </html>
