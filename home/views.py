@@ -19,13 +19,104 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm
 from django.core.mail import send_mail
 
+from django.shortcuts import render
+
+from bokeh.plotting import figure,output_file,show
+from bokeh.embed import components 
+
+from pandas import DataFrame
+from bokeh.io import show
+from bokeh.plotting import figure
+from bokeh.models import ColumnDataSource
+from bokeh.palettes import Viridis9,Viridis3
+
+
+
+
 
 # Create your views here.
 
 def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
-    return render(request, 'index.html')
+
+    labels = []
+    data = []
+    now = datetime.now()
+    queryset = Project_add.objects.all()
+    
+    lstProj=queryset[len(queryset)-1]
+    for proj in queryset:
+        labels.append(proj.name)
+        dateStr=proj.date.split(' ')[0].split('-')[1]
+        curYear=proj.date.split(' ')[0].split('-')[0]
+        if curYear==str(now.year):
+            if dateStr[0]=='0':
+                data.append(dateStr[1])
+            else:
+                data.append(dateStr)
+
+
+
+    df = DataFrame({
+                    'month':data ,
+                    })
+
+    df2 = DataFrame({'count': df.groupby(["month"]).size()}).reset_index()
+    
+    df2['class-date'] = df2['month'].map(str)
+
+    # x (months) and y(count of projects) axes
+    class_date = df2['class-date'].tolist()
+    count = df2['count'].tolist()
+
+    for i in range (1,13):
+        if not(str(i) in class_date):
+            class_date.insert(i-1,str(i))
+            count.insert(i-1,0)
+
+
+    replacements = {
+    '1': 'Jan',
+    '2': 'Feb',
+    '3': 'Mar',
+    '4':'Apr',
+    '5':'May',
+    '6':'Jun',
+    '7':'Jul',
+    '8':'Aug',
+    '9':'Sep',
+    '10':'Oct',
+    '11':'Nov',
+    '12':'Dec'
+    }
+
+    class_date = [replacements.get(x, x) for x in class_date]
+    monDict=dict()
+    counts=[]
+    for idx,c in enumerate(count):
+        if c !=0:
+            monDict[class_date[idx]]=[]
+            counts.append(c)
+        
+    startIdx=0
+    for idx,item in enumerate(monDict.keys()):
+        print(item,monDict[item],labels[startIdx:startIdx+counts[idx]])
+        monDict[item]=labels[startIdx:startIdx+counts[idx]]
+        startIdx+=counts[idx]
+
+    # Bokeh's mapping of column names and data lists 
+    source = ColumnDataSource(data=dict(class_date=class_date, count=count, color=Viridis3+Viridis9))
+
+    # Bokeh's convenience function for creating a Figure object
+    p = figure(x_range=class_date, plot_height=350, title="# Projects created per month in "+str(now.year),
+            toolbar_location="below")
+
+    # Render and show the vbar plot
+    p.vbar(x='class_date', top='count', width=0.9, color='color', source=source)
+    script, div=components(p)
+
+    return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'monDict':monDict})
 
 def contact(request):
 	if request.method == "POST":
