@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}PRO_Act  ||  Add Project{% endblock title %}
+{% block css %}
+.dropdown-menu
+{
+   z-index:100000;
+}
+{% endblock css %}
+
 
 {% block body %}
 <div class="container">
@@ -29,7 +36,7 @@
       <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Choose tech stack
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="z-index:100000">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for key,value in tags.items %}
         <input type="checkbox" value={{key}} name="stack" id="{{value}}"> <label for="{{value}}"> {{key}}</label> <br />
         {% endfor %}
