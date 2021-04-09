@@ -199,6 +199,20 @@ body {
     padding-left:1px;
     padding-right: 8px;
   }
+    .gg{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #DB4437;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .gg i{
+    margin-left: -20px;
+    padding-right:8px;
+  }
 </style>
 </head>
 <body>
@@ -293,20 +307,13 @@ body {
 </div>
 <center>
   <!-- Google -->
-<div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
-	<div class=content-wrapper>
-		<div class='logo-wrapper'>
-			<img src='{% static "images/google.png" %}'>
-		</div>
-		<span class='text-container'>
-			<span>Sign in with Google</span>
-		</span>
-	</div>
-</div> <br>
+<p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+    <i class="fa fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
+  </button></p>
 <!-- facebook -->
 <button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
   <i class="fa fa-facebook "></i>Log in with facebook
-</button> <br><br>
+</button> <br>
 </center>
 {% endif %}
 <script>
