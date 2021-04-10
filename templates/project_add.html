@@ -5,7 +5,7 @@
 <div class="container">
 <h1 class="text-center">Add Project !</h1>
 
-<form method="post" action="/project_add">
+<form method="post" action="/project_add/">
 {% csrf_token %}
   <div class="form-group">
     <label for="name" class="control-label">Name of the Project</label>
@@ -23,12 +23,24 @@
   </div>
 
   <div class="form-group">
-    <label for="stack">Technical Stack</label>
-    <input type="text" class="form-control" id="stack" name="stack" placeholder="Ex : HTML , CSS, C++ ,Python ,...">
+    <label for="stack">Technical Stack</label> <br>
+    <!----- add tech stack choices ------->
+    <div class="dropdown" style="">
+      <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose tech stack
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for key,value in tags.items %}
+        <input type="checkbox" value={{key}} name="stack" id="{{value}}"> <label for="{{value}}"> {{key}}</label> <br />
+        {% endfor %}
+      </div>
+    </div>
   </div>
-  
-<br>
+
+  <br>
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 </div>
-{% endblock body %}   
+{% endblock body %}
+
+  

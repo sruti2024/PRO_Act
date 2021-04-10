@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -98,9 +100,128 @@ body {
 	font-size: 7px;
 	position: absolute;
 }
+*, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        .g-sign-in-button {
+            margin: 10px;
+            display: inline-block;
+            width: 240px;
+            height: 50px;
+            background-color: #4285f4;
+            color: #fff;
+            border-radius: 1px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+            transition: background-color .218s, border-color .218s, box-shadow .218s;
+        }
+
+        .g-sign-in-button:hover {
+            cursor: pointer;
+            -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+            box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+        }
+
+        .g-sign-in-button:active {
+            background-color: #3367D6;
+            transition: background-color 0.2s;
+        }
+
+        .g-sign-in-button .content-wrapper {
+            height: 100%;
+            width: 100%;
+            border: 1px solid transparent;
+        }
+
+        .g-sign-in-button img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .g-sign-in-button .logo-wrapper {
+            padding: 10px;
+            background: #fff;
+            width: 48px;
+            height: 100%;
+            border-radius: 1px;
+            display: inline-block;
+        }
+
+        .g-sign-in-button .text-container {
+            font-family: Roboto,arial,sans-serif;
+            font-weight: 500;
+            letter-spacing: .21px;
+            font-size: 16px;
+            line-height: 48px;
+            vertical-align: top;
+            border: none;
+            display: inline-block;
+            text-align: center;
+            width: 180px;
+        }
+
+.logo{
+  padding-top: 55px;
+}
+.disable-select {
+    user-select: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+}
+#span{
+  position: absolute;
+  right:15px;
+  transform: translate(0,-50%);
+  top:50%;
+  color:#495057;
+  cursor: pointer;
+}
+.form-group{
+  z-index: 2;
+}
+#span{
+  z-index: 3;
+}
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
+    .gg{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #DB4437;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .gg i{
+    margin-left: -20px;
+    padding-right:8px;
+  }
 </style>
 </head>
 <body>
+	{% if user.is_authenticated %}
+	<div class="container jumbotron cj">
+		<h1>Welcome {{ user.username }} </h1>
+		<meta http-equiv="refresh" content="0.5; URL={% url 'home:login' %}" />
+	</div>
+	{% else %}
 <div class="signup-form">
 	{% if error %}
         <div
@@ -134,7 +255,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="/login" method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -146,8 +267,9 @@ body {
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Username" required="required">
 			</div>
+      <div class="usernameFeedBackArea invalid-feedback" style="display:none"></div>
         </div>
 
 		<div class="form-group">
@@ -157,17 +279,85 @@ body {
 						<i class="fa fa-lock"></i>
 					</span>
 				</div>
-				<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password">
+        <span id="span">
+          <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
+        </span>
 			</div>
+        </div>
+
+        <div class="form-group">
+        	<div class="input-group">
+        		<div class="input-group-prepend">
+              <label for="remember" class="disable-select"> <input type="checkbox" , name="remember" id="remember"> Remember Me</label>
+        		</div>
+        	</div>
         </div>
 
 
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+			<script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6Leyjo4aAAAAALGq2q-nzNwg-7G7hrudNhqDHOMk"></div>
+            <button type="submit" id="loginBtn" class="btn btn-primary btn-lg mt-3">Sign In</button>
 			<a href="{% url 'forgot_password' %}" class="float-right mt-2">Forgot Password?</a>
         </div>
     </form>
-	<div class="text-center">Don't have an account? <a href="#">Create here</a></div>
+	<div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create here</a></div>
+	<p class="text-center">or</p>
 </div>
+<center>
+  <!-- Google -->
+<p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+    <i class="fa fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
+  </button></p>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+  <i class="fa fa-facebook "></i>Log in with facebook
+</button> <br>
+</center>
+{% endif %}
+<script>
+  const usernameField = document.querySelector("#username");
+  const usernameFeedBackArea = document.querySelector(".usernameFeedBackArea");
+  const loginBtn = document.querySelector("#loginBtn");
+  usernameField.addEventListener("keyup", (e) => {
+  const usernameVal = e.target.value;
+
+  usernameField.classList.remove("is-invalid");
+  usernameFeedBackArea.style.display = "none";
+
+  if (usernameVal.length > 0) {
+    fetch("/validate-username/", {
+      body: JSON.stringify({ username: usernameVal }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.username_error) {
+          loginBtn.removeAttribute("disabled");
+        } else {
+          loginBtn.disabled = true;
+          usernameField.classList.add("is-invalid");
+          usernameFeedBackArea.style.display = "block";
+          usernameFeedBackArea.innerHTML = `<p>User doesn't exist.</p>`;
+        }
+      });
+  }
+});
+
+var state=false;
+function toggle()
+{
+  if (state) {
+    document.getElementById("password").setAttribute("type", "text");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye-slash")
+    state = false;
+  } else {
+    document.getElementById("password").setAttribute("type", "password");
+    document.getElementById("eye").setAttribute("class", "fa fa-eye")
+    state = true;
+  }
+}
+</script>
 </body>
 </html>

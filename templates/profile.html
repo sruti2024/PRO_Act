@@ -1,75 +1,51 @@
 {% extends 'base.html' %}
-{% block title %}PRO_Act  ||  Profile{% endblock title %}
+{% load crispy_forms_tags %}
+{% block title %}PRO_Act  |  Profile{% endblock title %}
 
+{% block css %}
+img
+{
+  width:100%;
+  height:50vh;
+  border-radius:50%;
+}
+@media screen and (max-width:990px) {
+.profile
+{
+  margin-bottom:25vh;
+}
+}
+{% endblock css %}
 {% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid px-4 profile">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
-
-<div class="container my-5">
-
-    <section>
-      
-      <div class="card mb-4">
-        
-        <div class="row">
-  
-          <div class="col-md-6">
-            <img class="img-fluid rounded-left" src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049__340.png" style="width: 472px;height: 708px;" alt="profile image">
+        <!-- Main Content Here -->
+        <div class="row my-4">
+          <div class="col-lg-2 col-sm-0"></div>
+          <div class="col-lg-3 col-sm-10 my-2">
+            <img class="rounded-left" src="{{ user.profile.image.url }}">
           </div>
-  
-          <div class="col-md-6 p-5 align-self-center">
-  
-            <h3 class="font-weight-normal mb-3"><b>My Profile</b></h3>
-            <ul class="list-unstyled font-small mt-5 mb-0">
-              <li>
-                <p class="text-uppercase mb-2"><strong>User-Name</strong></p>
-                <p class="text-muted mb-4">{{request.user.username}}</p>
-              </li>
-              
-              <li>
-                <p class="text-uppercase mb-2"><strong>First Name</strong></p>
-                <p class="text-muted mb-4">{{request.user.first_name}}</p>
-              </li>
+          <div class="card o-hidden border-0 shadow-lg col-lg-5 my-2 p-3" style="background-image: linear-gradient(to bottom right, #19aa8d 0%, #fff 130%);">
+            <div class="card-body">
 
-              <li>
-                <p class="text-uppercase mb-2"><strong>Last Name</strong></p>
-                <p class="text-muted mb-4">{{request.user.last_name}}</p>
-              </li>
+      <div class="content-section mt-3">
+       <p> Username: {{user.username}} </p>
+       <p>First Name: {{user.firstname}} </p>
+       <p>Last Name: {{user.lastname}} </p>
+       <p>Email Address: {{user.email}} </p>
 
-              <li>
-                <p class="text-uppercase mb-2"><strong>Email</strong></p>
-                <p class="text-muted mb-4">{{request.user.email}}</p>
-              </li>
-
-              <li>
-                <p class="text-uppercase mb-2"><strong>Phone No</strong></p>
-                {% if request.user.phone %}
-                <p class="text-muted mb-4">{{request.user.phone}}</p>
-                {% else %}
-                <p class="text-muted mb-4">9875684268</p>
-                {% endif %}
-              </li>
-                
-            </ul>
-            <div class="row">
-                <div class="col-sm-6">
-                    <p class="text-uppercase mb-2"><strong>All Projects</strong></p>
-                    <button type="button" onclick="window.location.href='/project_view'" class="btn btn-success">View</button>
-                </div>
-                <div class="col-sm-6">
-                    <p class="text-uppercase mb-2"><strong>Update Profile</strong></p>
-                    <button type="button" class="btn btn-warning">Update</button>
-                </div>
-            </div>
-  
+    <div class="text-center">
+               <div class="text-center">
+                <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/profile_update'">Update Profile</a>
+                <a class='btn btn-sm btn-outline-primary shadow-sm' type='button' onclick="window.location.href='/changepassword'">Change Password</a>
+                <a type="button" onclick="window.location.href='/project_view'" class="btn btn-sm btn-primary shadow-sm">View Projects</a>
+              </div>
+              </div>
           </div>
-  
         </div>
-  
-      </div>
-  
-    </section>
-  
-  </div>
 
-{% endblock body%}
+
+
+    </div>
+{% endblock body %}
