@@ -30,6 +30,7 @@ class Project_add(models.Model):
     link = models.CharField(max_length=200)
     stack = models.CharField(max_length=300)
     date = models.CharField(max_length=100)
+    proj_image= models.ImageField(upload_to='media/proj_image/')
 
     def save(self, *args, **kwargs):
         self.pid = str(str(self.name[0:3])+'_'+str(self.date).split(' ')[0].split('-')[2])
