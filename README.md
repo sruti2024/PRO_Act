@@ -26,7 +26,7 @@ Color scheme : https://colorhunt.co/palette/269111
 * After a copy of the project is made in your machine , follow the `Explore` section to run the project in your local server.
 * All pages are present in the `templates` folder , project files in the `pro_act` folder.
 * Make the required changes and run it in the server to see the working.
-* `git add .` to add all the changes and `git add filename.txt` to add changes to a perticular file.
+* `git add .` to add all the changes and `git add filename.txt` to add changes to a particular file.
 * `git commit -m "message"` it is recommended to commit with a message to tell what are the things you have changed.
 * `git push` to push all changes to main branch from local branch.
 ### PS: Virtual Environment can be installed on windows by `py -m pip install --user virtualenv`
