@@ -317,7 +317,7 @@ def project_add(request):
         desc = request.POST.get('desc')
         link = request.POST.get('link')
         stack = request.POST.getlist('stack')
-	proj_image = request.POST.get('proj_image')
+        proj_image = request.POST.get('proj_image')
         project_add = Project_add(
             name=name, desc=desc, link=link, stack=stack, proj_image=proj_image, date=datetime.today())
         project_add.save()
