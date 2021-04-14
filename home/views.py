@@ -36,6 +36,7 @@ from bokeh.palettes import Viridis9,Viridis3
 
 # Create your views here.
 
+
 def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
@@ -118,6 +119,8 @@ def index(request):
 
     return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'monDict':monDict})
 
+# making login required for project add page and redirecting it to the login page
+@login_required(login_url="/login")
 def contact(request):
 	if request.method == "POST":
 		message_name = request.POST['message-name']
@@ -317,7 +320,7 @@ def project_add(request):
         desc = request.POST.get('desc')
         link = request.POST.get('link')
         stack = request.POST.getlist('stack')
-	proj_image = request.POST.get('proj_image')
+        proj_image = request.POST.get('proj_image')
         project_add = Project_add(
             name=name, desc=desc, link=link, stack=stack, proj_image=proj_image, date=datetime.today())
         project_add.save()
@@ -326,6 +329,8 @@ def project_add(request):
     return render(request, 'project_add.html',context)
 
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
@@ -337,6 +342,8 @@ def profile(request):
     return render(request,'profile.html')
 
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def profile_update(request):
     if request.method=="POST":
         u_form=UserUpdateForm(request.POST,request.FILES,instance=request.user)
@@ -360,6 +367,8 @@ def profile_update(request):
     }
     return render(request,'profile_update.html',context)
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def changepassword(request):
     users = User.objects.all()
     curr = 0
@@ -384,6 +393,8 @@ def changepassword(request):
     context={'error':error}
     return render(request, 'changepassword.html',context)
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def modules(request, p_id):
     obj = Project_add.objects.get(pid = p_id)
     context= {"obj": obj}
