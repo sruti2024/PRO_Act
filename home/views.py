@@ -6,7 +6,7 @@ from datetime import datetime
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from django.conf import settings
-from home.models import Project_add
+from home.models import Project_add,Subtask
 from random import randint
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -397,6 +397,24 @@ def changepassword(request):
 @login_required(login_url="/login")
 def modules(request, p_id):
     obj = Project_add.objects.get(pid = p_id)
-    context= {"obj": obj}
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        description = request.POST.get("desc")
+        subtask = Subtask(project=obj,name=name,description=description,status="incomplete")
+        subtask.save()
+    
+    all_subtasks = Subtask.objects.filter(project=obj)
+    context= {"obj": obj,"all_subtasks":all_subtasks}
     return render(request, 'modules.html', context)
 
+def actionOnSubtask(request):
+    action = request.GET.get("action")
+    id = request.GET.get("id")
+    if action == "delete":
+        Subtask.objects.filter(id=id).delete()
+    elif action == "check":
+        Subtask.objects.filter(id=id).update(status="complete")
+    else:
+        Subtask.objects.filter(id=id).update(status="incomplete")
+    return JsonResponse({"success":"ok"})
