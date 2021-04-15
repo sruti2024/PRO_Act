@@ -24,7 +24,8 @@ urlpatterns = [
     path('profile_update/',views.profile_update,name="profile_update"),
     path('contact/', views.contact , name="contact"),
     path('changepassword/', views.changepassword, name='changepassword'),
-    path('modules/<str:p_id>/', views.modules, name="modules")
+    path('modules/<str:p_id>/', views.modules, name="modules"),
+    path('subtaskaction/', views.actionOnSubtask, name="subtaskaction"),
 
 ]
 

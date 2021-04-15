@@ -59,3 +59,12 @@ class OTPModel(models.Model):
 
     class Meta:
         verbose_name = 'OTP'
+
+class Subtask(models.Model): 
+    project = models.ForeignKey(Project_add,on_delete=models.CASCADE) 
+    name = models.CharField(max_length=100) 
+    description = models.TextField() 
+    status = models.CharField(max_length=15,choices=(('complete','Completed'),('incomplete',"Incomplete")),default='incomplete') 
+    
+    def __str__(self): 
+        return self.name
