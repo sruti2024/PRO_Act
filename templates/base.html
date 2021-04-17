@@ -23,14 +23,7 @@
     <title>{% block title %}{% endblock title %}</title>
     <style>
     {% block css %}{% endblock css %}
-  
-:root {
---body-bg-color: #f2f2f2;
-}
-body {
-  background-color: var(--body-bg-color);
-}
-  
+    
 svg {
   width:100%;
 }
@@ -72,8 +65,16 @@ svg {
   animation-duration: 7s;
   opacity:.3;
 }
+:root {
+--body-bg-color: #f2f2f2;
+}
 
-
+body {
+  font-family: var(--body-font);
+  color: var(--body-color);
+  background-color: var(--body-bg-color);
+  min-height: -webkit-fill-available;
+}
 .dark-mode {
  --body-bg-color: #1e222b;
  --theme-bg-color: #212835;
@@ -82,7 +83,6 @@ svg {
  --main-color: #fefffd;
  --body-color: #dddee0;
 }
-
 .dark-light {
  position: fixed;
  bottom: 30px;
@@ -133,16 +133,6 @@ svg {
 @keyframes ball {
   to {transform: translateY(20%);}
 }
-
-@media (max-width: 475px) {
- .footer-links {
-  flex-direction: column;
- }
-.dark-light {
-  bottom: 60px;
- }
-}
-
 
 
     </style>
@@ -291,33 +281,33 @@ svg {
     <!-- Dark/Bright Mode Button -->
 
     <div class="dark-light">
-      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-      </svg>
-    </div>
-
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+        </div>
+        
     <script>
         
-      const toggleButton = document.querySelector('.dark-light');
+        const toggleButton = document.querySelector('.dark-light');
 
-      toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-      });
+        toggleButton.addEventListener('click', () => {
+          document.body.classList.toggle('dark-mode');
+        });
 
-      const allVideos = document.querySelectorAll('.video');
+        const allVideos = document.querySelectorAll('.video');
 
-      allVideos.forEach((v) => {
-       v.addEventListener('mouseover', () => {
-        const video = v.querySelector('video');
-        video.play();
-       });
-       v.addEventListener('mouseleave', () => {
-        const video = v.querySelector('video');
-        video.pause();
-       });
-      });
+        allVideos.forEach((v) => {
+         v.addEventListener('mouseover', () => {
+          const video = v.querySelector('video');
+          video.play();
+         });
+         v.addEventListener('mouseleave', () => {
+          const video = v.querySelector('video');
+          video.pause();
+         });
+        });
 
-  </script>
+    </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
