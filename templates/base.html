@@ -23,7 +23,14 @@
     <title>{% block title %}{% endblock title %}</title>
     <style>
     {% block css %}{% endblock css %}
-    
+  
+:root {
+--body-bg-color: #f2f2f2;
+}
+body {
+  background-color: var(--body-bg-color);
+}
+  
 svg {
   width:100%;
 }
@@ -64,6 +71,16 @@ svg {
 #wave3 {
   animation-duration: 7s;
   opacity:.3;
+}
+
+
+.dark-mode {
+ --body-bg-color: #1e222b;
+ --theme-bg-color: #212835;
+ --border-color: #393f50;
+ --header-bg-color: #323a4b;
+ --main-color: #fefffd;
+ --body-color: #dddee0;
 }
 
 .dark-light {
@@ -116,6 +133,16 @@ svg {
 @keyframes ball {
   to {transform: translateY(20%);}
 }
+
+@media (max-width: 475px) {
+ .footer-links {
+  flex-direction: column;
+ }
+.dark-light {
+  bottom: 60px;
+ }
+}
+
 
 
     </style>
