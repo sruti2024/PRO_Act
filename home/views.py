@@ -6,7 +6,7 @@ from datetime import datetime
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from django.conf import settings
-from home.models import Project_add
+from home.models import Project_add,Subtask
 from random import randint
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -19,14 +19,108 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm,UserUpdateForm
 from django.core.mail import send_mail
 
+from django.shortcuts import render
+
+from bokeh.plotting import figure,output_file,show
+from bokeh.embed import components 
+
+from pandas import DataFrame
+from bokeh.io import show
+from bokeh.plotting import figure
+from bokeh.models import ColumnDataSource
+from bokeh.palettes import Viridis9,Viridis3
+
+
+
+
 
 # Create your views here.
+
 
 def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
-    return render(request, 'index.html')
 
+    labels = []
+    data = []
+    now = datetime.now()
+    queryset = Project_add.objects.all()
+    
+    lstProj=queryset[len(queryset)-1]
+    for proj in queryset:
+        labels.append(proj.name)
+        dateStr=proj.date.split(' ')[0].split('-')[1]
+        curYear=proj.date.split(' ')[0].split('-')[0]
+        if curYear==str(now.year):
+            if dateStr[0]=='0':
+                data.append(dateStr[1])
+            else:
+                data.append(dateStr)
+
+
+
+    df = DataFrame({
+                    'month':data ,
+                    })
+
+    df2 = DataFrame({'count': df.groupby(["month"]).size()}).reset_index()
+    
+    df2['class-date'] = df2['month'].map(str)
+
+    # x (months) and y(count of projects) axes
+    class_date = df2['class-date'].tolist()
+    count = df2['count'].tolist()
+
+    for i in range (1,13):
+        if not(str(i) in class_date):
+            class_date.insert(i-1,str(i))
+            count.insert(i-1,0)
+
+
+    replacements = {
+    '1': 'Jan',
+    '2': 'Feb',
+    '3': 'Mar',
+    '4':'Apr',
+    '5':'May',
+    '6':'Jun',
+    '7':'Jul',
+    '8':'Aug',
+    '9':'Sep',
+    '10':'Oct',
+    '11':'Nov',
+    '12':'Dec'
+    }
+
+    class_date = [replacements.get(x, x) for x in class_date]
+    monDict=dict()
+    counts=[]
+    for idx,c in enumerate(count):
+        if c !=0:
+            monDict[class_date[idx]]=[]
+            counts.append(c)
+        
+    startIdx=0
+    for idx,item in enumerate(monDict.keys()):
+        print(item,monDict[item],labels[startIdx:startIdx+counts[idx]])
+        monDict[item]=labels[startIdx:startIdx+counts[idx]]
+        startIdx+=counts[idx]
+
+    # Bokeh's mapping of column names and data lists 
+    source = ColumnDataSource(data=dict(class_date=class_date, count=count, color=Viridis3+Viridis9))
+
+    # Bokeh's convenience function for creating a Figure object
+    p = figure(x_range=class_date, plot_height=350, title="# Projects created per month in "+str(now.year),
+            toolbar_location="below")
+
+    # Render and show the vbar plot
+    p.vbar(x='class_date', top='count', width=0.9, color='color', source=source)
+    script, div=components(p)
+
+    return render(request,'index.html',{'script':script,'div':div,'lstProj':lstProj,'monDict':monDict})
+
+# making login required for project add page and redirecting it to the login page
+@login_required(login_url="/login")
 def contact(request):
 	if request.method == "POST":
 		message_name = request.POST['message-name']
@@ -226,14 +320,17 @@ def project_add(request):
         desc = request.POST.get('desc')
         link = request.POST.get('link')
         stack = request.POST.getlist('stack')
+        proj_image = request.POST.get('proj_image')
         project_add = Project_add(
-            name=name, desc=desc, link=link, stack=stack, date=datetime.today())
+            name=name, desc=desc, link=link, stack=stack, proj_image=proj_image, date=datetime.today())
         project_add.save()
         messages.success(request, 'Your Project has been added')
 
     return render(request, 'project_add.html',context)
 
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def project_view(request):
     obj = Project_add.objects.all
     return render(request, 'project_view.html', {'object': obj})
@@ -245,6 +342,8 @@ def profile(request):
     return render(request,'profile.html')
 
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def profile_update(request):
     if request.method=="POST":
         u_form=UserUpdateForm(request.POST,request.FILES,instance=request.user)
@@ -268,6 +367,8 @@ def profile_update(request):
     }
     return render(request,'profile_update.html',context)
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def changepassword(request):
     users = User.objects.all()
     curr = 0
@@ -292,8 +393,28 @@ def changepassword(request):
     context={'error':error}
     return render(request, 'changepassword.html',context)
 
+# Redirecting anonymous login to the right login page
+@login_required(login_url="/login")
 def modules(request, p_id):
     obj = Project_add.objects.get(pid = p_id)
-    context= {"obj": obj}
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        description = request.POST.get("desc")
+        subtask = Subtask(project=obj,name=name,description=description,status="incomplete")
+        subtask.save()
+    
+    all_subtasks = Subtask.objects.filter(project=obj)
+    context= {"obj": obj,"all_subtasks":all_subtasks}
     return render(request, 'modules.html', context)
 
+def actionOnSubtask(request):
+    action = request.GET.get("action")
+    id = request.GET.get("id")
+    if action == "delete":
+        Subtask.objects.filter(id=id).delete()
+    elif action == "check":
+        Subtask.objects.filter(id=id).update(status="complete")
+    else:
+        Subtask.objects.filter(id=id).update(status="incomplete")
+    return JsonResponse({"success":"ok"})
