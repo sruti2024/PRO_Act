@@ -141,6 +141,7 @@ def contact(request):
 		return render(request, 'contact.html', {})
 
 def signupUser(request):
+    print("SIGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN UPPPPPP\n")
     if request.method == "POST":
         fname = request.POST.get('fname')
         lname = request.POST.get('lname')
@@ -152,6 +153,7 @@ def signupUser(request):
         new_user.password = make_password(new_user.password)
         new_user.is_active = True
         new_user.save()
+        # send welcome mail
         return render(request, "login.html", {"message": "You can now login to your account."})
     return render(request, "signup.html")
 
@@ -220,6 +222,7 @@ def gen_otp():
 
 
 def send_otp(request):
+    print("MAAAAAAAAAAAAAAAAIL\n")
     user_email = request.GET['email']
     try:
         user_name = request.GET['fname']
