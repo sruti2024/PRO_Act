@@ -150,12 +150,18 @@ MEDIA_URL='/media/'
 CRISPY_TEMPLATE_PACK= 'bootstrap4'
 
 # email
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = ""
+# EMAIL_HOST_PASSWORD = ""
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'PRO ACT <no-reply@pro_act.com>'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_USER = "mahmouddihab@gmail.com"
+EMAIL_HOST_PASSWORD = "mah45Moud123"
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'PRO ACT <no-reply@pro_act.com>'
+DEFAULT_FROM_EMAIL = 'mahmouddihab@gmail.com'
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 #AUTHENTICATION SETUP
