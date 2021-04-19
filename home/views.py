@@ -145,7 +145,7 @@ def contact(request):
 		return render(request, 'contact.html', {})
 
 def signupUser(request):
-    print("SIGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN UPPPPPP\n")
+
     if request.method == "POST":
         fname = request.POST.get('fname')
         lname = request.POST.get('lname')
@@ -429,30 +429,6 @@ def actionOnSubtask(request):
         Subtask.objects.filter(id=id).update(status="incomplete")
     return JsonResponse({"success":"ok"})
 
-# def sendWelcomeMail(user_email,user_name):
-#     data = {
-#         'receiver': user_name.capitalize()
-#     }
-#     html_content = render_to_string("emails/welcome.html",data)
-#     text_content = strip_tags(html_content)
-
-#     email = EmailMultiAlternatives(
-#         f"Welcome | PRO ACT",
-#         text_content,
-#         "PRO ACT <no-reply@pro_act.com>",
-#         [user_email]
-#     )
-#     email.attach_alternative(html_content, "text/html")
-#     email.mixed_subtype = 'related'
-#     for f in ['..\\static\\images\\logo\\PRO_ACT_Bck.png']:
-#         fp = open(os.path.join(os.path.dirname(__file__), f), 'rb')
-#         img = MIMEImage(fp.read())
-#         fp.close()
-#         img.add_header('Content-ID', '<{}>'.format(f))
-#         email.attach(img)
-#     print("sending welcome email")
-#     email.send()
-#     print("Sent welcome email")
 def sendWelcomeMail(user_email,user_name):
     data = {
         'receiver': user_name.capitalize()
