@@ -30,6 +30,10 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource
 from bokeh.palettes import Viridis9,Viridis3
 
+import os
+from email.mime.image import MIMEImage
+from pathlib import Path
+
 
 
 
@@ -141,6 +145,7 @@ def contact(request):
 		return render(request, 'contact.html', {})
 
 def signupUser(request):
+
     if request.method == "POST":
         fname = request.POST.get('fname')
         lname = request.POST.get('lname')
@@ -152,6 +157,7 @@ def signupUser(request):
         new_user.password = make_password(new_user.password)
         new_user.is_active = True
         new_user.save()
+        # send welcome mail
         return render(request, "login.html", {"message": "You can now login to your account."})
     return render(request, "signup.html")
 
@@ -220,6 +226,7 @@ def gen_otp():
 
 
 def send_otp(request):
+    
     user_email = request.GET['email']
     try:
         user_name = request.GET['fname']
@@ -260,7 +267,10 @@ def match_otp(email, otp):
 def check_otp(request):
     req_otp = request.GET['otp']
     req_user = request.GET['email']
+    user_name = request.GET['fname']
     if match_otp(req_user, req_otp):
+        # send a welcome mail on successful signup
+        sendWelcomeMail(req_user,user_name)
         return JsonResponse({'otp_match': True})
     return JsonResponse({'otp_mismatch': 'OTP does not match.'})
 
@@ -418,3 +428,30 @@ def actionOnSubtask(request):
     else:
         Subtask.objects.filter(id=id).update(status="incomplete")
     return JsonResponse({"success":"ok"})
+
+def sendWelcomeMail(user_email,user_name):
+    data = {
+        'receiver': user_name.capitalize()
+    }
+    html_content = render_to_string("emails/welcome.html",data)
+    text_content = strip_tags(html_content)
+
+    email = EmailMultiAlternatives(
+        f"Welcome | PRO ACT",
+        text_content,
+        "PRO ACT <no-reply@pro_act.com>",
+        [user_email]
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.mixed_subtype = 'related'
+    img_dir='static/images/logo'
+    image='PRO_ACT_Bck.png'
+    file_path=os.path.join(img_dir,image)
+    with open(file_path,'rb') as f:
+        img=MIMEImage(f.read())
+        img.add_header('Content-ID',"<{name}>".format(name=image))
+        img.add_header('Content-Disposition','inline',filename=image)
+    email.attach(img)
+    print("sending welcome email")
+    email.send()
+    print("Sent welcome email")
