@@ -1,8 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}PRO_Act  ||  Add Project{% endblock title %}
-
+{% block css %}
+.back
+{
+  font-family: 'Overpass';
+}
+.bb{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-weight: bolder;
+  margin: 10px;
+  background-color: rgba(25,170,141,1);
+}
+.bb:hover{
+  transition: 2ms;
+  transform: scale(1.05);
+  background-color: honeydew;
+  color: rgba(25,170,141,1);
+  font-weight: bolder;
+  font-size: medium;
+}
+{% endblock css %}
 {% block body %}
-<div class="container">
+<div class="container back">
+  <div class="row my-4">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap" rel="stylesheet">
+    <div class="col-lg-2 col-sm-10 my-2"></div>
+  <div class="card o-hidden border-0 shadow-lg col-lg-8 my-2 p-3" style="background: radial-gradient(
+    ellipse at left bottom,
+    rgba(255,255,255, 1) 0%,
+    rgba(25, 170, 140, 1) 59%,
+    rgba(163, 255, 235, 1) 100%);
+      box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.8);">
+    <div class="card-body">
+
 <h1 class="text-center">Add Project !</h1>
 
 <form method="post" action="/project_add/">
@@ -10,24 +41,24 @@
   <div class="form-group">
     <label for="name" class="control-label">Name of the Project</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="desc" class="control-label">Description </label>
     <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label for="link">Link(Site link or github link if any)</label>
     <input type="text" class="form-control" id="link" name="link" placeholder="https://...">
-  </div>
- 
-      
+  </div><br>
+
+
   <div class="form-group">
     <label for="stack">Technical Stack</label> <br>
     <!----- add tech stack choices ------->
-    <div class="dropdown" style="">
-      <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown">
+      <button class="btn bb dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Choose tech stack
       </button><br><br>
       <div class="form-group">
@@ -43,9 +74,10 @@
   </div>
 
   <br>
-  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="bb btn btn-primary" type="submit">Submit</button>
 </form>
 </div>
+</div></div>
 {% endblock body %}
 
-  
+
