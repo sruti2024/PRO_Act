@@ -185,6 +185,61 @@ svg {
   border-color: #125688;
 }
 
+
+/* styling nav bar */
+
+#navbarSupportedContent a.nav-link{
+  width: fit-content;
+  height: 50px;
+}
+li a.nav-link{
+  color: rgb(138, 138, 138);
+  transition-property: all;
+  transition-duration: 10ms
+}
+a.nav-link:hover{
+  color:rgb(216, 210, 210);
+}
+a.active-link:not(:hover)
+.active-link{
+  
+  background:linear-gradient(to bottom, --bs-dark 0%,var(--bs-dark) 50%,var(--bs-dark) 50%,white 50%,white 100%);
+  transition-property: all;
+  transition-duration: 10ms
+}
+.active-link a.nav-link{
+  color: var(--bs-dark);
+  font-weight: 600;
+  background-color:white;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  transition-property: all;
+  transition-duration: 10ms
+}
+.prev-link{
+  background: linear-gradient(to bottom, var(--bs-dark) 0%,white 50%,white 100%);
+  transition-property: all;
+  transition-duration: 10ms
+}
+.prev-link a.nav-link{
+  border-bottom-right-radius: 27px;
+  background: var(--bs-dark);
+  transition-property: all;
+  transition-duration: 10ms
+}
+.next-link{
+  background: linear-gradient(to bottom, var(--bs-dark) 0%,white 50%,white 100%);
+  transition-property: all;
+  transition-duration: 10ms
+}
+.next-link a.nav-link{
+  border-bottom-left-radius: 27px;
+  background: var(--bs-dark);
+  transition-property: all;
+  transition-duration: 10ms
+}
+/*Styling nav bar ends*/
+
     </style>
   </head>
   <body>
@@ -195,31 +250,42 @@ svg {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Project
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/project_add">Add Project</a></li>
-            <li><a class="dropdown-item" href="/project_view">View Projects</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact Us</a>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <div style="margin-right:10px ;margin-bottom: -8px;height: 50px;">
+        {% with request.resolver_match.url_name as url_name %}
+        <ul style="display: flex;flex-direction: row;height: 50px;list-style-type: none;"class=" me-auto ">
+          <li id="first-link" class="nav-item">
+            <a class="nav-link"></a>
+          </li>
+          <li id="home-link" class="nav-item {% if url_name == 'home' %}activeLink{% endif %}">
+            <a id="home-anchor" href="/" class="nav-link"><i class="fa fa-fw fa-home"></i> Home</a>
+            <!-- <a id="home-anchor" class="nav-link active" aria-current="page" href="/">Home</a> -->
+          </li>
+          <li id="profile-link" class="nav-item {% if url_name == 'profile' %}activeLink{% endif %}">
+            <a id="profile-anchor" href="/profile" class="nav-link"><i class="fa fa-fw fa-user"></i> Profile</a>
+          </li>
+          <li id="project-link" class="nav-item dropdown">
+            <a id="project-anchor" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Project
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/project_add">Add Project</a></li>
+              <li><a class="dropdown-item" href="/project_view">View Projects</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li id="contact-link" class="nav-item {% if url_name == 'contact' %}activeLink{% endif %}">
+            <a id="contact-anchor" class="nav-link" href="/contact"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
+          </li>
+          <li id="last-link" class="nav-item">
+            <a class="nav-link"></a>
+          </li>
+        </ul>
+        {% endwith %}
+      </div>
 
-        <a href="#"><button class="btn btn-outline-success" onclick="confirmation()">Log Out</button></a>
+      <a href="#"><button class="btn btn-outline-success" onclick="confirmation()">Log Out</button></a>
 
     </div>
   </div>
@@ -316,22 +382,29 @@ svg {
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     function confirmation(){
-    swal({
-      title: "Are you sure?",
-      text: "You Want to LogOut!!",
-      icon: "warning",
-      buttons: true,
-      buttons: ['cancel','Yes, Log out'],
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        window.location = "/logout";
-      } else {
-        
-      }
-    });
+      swal({
+        title: "Are you sure?",
+        text: "You Want to LogOut!!",
+        icon: "warning",
+        buttons: true,
+        buttons: ['cancel','Yes, Log out'],
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          window.location = "/logout";
+        } else {
+          
+        }
+      });
     }
+    // adding active link class to active icon in nav bar
+        $('#navbarSupportedContent li').removeClass('next-link')
+        $('#navbarSupportedContent li').removeClass('prev-link')
+        id=$("[class*='activeLink']").attr('id');
+        $("#"+id).next().addClass("next-link")
+        $("#"+id).addClass("active-link")
+        $("#"+id).prev().addClass("prev-link")
   </script>
   </body>
 </html>
