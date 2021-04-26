@@ -30,3 +30,5 @@ django-crispy-forms==1.11.1
 django-chartjs==2.2.1
 bokeh==2.3.0
 urllib3==1.26.4
+black==20.8b1
+flake8==3.8.4
