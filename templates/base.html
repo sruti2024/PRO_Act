@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -240,9 +241,34 @@ a.active-link:not(:hover)
 }
 /*Styling nav bar ends*/
 
+.darkmode-toggle{
+  z-index: 1000;
+}
     </style>
   </head>
-  <body>
+  <body id="body">
+<!-- dark mode script -->
+<script src="{% static 'js/DarkMode.js' %}"></script>
+<script>
+  var options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    left: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#19AA8D', // default: '#fff'
+    backgroundColor: '#19AA8D',  // default: '#fff'
+    buttonColorDark: '#100f2c',  // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: true, // default: true,
+    label: '🌓' // default: ''
+  }
+
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
+</script>
+<script>
+  document.getElementsByClassName("darkmode-toggle")[0].setAttribute('id', 'dmbutton')
+</script>
    <!-- navbar  -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -348,7 +374,7 @@ a.active-link:not(:hover)
 <!-- wave end-->
 
     <!-- Footer Starts -->
-    <footer class="footer container-fluid px-0 text-center text-white" style="
+    <footer class="footer container-fluid px-0 text-center text-white darkmode-ignore" style="
         background-color: rgb(59, 57, 57);">
       <!-- Grid container -->
       <div class="container p-4 pb-3">
