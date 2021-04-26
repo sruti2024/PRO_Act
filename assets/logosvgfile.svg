@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="434.485" height="258.497" viewBox="0 0 434.485 258.497">
+  <defs>
+    <filter id="Rectangle_1" x="94.485" y="60.815" width="28" height="43" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#799553"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_4" x="1.256" y="167.164" width="215.328" height="91.333" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_3" x="4" y="0.191" width="212.529" height="111.892" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_6" x="182" y="77.966" width="33" height="123" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_5" x="0" y="0.966" width="33" height="255" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-5"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_2" x="94.485" y="165.815" width="28" height="43" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-6"/>
+      <feFlood flood-color="#799553"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_3" x="21.485" y="126.815" width="43" height="28" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-color="#799553"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_4" x="142.485" y="126.815" width="43" height="28" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-8"/>
+      <feFlood flood-color="#799553"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="PRO_Act" x="205.485" y="90.815" width="229" height="73" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-9"/>
+      <feFlood flood-opacity="0.678"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_7" data-name="Group 7" transform="translate(-105.515 -61.185)">
+    <g id="Group_6" data-name="Group 6" transform="translate(-2 -5)">
+      <g id="Pro_Act-LOGO1" transform="translate(41 11)">
+        <path id="Path_2" data-name="Path 2" d="M168.25,61.5h0" transform="translate(86.225 81.365)" fill="#fff" stroke="#707070" stroke-width="10"/>
+        <g transform="matrix(1, 0, 0, 1, 66.51, 55.18)" filter="url(#Rectangle_1)">
+          <rect id="Rectangle_1-2" data-name="Rectangle 1" width="10" height="25" rx="5" transform="translate(103.49 66.82)" fill="#799553"/>
+        </g>
+        <g id="Group_1" data-name="Group 1" transform="translate(75.515 61.376)">
+          <g transform="matrix(1, 0, 0, 1, -9, -6.19)" filter="url(#Path_4)">
+            <path id="Path_4-2" data-name="Path 4" d="M5.83.939C6.865-1.357,15,.792,15,4.851V194.41a7.425,7.425,0,0,1-7.5,7.348A7.425,7.425,0,0,1,0,194.41L1.173,5.962C1.173,1.9,4.8,3.235,5.83.939Z" transform="matrix(-0.29, -0.96, 0.96, -0.29, 14.64, 246.5)"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -9, -6.19)" filter="url(#Path_3)">
+            <path id="Path_3-2" data-name="Path 3" d="M5.83,0C9.972,0,15-.149,15,3.993V197.461a7.5,7.5,0,0,1-15,0V3.993C0-.149,1.688,0,5.83,0Z" transform="translate(13 20) rotate(-67)"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -9, -6.19)" filter="url(#Path_6)">
+            <path id="Path_6-2" data-name="Path 6" d="M5,0h5a5,5,0,0,1,5,5v95a5,5,0,0,1-5,5H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" transform="translate(191 83.97)"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -9, -6.19)" filter="url(#Path_5)">
+            <path id="Path_5-2" data-name="Path 5" d="M5,0h5a5,5,0,0,1,5,5V232a5,5,0,0,1-5,5H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" transform="translate(9 6.97)"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 66.51, 55.18)" filter="url(#Rectangle_2)">
+          <rect id="Rectangle_2-2" data-name="Rectangle 2" width="10" height="25" rx="5" transform="translate(103.49 171.82)" fill="#799553"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 66.51, 55.18)" filter="url(#Rectangle_3)">
+          <rect id="Rectangle_3-2" data-name="Rectangle 3" width="10" height="25" rx="5" transform="translate(55.49 132.82) rotate(90)" fill="#799553"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 66.51, 55.18)" filter="url(#Rectangle_4)">
+          <rect id="Rectangle_4-2" data-name="Rectangle 4" width="10" height="25" rx="5" transform="translate(176.49 132.82) rotate(90)" fill="#799553"/>
+        </g>
+        <g id="Group_5" data-name="Group 5" transform="translate(122.854 55.185)">
+          <g id="Group_4" data-name="Group 4" transform="translate(5.887 6.701)">
+            <g id="Group_2" data-name="Group 2" transform="translate(0 91.254) rotate(-12)" style="isolation: isolate">
+              <path id="Path_10" data-name="Path 10" d="M0,0,30.324,64.613" fill="#fff" stroke="#19aa8d" stroke-width="5"/>
+              <path id="Path_7" data-name="Path 7" d="M0,0,29.008,38.885l6.84,7.682" fill="#799553" stroke="#19aa8d" stroke-width="5"/>
+            </g>
+            <g id="Group_3" data-name="Group 3" transform="matrix(0.391, 0.921, -0.921, 0.391, 145.316, 0)" style="isolation: isolate">
+              <path id="Path_9" data-name="Path 9" d="M0,0,79.476,143.831" fill="#799553" stroke="#19aa8d" stroke-width="5"/>
+              <path id="Path_8" data-name="Path 8" d="M0,0,98.917,151.972" transform="translate(0.169 0.064)" fill="#fff" stroke="#19aa8d" stroke-width="5"/>
+            </g>
+          </g>
+          <g id="Rectangle_5" data-name="Rectangle 5" transform="matrix(0.799, -0.602, 0.602, 0.799, 18.584, 118.652)" fill="#19aa8d" stroke="#19aa8d" stroke-width="1">
+            <rect width="6" height="52" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="5" height="51" rx="2.5" fill="none"/>
+          </g>
+          <g id="Path_11" data-name="Path 11" transform="translate(72.295 112.967) rotate(32)" fill="#19aa8d">
+            <path d="M 5.032359600067139 50.40455627441406 L 5.604940891265869 49.12250900268555 L 5.919310569763184 48.41860961914063 L 5.148400783538818 48.41860961914063 C 4.918830871582031 48.41860961914063 4.677300930023193 48.42176055908203 4.443710803985596 48.42480087280273 C 4.202010631561279 48.42795181274414 3.952070713043213 48.43120956420898 3.706390857696533 48.43120956420898 C 2.89189076423645 48.43120956420898 1.972860813140869 48.39831161499023 1.332140803337097 48.15430068969727 C 0.7488707900047302 47.93215942382813 0.5000007748603821 47.58694839477539 0.5000007748603821 47 L 0.5000007748603821 4 C 0.5000007748603821 2.070090055465698 2.070090770721436 0.5 4.000000953674316 0.5 L 4.218820571899414 0.5 C 6.148730754852295 0.5 7.718820571899414 2.070090055465698 7.718820571899414 4 L 7.718820571899414 47 C 7.718820571899414 48.64991760253906 6.571240425109863 50.03684997558594 5.032359600067139 50.40455627441406 Z" stroke="none"/>
+            <path d="M 4.000000953674316 1 C 2.345790863037109 1 1.000000953674316 2.345790863037109 1.000000953674316 4 L 1.000000953674316 47 C 1.000000953674316 47.39299011230469 1.000000953674316 47.93120956420898 3.706390857696533 47.93120956420898 C 3.9488205909729 47.93120956420898 4.197100639343262 47.92797088623047 4.437200546264648 47.92483901977539 C 4.672390937805176 47.92177963256836 4.915580749511719 47.91860961914063 5.148400783538818 47.91860961914063 L 6.690220832824707 47.91860961914063 L 6.061470985412598 49.32640075683594 L 6.034554481506348 49.38666915893555 C 6.753901481628418 48.83813095092773 7.218820571899414 47.97239303588867 7.218820571899414 47 L 7.218820571899414 4 C 7.218820571899414 2.345790863037109 5.873030662536621 1 4.218820571899414 1 L 4.000000953674316 1 M 4.000000953674316 0 L 4.218820571899414 0 C 6.427960872650146 0 8.218820571899414 1.790859222412109 8.218820571899414 4 L 8.218820571899414 47 C 8.218820571899414 49.20914077758789 6.427960872650146 51 4.218820571899414 51 L 5.148400783538818 48.91860961914063 C 4.688477993011475 48.91860961914063 4.196489810943604 48.93120956420898 3.706386566162109 48.93120956420898 C 1.842384815216064 48.93120956420898 9.5367431640625e-07 48.74921798706055 9.5367431640625e-07 47 L 9.5367431640625e-07 4 C 9.5367431640625e-07 1.790859222412109 1.790860652923584 0 4.000000953674316 0 Z" stroke="none" fill="#19aa8d"/>
+          </g>
+          <g id="Polygon_1" data-name="Polygon 1" transform="matrix(0.799, 0.602, -0.602, 0.799, 110.389, 53.172)" fill="#19aa8d">
+            <path d="M 11.47298622131348 113.5 L 0.5270135402679443 113.5 L 6 9.513257026672363 L 11.47298622131348 113.5 Z" stroke="none"/>
+            <path d="M 6 19.0262451171875 L 1.054013252258301 113 L 10.9459867477417 113 L 6 19.0262451171875 M 6 0 L 12 114 L 0 114 L 6 0 Z" stroke="none" fill="#19aa8d"/>
+          </g>
+          <g id="Polygon_2" data-name="Polygon 2" transform="translate(18.584 119.608) rotate(-43)" fill="#19aa8d">
+            <path d="M 11.4069938659668 34.5 L 0.5930065512657166 34.5 L 6 2.959204912185669 L 11.4069938659668 34.5 Z" stroke="none"/>
+            <path d="M 6 5.91840934753418 L 1.186013221740723 34 L 10.81398677825928 34 L 6 5.91840934753418 M 6 0 L 12 35 L 0 35 L 6 0 Z" stroke="none" fill="#19aa8d"/>
+          </g>
+          <g id="Path_13" data-name="Path 13" transform="matrix(0.799, 0.602, -0.602, 0.799, 152.965, 0)" fill="#799553">
+            <path d="M 3.173586130142212 10.5 L 2.173586130142212 10.5 C 1.315321326255798 10.5 0.5037695169448853 9.738189697265625 0.5000095963478088 8.930795669555664 L 0.6734260320663452 2.012530088424683 L 0.6735860109329224 2.006269931793213 L 0.6735860109329224 2 C 0.6735860109329224 1.172899961471558 1.34648609161377 0.5 2.173586130142212 0.5 L 3.173586130142212 0.5 C 4.000686168670654 0.5 4.673585891723633 1.172899961471558 4.673585891723633 2 L 4.673585891723633 2.004950046539307 L 4.673686027526855 2.009900093078613 L 4.815427780151367 9.164577484130859 C 4.812480449676514 10.00058937072754 3.979217529296875 10.5 3.173586130142212 10.5 Z" stroke="none"/>
+            <path d="M 2.173586130142212 1 C 1.622185945510864 1 1.173585891723633 1.448599815368652 1.173585891723633 2 L 1.173585891723633 2.012530326843262 L 1.173275947570801 2.025059700012207 L 1.000065326690674 8.935127258300781 C 1.007370471954346 9.464295387268066 1.595895051956177 10 2.173586130142212 10 L 3.173586130142212 10 C 3.720044612884521 10 4.309648990631104 9.68202018737793 4.315393447875977 9.167716979980469 L 4.173786163330078 2.019809722900391 L 4.173585891723633 2.009900093078613 L 4.173585891723633 2 C 4.173585891723633 1.448599815368652 3.72498607635498 1 3.173586130142212 1 L 2.173586130142212 1 M 2.173586130142212 0 L 3.173586130142212 0 C 4.278156280517578 0 5.173585891723633 0.8954296112060547 5.173585891723633 2 L 5.315435886383057 9.160140037536621 C 5.315435886383057 10.26471042633057 4.278156280517578 11 3.173586130142212 11 L 2.173586130142212 11 C 1.069015979766846 11 -3.814697265625e-06 10.02976036071777 -3.814697265625e-06 8.925189971923828 L 0.1735858917236328 2 C 0.1735858917236328 0.8954296112060547 1.069015979766846 0 2.173586130142212 0 Z" stroke="none" fill="#19aa8d"/>
+          </g>
+          <g id="Path_14" data-name="Path 14" transform="translate(0 95.978) rotate(-44)" fill="#19aa8d">
+            <path d="M 3.999996423721313 14.5 L 1.999996542930603 14.5 C 1.176682710647583 14.5 0.5061611533164978 13.8332986831665 0.5000396370887756 13.01140117645264 L 1.028076529502869 2.307960033416748 L 1.0286865234375 2.295650005340576 L 1.0286865234375 2.28331995010376 C 1.0286865234375 1.750720024108887 1.122106552124023 1.281430006027222 1.291746497154236 0.9619100093841553 C 1.461346507072449 0.6424599885940552 1.679776549339294 0.5 1.999996542930603 0.5 L 3.999996423721313 0.5 C 4.447946548461914 0.5 4.790596485137939 0.611519992351532 4.790596485137939 2.014480113983154 L 4.790596485137939 2.030740022659302 L 4.791656494140625 2.046979904174805 L 5.551661014556885 13.71642589569092 C 5.548623085021973 14.13122749328613 5.415543556213379 14.5 3.999996423721313 14.5 Z" stroke="none"/>
+            <path d="M 1.999996662139893 1 C 1.912866592407227 1 1.837616443634033 1 1.7333664894104 1.196370124816895 C 1.603286266326904 1.441379547119141 1.5286865234375 1.837559700012207 1.5286865234375 2.283320426940918 L 1.5286865234375 2.30797004699707 L 1.52747631072998 2.332590103149414 L 1.000204563140869 13.02052879333496 C 1.011183738708496 13.56248188018799 1.455461978912354 14 1.999996662139893 14 L 3.999996423721313 14 C 4.812887191772461 14 5.007134437561035 13.86817169189453 5.034111976623535 13.84590530395508 C 5.038137912750244 13.83522891998291 5.049098491668701 13.79991149902344 5.05132007598877 13.72755813598633 L 4.292706489562988 2.079469680786133 L 4.290596485137939 2.04701042175293 L 4.290596485137939 2.014479637145996 C 4.290596485137939 1.251843452453613 4.179462432861328 1.054506301879883 4.152000904083252 1.017416000366211 C 4.13336706161499 1.010907173156738 4.084465980529785 1 3.999996423721313 1 L 1.999996662139893 1 M 1.999996662139893 0 L 3.999996423721313 0 C 5.10456657409668 0 5.290596485137939 0.9099102020263672 5.290596485137939 2.014479637145996 L 6.051716327667236 13.7010498046875 C 6.051716327667236 14.80562019348145 5.10456657409668 15 3.999996423721313 15 L 1.999996662139893 15 C 0.8954262733459473 15 -3.337860107421875e-06 14.10457038879395 -3.337860107421875e-06 13 L 0.5286865234375 2.283320426940918 C 0.5286865234375 1.178750038146973 0.8954262733459473 0 1.999996662139893 0 Z" stroke="none" fill="#19aa8d"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 66.51, 55.18)" filter="url(#PRO_Act)">
+          <text id="PRO_Act-2" data-name="PRO_Act" transform="translate(214.49 96.82)" fill="#0b3e33" font-size="48" font-family="CourierNewPS-BoldMT, Courier New" font-weight="700"><tspan x="0" y="40">PRO_Act</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

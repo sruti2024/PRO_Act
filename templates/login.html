@@ -14,15 +14,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
 body {
-	color: #fff;
-	background: #19aa8d;
 	font-family: 'Roboto', sans-serif;
 }
 .form-control {
 	font-size: 15px;
 }
 .form-control, .form-control:focus, .input-group-text {
-	border-color: #e1e1e1;
+	border-color: #e1e1e1 im !important;
 }
 .form-control, .btn {
 	border-radius: 3px;
@@ -30,18 +28,18 @@ body {
 .signup-form {
 	width: 400px;
 	margin: 0 auto;
-	padding: 30px 0;
+	padding: 30px 0 0 0;
 }
 .signup-form form {
-	color: #999;
+	color: #999 !important ;
 	border-radius: 3px;
 	margin-bottom: 15px;
-	background: #fff;
+	background: #fff !important;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	padding: 30px;
 }
 .signup-form h2 {
-	color: #333;
+	color: #333 !important;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -202,12 +200,32 @@ body {
 </style>
 </head>
 <body>
+  <!-- dark mode script -->
+  <script src="{% static 'js/DarkMode.js' %}"></script>
+  <script>
+    var options = {
+      bottom: '64px', // default: '32px'
+      right: 'unset', // default: '32px'
+      left: '32px', // default: 'unset'
+      time: '0.5s', // default: '0.3s'
+      mixColor: '#19AA8D', // default: '#fff'
+      backgroundColor: '#19AA8D',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      saveInCookies: true, // default: true,
+      label: '🌓' // default: ''
+    }
+
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  </script>
 	{% if user.is_authenticated %}
 	<div class="container jumbotron cj">
 		<h1>Welcome {{ user.username }} </h1>
 		<meta http-equiv="refresh" content="0.5; URL={% url 'home:login' %}" />
 	</div>
 	{% else %}
+  <center>
 <div class="signup-form">
 	{% if error %}
         <div
@@ -241,7 +259,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="{% url 'login' %}" method="post">
+    <form action="{% url 'login' %}" method="post" class="darkmode-ignore">
         {% csrf_token %}
 		<h2>Sign In</h2>
 		<p>Please fill up the form to LogIn!</p>
@@ -289,11 +307,12 @@ body {
         </div>
     </form>
 	<div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create here</a></div>
-	<p class="text-center">or</p>
+	<div class="text-center">or</div>
 </div>
+</center>
 <center>
   <!-- Google -->
-<div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
+<div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button darkmode-ignore'>
 	<div class=content-wrapper>
 		<div class='logo-wrapper'>
 			<img src='{% static "images/google.png" %}'>
@@ -304,7 +323,7 @@ body {
 	</div>
 </div> <br>
 <!-- facebook -->
-<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+<button class="fb darkmode-ignore" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
   <i class="fa fa-facebook "></i>Log in with facebook
 </button> <br><br>
 </center>
