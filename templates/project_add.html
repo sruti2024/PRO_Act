@@ -2,52 +2,36 @@
 {% block title %}PRO_Act  ||  Add Project{% endblock title %}
 
 {% block body %}
-<script>
-    document.getElementById("dmbutton").addEventListener('click',function(){
-        var userwelcome = document.getElementsByClassName("inlinedarkmode")
-        if(document.getElementById("body").className=="darkmode--activated")
-        {
-            console.log("dark mode activated")
-            for (var i = 0; i < userwelcome.length; i++)
-                userwelcome[i].style.color = "#E6E6FA"
-            
-        } else{
-            console.log("light mode activated")
-            for (var i = 0; i < userwelcome.length; i++)
-                userwelcome[i].style.color = "#212529"
-        }
-    })
-</script>
 <div class="container">
-<center><h1 class="text-center darkmode-ignore inlinedarkmode">Add Project !</h1>
-</center>
+<h1 class="text-center">Add Project !</h1>
+
 <form method="post" action="/project_add/">
 {% csrf_token %}
   <div class="form-group">
-    <label for="name" class="control-label darkmode-ignore inlinedarkmode">Name of the Project</label>
-    <input type="text" class="form-control darkmode-ignore id="name" name="name" placeholder="Name">
+    <label for="name" class="control-label">Name of the Project</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
   </div>
 
   <div class="form-group">
-    <label for="desc" class="control-label  darkmode-ignore inlinedarkmode">Description </label>
-    <textarea class="form-control  darkmode-ignore inlinedarkmode" id="desc" name="desc" rows="3"></textarea>
+    <label for="desc" class="control-label">Description </label>
+    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
   </div>
 
   <div class="form-group">
-    <label class=" darkmode-ignore inlinedarkmode" for="link">Link(Site link or github link if any)</label>
-    <input type="text" class="form-control  darkmode-ignore inlinedarkmode" id="link" name="link" placeholder="https://...">
+    <label for="link">Link(Site link or github link if any)</label>
+    <input type="text" class="form-control" id="link" name="link" placeholder="https://...">
   </div>
  
       
   <div class="form-group">
-    <label class=" darkmode-ignore inlinedarkmode" for="stack">Technical Stack</label> <br>
+    <label for="stack">Technical Stack</label> <br>
     <!----- add tech stack choices ------->
     <div class="dropdown" style="">
       <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Choose tech stack
       </button><br><br>
       <div class="form-group">
-        <label class="inlinedarkmode" for="proj_image">Project Image</label> <br>
+        <label for="proj_image">Project Image</label> <br>
         <input type="file">
       </div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

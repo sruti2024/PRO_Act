@@ -176,35 +176,19 @@ div.months-wrapper{
   background:gray; 
 }
 </style>
-<script>
-    document.getElementById("dmbutton").addEventListener('click',function(){
-        var userwelcome = document.getElementsByClassName("inlinedarkmode")
-        if(document.getElementById("body").className=="darkmode--activated")
-        {
-            console.log("dark mode activated")
-            for (var i = 0; i < userwelcome.length; i++)
-                userwelcome[i].style.color = "#E6E6FA"
-            
-        } else{
-            console.log("light mode activated")
-            for (var i = 0; i < userwelcome.length; i++)
-                userwelcome[i].style.color = "#212529"
-        }
-    })
-</script>
 <main role="main">
     <div class="container-fluid px-0">
         <div class="jumbotron py:6" style="background-color:#8ADFCA;margin:0px;padding: 2rem 4rem;">
-            <h1 class="display-4 darkmode-ignore inlinedarkmode" style="font-weight: bold;"">Welcome {{request.user | capfirst}} !!</h1>
-        <p class="lead darkmode-ignore inlinedarkmode" style="font-size: 25px; margin-top: 20px;width: 75%;">Good to see you back again get updates of your projects and make new once , hope to see new work coming ahead and we are always there to help you manage them better.</p> <br>
-        <p class="lead darkmode-ignore" style="margin-top: 30px;">
+            <h1 class="display-4" style="font-weight: bold;">Welcome {{request.user | capfirst}} !!</h1>
+        <p class="lead" style="font-size: 25px; margin-top: 20px;width: 75%;">Good to see you back again get updates of your projects and make new once , hope to see new work coming ahead and we are always there to help you manage them better.</p>
+        <p class="lead" style="margin-top: 30px;">
             <a class="btn btn-primary btn-lg" href="about.html" role="button">Learn more</a>
         </p>
         <hr class="my-4">
         <div style="display: flex;flex-direction: column;margin:30px 0;">
-        <h2 style="margin:0px auto 0px auto;" class="darkmode-ignore inlinedarkmode">How it works ?</h2>
-        <div class="steps darkmode-ignore" style="margin-top:20px;">
-            <div class="step-wrapper ">
+        <h2 style="margin:0px auto 0px auto;">How it works ?</h2>
+        <div class="steps" style="margin-top:20px;">
+            <div class="step-wrapper">
                 <img src="../static/images/add.png" width="25px" height="25px">
                 <a href="/project_add">1. Add projects</a>
             </div>
@@ -226,7 +210,7 @@ div.months-wrapper{
         </div>
     </div>
     <div class="activity">
-        <h1 class="inlinedarkmode darkmode-ignore" style="font-weight: bold; color: seagreen;margin: 30px 0px; font-size: 45px;">Your activity</h1>
+        <h1 style="font-weight: bold; color: seagreen;margin: 30px 0px; font-size: 45px;">Your activity</h1>
         <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;width: 80%;">
             <div style="display: flex;flex-direction: row;align-items: center;">
                 <div class="months-wrapper">
@@ -240,7 +224,7 @@ div.months-wrapper{
             <div>
             {% for key,values in monDict.items%}
                 <div id={{key}} class="projects-created">
-                    <h6 class="darkmode-ignore inlinedarkmode style="color: seagreen;font-weight: bold;">Projects created in {{key}}</h6>
+                    <h6 style="color: seagreen;font-weight: bold;">Projects created in {{key}}</h6>
                     <div id={{key}} class="projects" style="display: flex;flex-direction: column;">
                         {% for value in values %}
                         <span style="color:black;font-size: 15px;font-weight: 500;">{{value}}</span> 
@@ -252,11 +236,11 @@ div.months-wrapper{
             <br>
             <hr>
             <div class="lastProject">
-                <h5 class="darkmode-ignore inlinedarkmode" style="color: seagreen; font-weight: bold;"> Last project created</h5>
+                <h5 style="color: seagreen; font-weight: bold;"> Last project created</h5>
                 <div style="margin-top: 25px;">
-                    <h6 class="darkmode-ignore inlinedarkmode">{{lstProj.name}}</h6> <br>
-                    <p class="darkmode-ignore inlinedarkmode"> {{lstProj.desc}}</p> <br>
-                    <p class="darkmode-ignore inlinedarkmode">{{lstProj.date}}</p> <br>
+                    <h6>{{lstProj.name}}</h6>
+                    <p> {{lstProj.desc}}</p>
+                    <p>{{lstProj.date}}</p>
                     {% for stack in lstProj.stack_list %}
                     <span style="box-sizing: content-box;padding:5px;border-radius:3px;background-color:#0d6efd;color:white;">{{stack}}</span> 
                     {% endfor %}

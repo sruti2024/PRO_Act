@@ -154,25 +154,6 @@ body {
 </style>
 </head>
 <body>
-	<!-- dark mode script -->
-	<script src="{% static 'js/DarkMode.js' %}"></script>
-	<script>
-		var options = {
-			bottom: '64px', // default: '32px'
-			right: 'unset', // default: '32px'
-			left: '32px', // default: 'unset'
-			time: '0.5s', // default: '0.3s'
-			mixColor: '#19AA8D', // default: '#fff'
-			backgroundColor: '#19AA8D',  // default: '#fff'
-			buttonColorDark: '#100f2c',  // default: '#100f2c'
-			buttonColorLight: '#fff', // default: '#fff'
-			saveInCookies: true, // default: true,
-			label: '🌓' // default: ''
-		}
-
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
-	</script>
 	{% if user.is_authenticated %}
 	<div class="container jumbotron cj">
 		<h1>Welcome {{ user.username }} </h1>
@@ -212,7 +193,7 @@ body {
           </button>
         </div>
         {% endif %}
-    <form action="{% url 'signup' %}" method="post" id="signupForm" class="darkmode-ignore">
+    <form action="{% url 'signup' %}" method="post" id="signupForm">
         {% csrf_token %}
 		<h2>Sign Up</h2>
 		<p>Please fill up the form to register for a new account</p>
@@ -324,18 +305,16 @@ body {
 				  <div class="col-md-2"></div>
                   </div>
     </form>
-	<center><a href="{% url 'forgot_password' %}" class="text-center darkmode-ignore">Forgot Password?</a></center>
-	<center>
-		<div class="text-center darkmode-ignore">Already have an account? <a href="{% url 'login' %}">Login here</a></div>
-	</center> <br>
+	<center><a href="{% url 'forgot_password' %}" class="text-center">Forgot Password?</a></center>
+	<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div> <br>
 	<!-- <p class="text-center">or</p> -->
 	<center>
 		<!-- Google -->
-	<p class="darkmode-ignore"><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+	<p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
 			<i class="fa fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
 		</button></p>
 <!-- facebook -->
-<button class="fb darkmode-ignore" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
 	<i class="fa fa-facebook "></i>Log in with facebook
 </button>
 </center>
