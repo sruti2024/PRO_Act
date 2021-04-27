@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'f8%5k%h)k35_4km22c4l%tsp&@_u%p-@+!w73eihp0wp0vm^x('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,14 +42,14 @@ INSTALLED_APPS = [
     # For forms
     'crispy_forms',
 
-    # For social authentication
+    #For social authentication
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # Google
+    #Google
     'allauth.socialaccount.providers.google',
-    # facebook
+    #facebook
     'allauth.socialaccount.providers.facebook',
 ]
 
@@ -158,7 +158,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'PRO ACT <no-reply@pro_act.com>'
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-# AUTHENTICATION SETUP
+#AUTHENTICATION SETUP
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -167,7 +167,7 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
-# facebook-auth
+#facebook-auth
 SOCIAL_AUTH_FACEBOOK_KEY = '1180950695658575'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'ab9a447566e71d032ef40bc6d0741a3c'
 
