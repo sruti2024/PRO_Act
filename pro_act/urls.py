@@ -11,4 +11,11 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+ issue154/lint-format
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+=======
+	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# error handler
+handler404 = 'home.views.handler404'
+ main
