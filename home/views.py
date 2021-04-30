@@ -455,3 +455,9 @@ def sendWelcomeMail(user_email,user_name):
     print("sending welcome email")
     email.send()
     print("Sent welcome email")
+
+
+def handler404(request, *args, **argv):
+    response = render(request, '404.html')
+    response.status_code = 404
+    return response
