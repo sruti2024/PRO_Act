@@ -7,42 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("home", "0001_initial"),
+        ('home', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Subtask",
+            name='Subtask',
             fields=[
-                (
-                    "id",
-                    models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("name", models.CharField(max_length=100)),
-                ("description", models.TextField()),
-                (
-                    "status",
-                    models.CharField(
-                        choices=[
-                            ("complete", "Completed"),
-                            ("incomplete", "Incomplete"),
-                        ],
-                        default="incomplete",
-                        max_length=15,
-                    ),
-                ),
-                (
-                    "project",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to="home.project_add",
-                    ),
-                ),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=100)),
+                ('description', models.TextField()),
+                ('status', models.CharField(choices=[('complete', 'Completed'), ('incomplete', 'Incomplete')], default='incomplete', max_length=15)),
+                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.project_add')),
             ],
         ),
     ]

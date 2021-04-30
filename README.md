@@ -14,7 +14,7 @@ Best when working with a team to be updated about the tasks that are completed a
 Color scheme : https://colorhunt.co/palette/269111
 
 ---
-<h2 align="center"> Getting Started ✔ </h2>
+<h2 align="center"> Getting Started </h2>
 
 
 * Create and activate the Virtual Environment at your desired path as follows :
@@ -34,7 +34,7 @@ Color scheme : https://colorhunt.co/palette/269111
 
 
 
-<h2 align="center"> Explore 🌏</h2>
+<h2 align="center"> Explore</h2>
 
 Try it out by installing Django. (It is required to have Python installed , if not then download it from : [here](https://www.python.org/downloads/))
 
@@ -51,42 +51,8 @@ And then start the server (default: http://localhost:8000)
 
     python manage.py runserver
 
-<h2 align="center">Lint and Format 📜</h2>
 
-- We use [Flake8](https://flake8.pycqa.org/en/latest/manpage.html) and [Black](https://pypi.org/project/black/) for linting & formatting source code of this project.
-<br>
-- **Run QA checks on local environment ⚡** :
-
-  - Run Shell script on Windows 💾 :
-
-  ```
-  ...\PRO_ACT> .\proAct_qa_checks
-  ``` 
-
-  - Run Shell script on Linux 👨‍💻 :
-
-  ```
-  .../PRO_ACT$ ./proAct_qa_checks
-  ``` 
-  
-  - Alternate option ✔ :
-    - Run this on terminal ⚡:
-      - Windows 💾
-        ```
-        ...\PRO_ACT> black .
-        ``` 
-        ```
-        ...\PRO_ACT> flake8 .
-        ``` 
-      - Linux 👨‍💻
-        ```
-        .../PRO_ACT$ black .
-        ``` 
-        ```
-        .../PRO_ACT$ flake8 .
-        ``` 
-
-<h2 align="center"> Work Flow ⚡</h2>
+<h2 align="center"> Work Flow</h2>
 
 * First the user needs to login to the page, if one is logged in they will be redirected to the dashboard else to the log-in page.
 * If one has not signed up they may do it using the sign-up page and then log in.
@@ -96,95 +62,11 @@ And then start the server (default: http://localhost:8000)
 * The view page consists of cards containing project details.
 * This page will also have an option of adding sub-tasks to the projects.
 
-<details close>
-<summary><h4 align="center">Project Tree Structure 📁</h2></summary>
-<summary><strong> Project tree structure 👇</strong> </summary>
-
-```
-
-PRO_Act/📑
-┣ assets/📂
-┃ ┣ logosvgfile.svg
-┃ ┣ Pro act new logo.png
-┃ ┗ Pro_Act-LOGO1.png
-┣ home/📂
-┃ ┣ admin.py
-┃ ┣ apps.py
-┃ ┣ forms.py
-┃ ┣ models.py
-┃ ┣ signals.py
-┃ ┣ urls.py
-┃ ┗ views.py
-┣ media/📂
-┃ ┣ cover.png
-┃ ┗ readme
-┣ pro_act/📂
-┃ ┣ asgi.py
-┃ ┣ settings.py
-┃ ┣ urls.py
-┃ ┗ wsgi.py
-┣ static/📂
-┃ ┣ css/📁
-┃ ┃ ┗ moduleStyle.css
-┃ ┣ favicon/📁
-┃ ┃ ┗ favicon-32x32.png
-┃ ┣ images/📁
-┃ ┃ ┣ logo/📁
-┃ ┃ ┃ ┣ PRO_ACT_Bck.png
-┃ ┃ ┃ ┗ PRO_ACT_Bck.svg
-┃ ┃ ┣ add.png
-┃ ┃ ┣ google.png
-┃ ┃ ┣ module.png
-┃ ┃ ┣ timer.png
-┃ ┃ ┣ update.png
-┃ ┃ ┗ user.png
-┃ ┗ js/📁
-┃   ┣ modules.js
-┃   ┣ register.js
-┃   ┗ reset-pwd.js
-┣ templates/📁
-┃ ┣ emails/📁
-┃ ┃ ┣ otp.html
-┃ ┃ ┗ welcome.html
-┃ ┣ about.html
-┃ ┣ base.html
-┃ ┣ base_BACKUP_1831.html
-┃ ┣ base_BASE_1831.html
-┃ ┣ base_LOCAL_1831.html
-┃ ┣ base_REMOTE_1831.html
-┃ ┣ changepassword.html
-┃ ┣ contact.html
-┃ ┣ forgot-password.html
-┃ ┣ index.html
-┃ ┣ login.html
-┃ ┣ modules.html
-┃ ┣ profile.html
-┃ ┣ profile_update.html
-┃ ┣ project_add.html
-┃ ┣ project_view.html
-┃ ┣ signup.html
-┃ ┣ style.css
-┃ ┣ todo2.jpg
-┃ ┗ todo3.jpg
-┣ .flake8
-┣ .gitignore
-┣ proAct_qa_checks
-┣ contributing.md
-┣ Contributors.md
-┣ db.sqlite3
-┣ manage.py
-┣ Pro_act compact logo
-┣ README.md
-┗ requirements.txt
-
-```
-</details>
-
-## For a better idea on how to contribute 🤩 [click here!](./contributing.md)
+## For a better idea on how to contribute , [click here!](./contributing.md)
 
 
 
-<h2 align="center"> Tech Stacks 👨‍💻 </h2>
+<h2 align="center"> Tech-Stacks </h2>
 <p>
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>    
 <img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>    

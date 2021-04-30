@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project_add, OTPModel, Profile, Subtask
+from .models import Project_add, OTPModel,Profile,Subtask
 
 # Register your models here.
 admin.site.register(Project_add)

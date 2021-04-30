@@ -7,16 +7,14 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("home", "0002_subtask"),
+        ('home', '0002_subtask'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="project_add",
-            name="proj_image",
-            field=models.ImageField(
-                default=django.utils.timezone.now, upload_to="media/proj_image/"
-            ),
+            model_name='project_add',
+            name='proj_image',
+            field=models.ImageField(default=django.utils.timezone.now, upload_to='media/proj_image/'),
             preserve_default=False,
         ),
     ]
