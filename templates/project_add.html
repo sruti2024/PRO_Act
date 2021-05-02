@@ -5,7 +5,7 @@
 <div class="container">
 <h1 class="text-center">Add Project !</h1>
 
-<form method="post" action="/project_add">
+<form method="post" action="/project_add/">
 {% csrf_token %}
   <div class="form-group">
     <label for="name" class="control-label">Name of the Project</label>
@@ -21,14 +21,19 @@
     <label for="link">Link(Site link or github link if any)</label>
     <input type="text" class="form-control" id="link" name="link" placeholder="https://...">
   </div>
-
+ 
+      
   <div class="form-group">
     <label for="stack">Technical Stack</label> <br>
     <!----- add tech stack choices ------->
     <div class="dropdown" style="">
       <button class="btn bg-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Choose tech stack
-      </button>
+      </button><br><br>
+      <div class="form-group">
+        <label for="proj_image">Project Image</label> <br>
+        <input type="file">
+      </div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for key,value in tags.items %}
         <input type="checkbox" value={{key}} name="stack" id="{{value}}"> <label for="{{value}}"> {{key}}</label> <br />

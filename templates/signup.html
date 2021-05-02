@@ -100,66 +100,6 @@ body {
 	font-size: 7px;
 	position: absolute;
 }
-*, *:before, *:after {
-            box-sizing: border-box;
-        }
-
-        .g-sign-in-button {
-            margin: 10px;
-            display: inline-block;
-            width: 240px;
-            height: 50px;
-            background-color: #4285f4;
-            color: #fff;
-            border-radius: 1px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-            transition: background-color .218s, border-color .218s, box-shadow .218s;
-        }
-
-        .g-sign-in-button:hover {
-            cursor: pointer;
-            -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
-            box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
-        }
-
-        .g-sign-in-button:active {
-            background-color: #3367D6;
-            transition: background-color 0.2s;
-        }
-
-        .g-sign-in-button .content-wrapper {
-            height: 100%;
-            width: 100%;
-            border: 1px solid transparent;
-        }
-
-        .g-sign-in-button img {
-            width: 18px;
-            height: 18px;
-        }
-
-        .g-sign-in-button .logo-wrapper {
-            padding: 10px;
-            background: #fff;
-            width: 48px;
-            height: 100%;
-            border-radius: 1px;
-            display: inline-block;
-        }
-
-        .g-sign-in-button .text-container {
-            font-family: Roboto,arial,sans-serif;
-            font-weight: 500;
-            letter-spacing: .21px;
-            font-size: 16px;
-            line-height: 48px;
-            vertical-align: top;
-            border: none;
-            display: inline-block;
-            text-align: center;
-            width: 180px;
-        }
-
 .logo{
   padding-top: 55px;
 }
@@ -170,6 +110,47 @@ body {
    -moz-user-select: none;
    -ms-user-select: none;
 }
+.span{
+	position: absolute;
+	right:15px;
+	transform: translate(0,-50%);
+	top:50%;
+	color:#495057;
+	cursor: pointer;
+	z-index: 3;
+}
+.form-group{
+	z-index: 2;
+}
+.fb{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #1877F2;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .fb i{
+
+    padding-left:1px;
+    padding-right: 8px;
+  }
+  .gg{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #DB4437;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  }
+  .gg i{
+    margin-left: -20px;
+    padding-right:8px;
+  }
 </style>
 </head>
 <body>
@@ -273,6 +254,9 @@ body {
 					</span>
 				</div>
 				<input type="password" class="form-control" id="password1" name="password1" placeholder="Password" required="required">
+				<span class="span">
+					<i class="fa fa-eye" aria-hidden="true" onclick="toggle1()" id="eye1"></i>
+				</span>
 			</div>
 			
         </div>
@@ -285,6 +269,9 @@ body {
 					</span>
 				</div>
 				<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" required="required">
+				<span class="span">
+					<i class="fa fa-eye" aria-hidden="true" onclick="toggle2()" id="eye2"></i>
+				</span>
 			</div>
         </div>
 		<div class="col-md-12 text-center">
@@ -319,21 +306,47 @@ body {
                   </div>
     </form>
 	<center><a href="{% url 'forgot_password' %}" class="text-center">Forgot Password?</a></center>
-	<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div>
+	<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div> <br>
 	<!-- <p class="text-center">or</p> -->
 	<center>
-<div onclick="location.href = '{% provider_login_url 'google' %}';" class='g-sign-in-button'>
-	<div class=content-wrapper>
-		<div class='logo-wrapper'>
-			<img src='{% static "images/google.png" %}' alt='google-logo'>
-		</div>
-		<span class='text-container'>
-			<span>Login with Google</span>
-		</span>
-	</div>
-</div>
+		<!-- Google -->
+	<p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
+			<i class="fa fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
+		</button></p>
+<!-- facebook -->
+<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+	<i class="fa fa-facebook "></i>Log in with facebook
+</button>
 </center>
 </div>
+<script>
+	pwdState=false
+	cpwdState=false
+	function toggle1()
+	{
+		if (pwdState) {
+			document.getElementById("password1").setAttribute("type", "text");
+			document.getElementById("eye1").setAttribute("class", "fa fa-eye-slash")
+			pwdState = false;
+		} else {
+			document.getElementById("password1").setAttribute("type", "password");
+			document.getElementById("eye1").setAttribute("class", "fa fa-eye")
+			pwdState = true;
+		}
+	}
+
+	function toggle2() {
+			if (cpwdState) {
+				document.getElementById("password2").setAttribute("type", "text");
+				document.getElementById("eye2").setAttribute("class", "fa fa-eye-slash")
+				cpwdState = false;
+			} else {
+				document.getElementById("password2").setAttribute("type", "password");
+				document.getElementById("eye2").setAttribute("class", "fa fa-eye")
+				cpwdState = true;
+			}
+		}
+</script>
 
 {% endif %}
 <script src="{% static 'js/register.js' %}"></script>

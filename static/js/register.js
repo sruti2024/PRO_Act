@@ -153,12 +153,14 @@ function sendOTP() {
 function verifyOTP() {
   let otp = $("#otp").val();
   let email = $("#email").val();
+  let fname=$("#fname").val();
   $.ajax({
     url: "/check-otp/",
     type: "GET",
     data: {
       email: email,
       otp: otp,
+      fname:fname
     },
     success: function (data) {
       if (data.otp_mismatch) {
