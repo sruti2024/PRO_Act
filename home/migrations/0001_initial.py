@@ -4,44 +4,77 @@ from django.db import migrations, models
 from django.conf import settings
 import django.db.models.deletion
 
+
 class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='OTPModel',
+            name="OTPModel",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user', models.EmailField(max_length=127)),
-                ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('otp', models.IntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("user", models.EmailField(max_length=127)),
+                ("timestamp", models.DateTimeField(auto_now_add=True)),
+                ("otp", models.IntegerField()),
             ],
             options={
-                'verbose_name': 'OTP',
+                "verbose_name": "OTP",
             },
         ),
         migrations.CreateModel(
-            name='Project_add',
+            name="Project_add",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pid', models.CharField(blank=True, max_length=50, null=True)),
-                ('name', models.CharField(max_length=200)),
-                ('desc', models.CharField(max_length=700)),
-                ('link', models.CharField(max_length=200)),
-                ('stack', models.CharField(max_length=300)),
-                ('date', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("pid", models.CharField(blank=True, max_length=50, null=True)),
+                ("name", models.CharField(max_length=200)),
+                ("desc", models.CharField(max_length=700)),
+                ("link", models.CharField(max_length=200)),
+                ("stack", models.CharField(max_length=300)),
+                ("date", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='default.jpeg', upload_to='profile_pics')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(default="default.jpeg", upload_to="profile_pics"),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
