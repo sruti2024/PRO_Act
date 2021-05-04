@@ -108,6 +108,8 @@ PRO_Act/📑
 ┃ ┣ Pro act new logo.png
 ┃ ┗ Pro_Act-LOGO1.png
 ┣ home/📂
+┃ ┣ templatetags📂
+┃ ┣ ┗ format_datetime.py
 ┃ ┣ admin.py
 ┃ ┣ apps.py
 ┃ ┣ forms.py
@@ -139,7 +141,6 @@ PRO_Act/📑
 ┃ ┃ ┣ update.png
 ┃ ┃ ┗ user.png
 ┃ ┗ js/📁
-┃   ┣ DarkMode.js
 ┃   ┣ modules.js
 ┃   ┣ register.js
 ┃   ┗ reset-pwd.js

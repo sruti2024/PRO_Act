@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load format_datetime %}
 {% block title %}PRO_Act  ||  Home{% endblock title %}
 {% block css %}
 .jumbotron
@@ -239,8 +240,8 @@ div.months-wrapper{
                 <h5 style="color: seagreen; font-weight: bold;"> Last project created</h5>
                 <div style="margin-top: 25px;">
                     <h6>{{lstProj.name}}</h6>
-                    <p> {{lstProj.desc}}</p>
-                    <p>{{lstProj.date}}</p>
+                    <p>{{lstProj.desc}}</p>
+                    <p>{{lstProj.date | format_datetime}}</p>
                     {% for stack in lstProj.stack_list %}
                     <span style="box-sizing: content-box;padding:5px;border-radius:3px;background-color:#0d6efd;color:white;">{{stack}}</span> 
                     {% endfor %}

@@ -388,7 +388,7 @@ def project_add(request):
 # Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def project_view(request):
-    obj = Project_add.objects.all
+    obj = Project_add.objects.all()
     return render(request, "project_view.html", {"object": obj})
 
 
