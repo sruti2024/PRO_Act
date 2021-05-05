@@ -24,6 +24,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = "f8%5k%h)k35_4km22c4l%tsp&@_u%p-@+!w73eihp0wp0vm^x("
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# ----- FOR DISPLAYING CUSTOM 404 PAGE -----
+
+# 1. CHANGE DEBUG = False
+# 2. ALLOWED_HOSTS = ['localhost','127.0.0.1']
+# 3. And Run this command on terminal : python manage.py runserver --insecure or py manage.py runserver --insecure
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
