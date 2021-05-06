@@ -1,0 +1,7 @@
+[flake8]
+max-line-length = 120
+filename = *.py
+ignore = E203
+# Provide a comma-separated list of glob patterns to exclude from checks.
+exclude = .git, __pycache__,env
+

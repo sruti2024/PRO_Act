@@ -1,4 +1,5 @@
 {% load static %}
+{% load format_datetime %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +85,7 @@
       <h4>Link</h4>
       <p>{{obj.link}}</p><br>
       <h4>Date</h4>
-      <p>{{obj.date}}</p>
+      <p>{{obj.date | format_datetime}}</p>
     </aside>
   </div>
   <footer>
