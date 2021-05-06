@@ -60,7 +60,7 @@
       text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
     }
 
-    tr:hover td {
+    .table-fill tr:hover td {
       background: #06678e;
       color: #FFFFFF;
       border-top: 1px solid #22262e;
@@ -78,7 +78,7 @@
       background: #EBEBEB;
     }
 
-    tr:nth-child(odd):hover td {
+    .table-fill tr:nth-child(odd):hover td {
       background: #06678e;
     }
 
@@ -142,114 +142,119 @@
      <td class="text-center" colspan="2">  <button  class="btn btn-primary float-end" id="myBtn">+ Add Subtask </button>
    </header>
 
-   <div class="container col-lg-6 px-0">
-    <div class="card ">
-      <img src="{% static 'images/logo/PRO_ACT_Bck.png' %}" class="card-img-top" alt="...">
-    </div>
-    <div>
-      <table class="table-fill">
-
-        <tbody class="table-hover">
-          <tr>
-            <td class="text-left">Project_Id</td>
-            <td class="text-left">
-              {{obj.id}}
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">Project_Name</td>
-            <td class="text-left">
-              {{obj.name}}
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">Project_Field</td>
-            <td class="text-left">
-              {{obj.stack}}
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">Description</td>
-            <td class="text-left">
-              {{obj.desc}}
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">Date</td>
-            <td class="text-left">
-              {{obj.date | format_datetime}}
-            </td>
-          </tr>
-          <tr>
-            <td class="text-left">Project_Link</td>
-            <td class="text-left"><a href="#" class="mb-2 pb-2">
-                <h5 class="card-text mb-2">Click Here </h5>
-              </a></td>
-          </tr>
-          <tr>
-            <td class="text-center" colspan="2">  <button  class="btn btn-primary" id="myBtn">+ Add Subtask </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-
-  <div class= "container col-lg-7 px-0">
-   
-      <table class="rwd-table">
-        <tr>
-          <th>Check Box</th>
-          <th>Task Name</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Delete</th>
-        </tr>
-        {% for subtask in all_subtasks %}
-        <tr id="row{{subtask.id}}">
-          <td data-th="Check Box">
-
-          {% if subtask.status == "incomplete" %}
-          <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)"/>
-          {% else %}
-          <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)" checked/>
-          {% endif %}
-          
-          </td>
-
-          <td data-th="Task Name">
-
-          <label for="{{subtask.id}}">
-            {{subtask.name}}
-          </label>
-          
-          </td>
-
-          <td data-th="Description">
-            {{subtask.description}}
-          </td>
-
-          <td data-th="Status" id="subtask_status{{subtask.id}}">
-          {% if subtask.status == "complete" %}
-          <span style="background-color: green;padding: 10px;">Complete</span>
-          {% else %}
-          <span style="background-color: grey;padding: 10px;">Incomplete</span>
-          {% endif %}
-          </td>
-
-          <td data-th="Delete">
-
-          <span class="delete-item" title="remove" id="{{subtask.id}}">
-            <i class="fa fa-times-circle"></i>
-          </span>
-          
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
+   <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5 col-sm-12 ms-3">
+        <div class="card ">
+          <img src="{% static 'images/logo/PRO_ACT_Bck.png' %}" class="card-img-top" alt="...">
+        </div>
+        <div>
+          <table class="table-fill">
     
+            <tbody class="table-hover">
+              <tr>
+                <td class="text-left">Project_Id</td>
+                <td class="text-left">
+                  {{obj.id}}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Project_Name</td>
+                <td class="text-left">
+                  {{obj.name}}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Project_Field</td>
+                <td class="text-left">
+                  {{obj.stack}}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Description</td>
+                <td class="text-left">
+                  {{obj.desc}}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Date</td>
+                <td class="text-left">
+                  {{obj.date | format_datetime}}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Project_Link</td>
+                <td class="text-left"><a href="#" class="mb-2 pb-2">
+                    <h5 class="card-text mb-2">Click Here </h5>
+                  </a></td>
+              </tr>
+              <tr>
+                <td class="text-center" colspan="2">  <button  class="btn btn-primary" id="myBtn">+ Add Subtask </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-6 mx-auto ms-3">
+      
+          <table class="rwd-table">
+            <tr>
+              <th>Check Box</th>
+              <th>Task Name</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Delete</th>
+            </tr>
+            {% for subtask in all_subtasks %}
+            <tr id="row{{subtask.id}}">
+              <td data-th="Check Box">
+    
+              {% if subtask.status == "incomplete" %}
+              <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)"/>
+              {% else %}
+              <input type="checkbox" id="{{subtask.id}}" onclick="checkme(this)" checked/>
+              {% endif %}
+              
+              </td>
+    
+              <td data-th="Task Name">
+    
+              <label for="{{subtask.id}}">
+                {{subtask.name}}
+              </label>
+              
+              </td>
+    
+              <td data-th="Description">
+                {{subtask.description}}
+              </td>
+    
+              <td data-th="Status" id="subtask_status{{subtask.id}}">
+              {% if subtask.status == "complete" %}
+              <span style="background-color: green;padding: 10px;">Complete</span>
+              {% else %}
+              <span style="background-color: grey;padding: 10px;">Incomplete</span>
+              {% endif %}
+              </td>
+    
+              <td data-th="Delete">
+    
+              <span class="delete-item" title="remove" id="{{subtask.id}}">
+                <i class="fa fa-times-circle"></i>
+              </span>
+              
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        
+      </div>
+    </div>
   </div>
+
+
+  
 
   <footer class="container-fluid py-4 text-center bg-dark text-light mt-3">
     <a href="{% url 'project_view'%}" class="btn btn-primary ">Back</a> 
