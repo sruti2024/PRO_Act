@@ -1,26 +1,13 @@
 from django.db import models
-
 from django.contrib.auth.models import User
-# For profile images
-from PIL import Image
 
 
 class Profile(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-    image=models.ImageField(default='default.jpeg',upload_to='profile_pics')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default="default.png", upload_to="profile_pics")
 
     def __str__(self):
-        return f'{self.user.username} Profile'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img=Image.open(self.image.path)
-
-        if img.height > 300 or img.width>300:
-            output_size=(300,300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+        return f"{self.user.username} Profile"
 
 
 class Project_add(models.Model):
@@ -30,24 +17,26 @@ class Project_add(models.Model):
     link = models.CharField(max_length=200)
     stack = models.CharField(max_length=300)
     date = models.CharField(max_length=100)
-    proj_image= models.ImageField(upload_to='media/proj_image/')
+    proj_image = models.ImageField(upload_to="media/proj_image/")
 
     def save(self, *args, **kwargs):
-        self.pid = str(str(self.name[0:3])+'_'+str(self.date).split(' ')[0].split('-')[2])
+        self.pid = str(
+            str(self.name[0:3]) + "_" + str(self.date).split(" ")[0].split("-")[2]
+        )
         super(Project_add, self).save(*args, **kwargs)
 
     # to return list of tech stack for each project
     def stack_list(self):
-        str(self.stack) #convert charField to string
-        self.stack = self.stack.replace("'", "") #removing ' from the stack field
-        self.stack = self.stack.replace("[", "") #removing [ from the stack field   
-        self.stack = self.stack.replace("]", "") #removing ] from the stack field   
+        str(self.stack)  # convert charField to string
+        self.stack = self.stack.replace("'", "")  # removing ' from the stack field
+        self.stack = self.stack.replace("[", "")  # removing [ from the stack field
+        self.stack = self.stack.replace("]", "")  # removing ] from the stack field
 
-        return self.stack.split(',') #split at , to get each stack
-       
+        return self.stack.split(",")  # split at , to get each stack
 
     def __str__(self):
         return self.name
+
 
 # For OTP
 
@@ -58,13 +47,18 @@ class OTPModel(models.Model):
     otp = models.IntegerField()
 
     class Meta:
-        verbose_name = 'OTP'
+        verbose_name = "OTP"
 
-class Subtask(models.Model): 
-    project = models.ForeignKey(Project_add,on_delete=models.CASCADE) 
-    name = models.CharField(max_length=100) 
-    description = models.TextField() 
-    status = models.CharField(max_length=15,choices=(('complete','Completed'),('incomplete',"Incomplete")),default='incomplete') 
-    
-    def __str__(self): 
+
+class Subtask(models.Model):
+    project = models.ForeignKey(Project_add, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    status = models.CharField(
+        max_length=15,
+        choices=(("complete", "Completed"), ("incomplete", "Incomplete")),
+        default="incomplete",
+    )
+
+    def __str__(self):
         return self.name

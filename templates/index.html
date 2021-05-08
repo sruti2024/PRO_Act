@@ -1,211 +1,42 @@
 {% extends 'base.html' %}
-{% block title %}PRO_Act  ||  Home{% endblock title %}
-{% block css %}
-.jumbotron
-{
-  height:70vh;
-}
-@media screen and (max-width:990px) {
-.jumbotron
-{
-  height:auto;
-}
-.main
-{
-  margin-bottom:5vh;
-}
-}
-
-{% endblock css %}
+{% load format_datetime %}
+{% load static %}
+{% block title %}PRO_Act || Home{% endblock title %}
 {% block body %}
-<style>
-div.step-wrapper{
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    padding: 5px 10px 10px 5px;
-    border-radius: 10px;
-    margin-top: 25px;
-    background-color: seagreen;
-}
-div.step-wrapper a{
-    margin-left: 5px;
-    color: white;
-    font-weight: lighter;
-    cursor: pointer;
-    font-size: 22px;
-    text-decoration: none;
-}
-div.steps{
-    display: flex;
-    justify-content: space-around;
-}
-div.activity{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    animation: bounce 2s alternate;
-}
-div.step-wrapper:hover {
-  animation: shake 2s cubic-bezier(.36,.07,.19,.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  box-shadow: 5px 5px 5px 5px rgb(98, 201, 142);
-  -webkit-box-shadow: 5px 5px 5px 5px rgb(98, 201, 142);
-}
 
-
-
-div.projects-created{
-    display:none; 
-    width: fit-content;
-    height:fit-content;
-    z-index: 5;
-    border:1px #a39f9f;
-    padding: 15px; 
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px 5px #dfdfdf;
-    -webkit-box-shadow: 5px 5px 5px 5px #dfdfdf;
-    animation: fade 2s alternate;
-}
-div.projects-created:first-of-type{
-    display:flex;
-    flex-direction:column;
-    padding:10px;
-}
-span.mon-projs{
-    box-sizing: content-box;
-    padding:5px;
-    border-radius:5px;
-    /* color:black; */
-    margin-top: 10px;
-    width: fit-content;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-span.mon-projs.active{
-    background-color:seagreen;
-    color: white;
-}
-span.mon-projs.inactive{
-    background-color:unset;
-    color:black
-}
-span.mon-projs.inactive:hover{
-    background-color: rgb(118, 243, 172);
-}
-/* span.mon-projs:first-of-type{
-    background-color:seagreen;
-    color: white;
-} */
-div.lastProject{
-    z-index: 5;
-    border:1px #a39f9f;
-    padding: 15px; 
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px 5px #dfdfdf;
-    -webkit-box-shadow: 5px 5px 5px 5px #dfdfdf;
-}
-div.months-wrapper{
-    display: flex;
-    flex-direction: column;
-    margin-right:40px ; 
-    height: 280px;
-    flex-wrap: wrap;
-    margin-left: 10px;
-}
-
-@keyframes bounce {
-  from {
-    margin-left: -100px;
-  }
-  to {
-    margin-left: 10px;
- }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
- }
-}
-
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-10px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(5px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-5px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(10px, 0, 0);
-  }
-}
-::-webkit-scrollbar{
-  width: 10px;
-}
-
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #bbbaba;
-  border-radius: 10px;
-  height: 20%;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background:gray; 
-}
-</style>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <main role="main">
     <div class="container-fluid px-0">
         <div class="jumbotron py:6" style="background-color:#8ADFCA;margin:0px;padding: 2rem 4rem;">
             <h1 class="display-4" style="font-weight: bold;">Welcome {{request.user | capfirst}} !!</h1>
-        <p class="lead" style="font-size: 25px; margin-top: 20px;width: 75%;">Good to see you back again get updates of your projects and make new once , hope to see new work coming ahead and we are always there to help you manage them better.</p>
-        <p class="lead" style="margin-top: 30px;">
-            <a class="btn btn-primary btn-lg" href="about.html" role="button">Learn more</a>
-        </p>
-        <hr class="my-4">
-        <div style="display: flex;flex-direction: column;margin:30px 0;">
-        <h2 style="margin:0px auto 0px auto;">How it works ?</h2>
-        <div class="steps" style="margin-top:20px;">
-            <div class="step-wrapper">
-                <img src="../static/images/add.png" width="25px" height="25px">
-                <a href="/project_add">1. Add projects</a>
+            <p class="lead" style="font-size: 25px; margin-top: 20px;width: 75%;">Good to see you back again get updates
+                of your projects and make new once , hope to see new work coming ahead and we are always there to help
+                you manage them better.</p>
+            <p class="lead" style="margin-top: 30px;">
+                <a class="btn btn-primary btn-lg" href="about.html" role="button">Learn more</a>
+            </p>
+            <hr class="my-4">
+            <div style="display: flex;flex-direction: column;margin:30px 0;">
+                <h2 style="margin:0px auto 0px auto;">How it works ?</h2>
+                <div class="steps" style="margin-top:20px;">
+                    <div class="step-wrapper">
+                        <img src="../static/images/add.png" width="25px" height="25px">
+                        <a href="/project_add">1. Add projects</a>
+                    </div>
+                    <div class="step-wrapper">
+                        <img src="../static/images/module.png" width="30px" height="30px">
+                        <a href="">2. Divide into modules</a>
+                    </div>
+                    <div class="step-wrapper">
+                        <img src="../static/images/update.png" width="30px" height="30px">
+                        <a href="">3. Update the works done</a>
+                    </div>
+                    <div class="step-wrapper">
+                        <img src="../static/images/timer.png" width="25px" height="25px">
+                        <a href="">4. Set a time limit</a>
+                    </div>
+                </div>
             </div>
-            <div class="step-wrapper">
-                <img src="../static/images/module.png" width="30px" height="30px">
-                <a href="">2. Divide into modules</a>
-            </div>
-            <div class="step-wrapper">
-                <img src="../static/images/update.png" width="30px" height="30px">
-                <a href="">3. Update the works done</a>
-            </div>
-            <div class="step-wrapper">
-                <img src="../static/images/timer.png" width="25px" height="25px">
-                <a href="">4. Set a time limit</a>
-            </div>
-        </div>
-        </div>
 
         </div>
     </div>
@@ -215,23 +46,23 @@ div.months-wrapper{
             <div style="display: flex;flex-direction: row;align-items: center;">
                 <div class="months-wrapper">
                     {% for key,values in monDict.items%}
-                        <span onClick=handle(this.id) class="mon-projs inactive" id={{key}} >{{key}}</span> 
+                    <span onClick=handle(this.id) class="mon-projs inactive" id={{key}}>{{key}}</span>
                     {% endfor %}
                 </div>
                 {{ script | safe }}
                 {{div|safe}}
             </div>
             <div>
-            {% for key,values in monDict.items%}
+                {% for key,values in monDict.items%}
                 <div id={{key}} class="projects-created">
                     <h6 style="color: seagreen;font-weight: bold;">Projects created in {{key}}</h6>
                     <div id={{key}} class="projects" style="display: flex;flex-direction: column;">
                         {% for value in values %}
-                        <span style="color:black;font-size: 15px;font-weight: 500;">{{value}}</span> 
+                        <span style="color:black;font-size: 15px;font-weight: 500;">{{value}}</span>
                         {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
             </div>
             <br>
             <hr>
@@ -239,10 +70,11 @@ div.months-wrapper{
                 <h5 style="color: seagreen; font-weight: bold;"> Last project created</h5>
                 <div style="margin-top: 25px;">
                     <h6>{{lstProj.name}}</h6>
-                    <p> {{lstProj.desc}}</p>
-                    <p>{{lstProj.date}}</p>
+                    <p>{{lstProj.desc}}</p>
+                    <p>{{lstProj.date | format_datetime}}</p>
                     {% for stack in lstProj.stack_list %}
-                    <span style="box-sizing: content-box;padding:5px;border-radius:3px;background-color:#0d6efd;color:white;">{{stack}}</span> 
+                    <span
+                        style="box-sizing: content-box;padding:5px;border-radius:3px;background-color:#0d6efd;color:white;">{{stack}}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -251,21 +83,20 @@ div.months-wrapper{
     </div>
 </main>
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("span.mon-projs:first-of-type").addClass('active')
         $("span.mon-projs:first-of-type").removeClass('inactive')
     });
-    function handle(id){
-        $("div.projects-created").css({"display":"none"})
-        temp="div.projects-created#"+id
-        $(temp).css({"display":"flex","flex-direction":"column","padding":"10px"})
+    function handle(id) {
+        $("div.projects-created").css({ "display": "none" })
+        temp = "div.projects-created#" + id
+        $(temp).css({ "display": "flex", "flex-direction": "column", "padding": "10px" })
         $("span.mon-projs").addClass('inactive')
         $("span.mon-projs").removeClass('active')
-        $("span#"+id).addClass('active')
-        $("span#"+id).removeClass('inactive')
+        $("span#" + id).addClass('active')
+        $("span#" + id).removeClass('inactive')
 
 
     }
 </script>
-{% endblock body %}   
-
+{% endblock body %}
