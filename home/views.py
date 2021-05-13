@@ -55,13 +55,13 @@ def index(request):
         }
     )
 
-    DataFrama2 = DataFrame({"count": df.groupby(["month"]).size()}).reset_index()
+    df2 = DataFrame({"count": df.groupby(["month"]).size()}).reset_index()
 
-    DataFrama2["class-date"] = DataFrama2["month"].map(str)
+    df2["class-date"] = df2["month"].map(str)
 
     # x (months) and y(count of projects) axes
-    class_date = DataFrama2["class-date"].tolist()
-    count = DataFrama2["count"].tolist()
+    class_date = df2["class-date"].tolist()
+    count = df2["count"].tolist()
 
     for i in range(1, 13):
         if not (str(i) in class_date):
@@ -181,8 +181,8 @@ def loginUser(request):
             "response": recaptcha_response,
         }
         data = urllib.parse.urlencode(values).encode()
-        request = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(request)
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
         result = json.loads(response.read().decode())  # noqa
         """ End reCAPTCHA validation """
         if user is not None:
@@ -282,12 +282,12 @@ def match_otp(email, otp):
 
 
 def check_otp(request):
-    request_otp = request.GET["otp"]
-    request_user = request.GET["email"]
+    req_otp = request.GET["otp"]
+    req_user = request.GET["email"]
     user_name = request.GET["fname"]
-    if match_otp(request_user, request_otp):
+    if match_otp(req_user, req_otp):
         # send a welcome mail on successful signup
-        sendWelcomeMail(request_user, user_name)
+        sendWelcomeMail(req_user, user_name)
         return JsonResponse({"otp_match": True})
     return JsonResponse({"otp_mismatch": "OTP does not match."})
 
@@ -402,24 +402,24 @@ def profile(request):
 @login_required(login_url="/login")
 def profile_update(request):
     if request.method == "POST":
-        user_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
-        profile_form = ProfileUpdateForm(
+        u_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        p_form = ProfileUpdateForm(
             request.POST, request.FILES, instance=request.user.profile
         )
 
-        if user_form.is_valid() and profile_form.is_valid():
-            profile_form.save()
-            user_form.save()
+        if u_form.is_valid() and p_form.is_valid():
+            p_form.save()
+            u_form.save()
             messages.success(request, "Your account has been updated.")
             return redirect("profile")
 
     else:
-        user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
-        "user_form": user_form,
-        "profile_form": profile_form,
+        "u_form": u_form,
+        "p_form": p_form,
     }
     return render(request, "profile_update.html", context)
 
@@ -428,22 +428,22 @@ def profile_update(request):
 @login_required(login_url="/login")
 def changepassword(request):
     users = User.objects.all()
-    current = 0
+    curr = 0
     for user in users:
         if request.user.is_authenticated:
-            current = user
+            curr = user
             break
-    if current == 0:
+    if curr == 0:
         return redirect("login")
     error = ""
     if request.method == "POST":
-        old = request.POST["old"]  # noqa
-        new = request.POST["new"]
-        confirm = request.POST["confirm"]
-        if confirm == new:
-            user = User.objects.get(username__exact=request.user.username)
-            user.set_password(new)
-            user.save()
+        o = request.POST["old"]  # noqa
+        n = request.POST["new"]
+        c = request.POST["confirm"]
+        if c == n:
+            u = User.objects.get(username__exact=request.user.username)
+            u.set_password(n)
+            u.save()
             error = "no"
         else:
             error = "yes"
@@ -454,18 +454,18 @@ def changepassword(request):
 # Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def modules(request, p_id):
-    object = Project_add.objects.get(pid=p_id)
+    obj = Project_add.objects.get(pid=p_id)
 
     if request.method == "POST":
         name = request.POST.get("name")
         description = request.POST.get("desc")
         subtask = Subtask(
-            project=object, name=name, description=description, status="incomplete"
+            project=obj, name=name, description=description, status="incomplete"
         )
         subtask.save()
 
-    all_subtasks = Subtask.objects.filter(project=object)
-    context = {"object": object, "all_subtasks": all_subtasks}
+    all_subtasks = Subtask.objects.filter(project=obj)
+    context = {"obj": obj, "all_subtasks": all_subtasks}
     return render(request, "modules.html", context)
 
 
@@ -497,8 +497,8 @@ def sendWelcomeMail(user_email, user_name):
     img_dir = "static/images/logo"
     image = "PRO_ACT_Bck.png"
     file_path = os.path.join(img_dir, image)
-    with open(file_path, "rb") as file:
-        img = MIMEImage(file.read())
+    with open(file_path, "rb") as f:
+        img = MIMEImage(f.read())
         img.add_header("Content-ID", "<{name}>".format(name=image))
         img.add_header("Content-Disposition", "inline", filename=image)
     email.attach(img)
