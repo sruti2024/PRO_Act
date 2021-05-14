@@ -55,13 +55,12 @@ def index(request):
         }
     )
 
-    DataFrama2 = DataFrame({"count": data_frame.groupby(["month"]).size()}).reset_index()
-
-    DataFrama2["class-date"] = DataFrama2["month"].map(str)
+    df2 = DataFrame({"count": data_frame.groupby(["month"]).size()}).reset_index()
+    df2["class-date"] = df2["month"].map(str)
 
     # x (months) and y(count of projects) axes
-    class_date = DataFrama2["class-date"].tolist()
-    count = DataFrama2["count"].tolist()
+    class_date = df2["class-date"].tolist()
+    count = df2["count"].tolist()
 
     for i in range(1, 13):
         if not (str(i) in class_date):
