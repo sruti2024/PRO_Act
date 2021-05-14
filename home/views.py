@@ -49,13 +49,13 @@ def index(request):
             else:
                 data.append(dateStr)
 
-    data_frame = DataFrame(
+    df = DataFrame(
         {
             "month": data,
         }
     )
 
-    df2 = DataFrame({"count": data_frame.groupby(["month"]).size()}).reset_index()
+    df2 = DataFrame({"count": df.groupby(["month"]).size()}).reset_index()
     df2["class-date"] = df2["month"].map(str)
 
     # x (months) and y(count of projects) axes
