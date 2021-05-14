@@ -38,24 +38,24 @@ def index(request):
     now = datetime.now()
     queryset = Project_add.objects.all()
 
-    lstProj = queryset[len(queryset) - 1]
-    for proj in queryset:
-        labels.append(proj.name)
-        dateStr = proj.date.split(" ")[0].split("-")[1]
-        curYear = proj.date.split(" ")[0].split("-")[0]
-        if curYear == str(now.year):
+    lstProjects = queryset[len(queryset) - 1]
+    for project in queryset:
+        labels.append(project.name)
+        dateStr = project.date.split(" ")[0].split("-")[1]
+        currentYear = project.date.split(" ")[0].split("-")[0]
+        if currentYear == str(now.year):
             if dateStr[0] == "0":
                 data.append(dateStr[1])
             else:
                 data.append(dateStr)
 
-    df = DataFrame(
+    data_frame = DataFrame(
         {
             "month": data,
         }
     )
 
-    DataFrama2 = DataFrame({"count": df.groupby(["month"]).size()}).reset_index()
+    DataFrama2 = DataFrame({"count": data_frame.groupby(["month"]).size()}).reset_index()
 
     DataFrama2["class-date"] = DataFrama2["month"].map(str)
 
@@ -117,7 +117,7 @@ def index(request):
     return render(
         request,
         "index.html",
-        {"script": script, "div": div, "lstProj": lstProj, "monDict": monDict},
+        {"script": script, "div": div, "lstProj": lstProjects, "monDict": monDict},
     )
 
 
@@ -367,16 +367,16 @@ def project_add(request):
     }
     if request.method == "POST":
         name = request.POST.get("name")
-        desc = request.POST.get("desc")
+        description = request.POST.get("desc")
         link = request.POST.get("link")
         stack = request.POST.getlist("stack")
-        proj_image = request.POST.get("proj_image")
+        project_image = request.POST.get("proj_image")
         project_add = Project_add(
             name=name,
-            desc=desc,
+            desc=description,
             link=link,
             stack=stack,
-            proj_image=proj_image,
+            proj_image=project_image,
             date=datetime.today(),
         )
         project_add.save()
