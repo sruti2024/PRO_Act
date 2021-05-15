@@ -366,19 +366,28 @@ def project_add(request):
         }
     }
     if request.method == "POST":
-        name = request.POST.get("name")
-        desc = request.POST.get("desc")
-        link = request.POST.get("link")
-        stack = request.POST.getlist("stack")
-        proj_image = request.POST.get("proj_image")
-        project_add = Project_add(
-            name=name,
-            desc=desc,
-            link=link,
-            stack=stack,
-            proj_image=proj_image,
-            date=datetime.today(),
-        )
+        project_name = request.POST.get("name")
+        check_project = list(Project_add.objects.filter(name=project_name))
+        # Check whether project with same name exist or not
+        if len(check_project) >= 1:
+            messages.warning(
+                request, "Project Name Already Exists , Please Use Different One!"
+            )
+            return render(request, "project_add.html", context)
+        else:
+            name = project_name
+            desc = request.POST.get("desc")
+            link = request.POST.get("link")
+            stack = request.POST.getlist("stack")
+            proj_image = request.POST.get("proj_image")
+            project_add = Project_add(
+                name=name,
+                desc=desc,
+                link=link,
+                stack=stack,
+                proj_image=proj_image,
+                date=datetime.today(),
+            )
         project_add.save()
         messages.success(request, "Your Project has been added")
 
@@ -388,8 +397,8 @@ def project_add(request):
 # Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def project_view(request):
-    obj = Project_add.objects.all()
-    return render(request, "project_view.html", {"object": obj})
+    projects = Project_add.objects.all()
+    return render(request, "project_view.html", {"projects": projects})
 
 
 # Redirecting anonymous login to the right login page
