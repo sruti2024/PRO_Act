@@ -2,6 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from home import views
+from .views import validateProjectName
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
@@ -33,5 +34,6 @@ urlpatterns = [
     path("changepassword/", views.changepassword, name="changepassword"),
     path("modules/<str:p_id>/", views.modules, name="modules"),
     path("subtaskaction/", views.actionOnSubtask, name="subtaskaction"),
+    path("validate_project", csrf_exempt(validateProjectName), name="validate_project"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

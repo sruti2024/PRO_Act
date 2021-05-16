@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}PRO_Act || Add Project{% endblock title %}
 
 {% block body %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 <div class="container">
   <h1 class="text-center">Add Project !</h1>
 
@@ -9,7 +12,9 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="name" class="control-label">Name of the Project</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+      <input type="text" class="form-control is-invalid" id="name" name="name" placeholder="Name">
+    </div>
+    <div class="invalid-feedback valid-feedback">
     </div>
 
     <div class="form-group">
@@ -47,4 +52,5 @@
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>
+<script src="{% static 'js/project_name_validation.js' %}"></script>
 {% endblock body %}

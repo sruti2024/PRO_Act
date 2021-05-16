@@ -367,11 +367,15 @@ def project_add(request):
     }
     if request.method == "POST":
         project_name = request.POST.get("name")
+        if project_name == "":
+            messages.warning(request, "Project Name Empty  ! Failed to Register 📖")
+            return render(request, "project_add.html", context)
+
         check_project = list(Project_add.objects.filter(name=project_name))
         # Check whether project with same name exist or not
         if len(check_project) >= 1:
             messages.warning(
-                request, "Project Name Already Exists , Please Use Different One!"
+                request, " Sorry Project Name Already Exists ! Failed to Register 😥"
             )
             return render(request, "project_add.html", context)
         else:
@@ -389,9 +393,20 @@ def project_add(request):
                 date=datetime.today(),
             )
         project_add.save()
-        messages.success(request, "Your Project has been added")
+        messages.success(request, "Your Project has been added ⚡")
 
     return render(request, "project_add.html", context)
+
+
+def validateProjectName(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        name = data["name"]
+        if Project_add.objects.filter(name=name).exists():
+            return JsonResponse(
+                {"project_name_error": "Sorry Project Name Already Exists!"}, status=409
+            )
+        return JsonResponse({"project_name_valid": "Project Name Available"})
 
 
 # Redirecting anonymous login to the right login page
