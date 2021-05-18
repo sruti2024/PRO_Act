@@ -344,10 +344,10 @@ def forgot_password(request):
         except Exception:
             return render(
                 request,
-                "forgot-password.html",
+                "forgot_password.html",
                 {"error": "Password could not be changed, please try again."},
             )
-    return render(request, "forgot-password.html")
+    return render(request, "forgot_password.html")
 
 
 # making login required for project add page and redirecting it to the login page
