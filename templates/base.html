@@ -63,14 +63,20 @@
                 Us</a>
             </li>
             <li id="last-link" class="nav-item">
-              <a class="nav-link"></a>
+              
             </li>
           </ul>
           {% endwith %}
         </div>
 
         <a href="#"><button class="btn btn-outline-success" onclick="confirmation()">Log Out</button></a>
-
+        <a class="nav-link">
+                              <!-- partial:index.partial.html -->
+              <label id ="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+              </label>
+              </a>
       </div>
     </div>
   </nav>
@@ -181,6 +187,7 @@
     $("#" + id).addClass("active-link")
     $("#" + id).prev().addClass("prev-link")
   </script>
+  <script src=" {% static 'js/darkmode.js' %} "></script>
 </body>
 
 </html>
