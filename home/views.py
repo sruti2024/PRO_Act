@@ -344,10 +344,10 @@ def forgot_password(request):
         except Exception:
             return render(
                 request,
-                "forgot-password.html",
+                "forgot_password.html",
                 {"error": "Password could not be changed, please try again."},
             )
-    return render(request, "forgot-password.html")
+    return render(request, "forgot_password.html")
 
 
 # making login required for project add page and redirecting it to the login page
@@ -366,30 +366,54 @@ def project_add(request):
         }
     }
     if request.method == "POST":
-        name = request.POST.get("name")
-        desc = request.POST.get("desc")
-        link = request.POST.get("link")
-        stack = request.POST.getlist("stack")
-        proj_image = request.POST.get("proj_image")
-        project_add = Project_add(
-            name=name,
-            desc=desc,
-            link=link,
-            stack=stack,
-            proj_image=proj_image,
-            date=datetime.today(),
-        )
+        project_name = request.POST.get("name")
+        if project_name == "":
+            messages.warning(request, "Project Name Empty  ! Failed to Register 📖")
+            return render(request, "project_add.html", context)
+
+        check_project = list(Project_add.objects.filter(name=project_name))
+        # Check whether project with same name exist or not
+        if len(check_project) >= 1:
+            messages.warning(
+                request, " Sorry Project Name Already Exists ! Failed to Register 😥"
+            )
+            return render(request, "project_add.html", context)
+        else:
+            name = project_name
+            desc = request.POST.get("desc")
+            link = request.POST.get("link")
+            stack = request.POST.getlist("stack")
+            proj_image = request.POST.get("proj_image")
+            project_add = Project_add(
+                name=name,
+                desc=desc,
+                link=link,
+                stack=stack,
+                proj_image=proj_image,
+                date=datetime.today(),
+            )
         project_add.save()
-        messages.success(request, "Your Project has been added")
+        messages.success(request, "Your Project has been added ⚡")
 
     return render(request, "project_add.html", context)
+
+
+def validateProjectName(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        name = data["name"]
+        if Project_add.objects.filter(name=name).exists():
+            return JsonResponse(
+                {"project_name_error": "Sorry Project Name Already Exists!"}, status=409
+            )
+        return JsonResponse({"project_name_valid": "Project Name Available"})
 
 
 # Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def project_view(request):
-    obj = Project_add.objects.all()
-    return render(request, "project_view.html", {"object": obj})
+    projects = Project_add.objects.all()
+    return render(request, "project_view.html", {"projects": projects})
 
 
 # Redirecting anonymous login to the right login page
