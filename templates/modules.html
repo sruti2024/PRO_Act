@@ -14,15 +14,121 @@
   <link rel="stylesheet" href="{% static 'css/moduleStyle.css' %}" type="text/css">
   <title>PRO_Act || Modules</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+  <style>
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 3.8rem;
+  height: 2.1rem;
+}
+
+/*   // Hide checkbox
+ */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*   // The slider
+   */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lightblue;
+  transition: 0.4s ease-in-out;
+}
+
+/*   
+  // Design of slider for light mode
+ */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 6px;
+  bottom: 6px;
+  background-color: yellow;
+  box-shadow: 0px 0px 5px 4px #ffd900;
+  transition: 0.4s;
+}
+
+/*   // When theme is dark, background is dark */
+.dark-mode .slider {
+  background-color: #3a2864;
+}
+
+/*    // If theme is dark, but slider is to the left, move it to the right and turn it into a moon
+ */
+.dark-mode .slider:before {
+  transform: translateX(26px);
+  height: 3px;
+  width: 3px;
+  background-color: lightgrey;
+  bottom: 15px;
+  left: 10px;
+  box-shadow: 10px -7px 0px 1px lightgrey, -4px -8px 0px 0px lightgrey, 6px 6px 0px 1px lightgrey, 5px -1px 5px 13px white, 5px -1px 0px 12px white;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+    .dark-mode{
+    background: #3b3c3d !important;
+  }
+  #bg-defined
+  {
+    color: #444;
+  background: #8ADFCA;
+  }
   
+  .dark-mode #bg-defined
+  {
+    color: #fff;
+  background: #3b3c3d !important;
+  }
+  .dark-mode .table-fill
+  {
+    background-color:gray;
+  }
+  
+  .dark-mode tr:nth-child(odd) td
+  {
+    background-color: #696363;
+    color: #fff !important;
+  }
+  #switch
+  {
+    position: relative;
+    left:90vw !important;
+  }
+  </style>
 </head>
 <body>
-  <header class="container-fluid py-4 text-center bg-dark text-light mb-3">
+  <div id="bg-defined">
+    <header class="container-fluid py-4 text-center bg-dark text-light mb-3">
     <h2 style="display: inline;">{{obj.name}}</h2>
     <p style="display: inline;"> &nbsp PID: {{obj.pid}}</p>
      <td class="text-center" colspan="2">  <button  class="btn btn-primary float-end" id="myBtn">+ Add Subtask </button>
    </header>
-
+   <div>
+    <!-- partial:index.partial.html -->
+    <label id ="switch" class="switch">
+      <input type="checkbox" onchange="toggleTheme()" id="slider">
+      <span class="slider round"></span>
+    </label>      
+</div>
    <div class="container-fluid">
     <div class="row">
       <div class="col-lg-5 col-sm-12 ms-3">
@@ -162,7 +268,7 @@
        </div>
      </div>
    </div>
-
+  </div>
    <script src="{% static 'js/modules.js' %}"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
    <script>
@@ -208,6 +314,7 @@
         document.getElementById(`subtask_status${ele.id}`).innerHTML = '<span style="background-color: grey;padding: 10px;">Incomplete</span>'
       }
     }
-  </script>
+  </script> 
+  <script src=" {% static 'js/darkmode.js' %} "></script>
 </body>
 </html> 

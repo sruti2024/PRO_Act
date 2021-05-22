@@ -3,6 +3,12 @@
 
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<style>
+  .dark-mode .dento-contact-area
+  {
+    background:#818181 !important;
+  }
+</style>
 {% if message_name %}
 <center>
   <h2>Thanks {{ message_name }}!</h2>

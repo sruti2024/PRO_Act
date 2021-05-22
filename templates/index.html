@@ -3,7 +3,19 @@
 {% load static %}
 {% block title %}PRO_Act || Home{% endblock title %}
 {% block body %}
-
+<style>
+    .dark-mode .jumbotron
+    {
+        background-color:#357d6b !important;
+        color:#fff !important;
+    }
+    .dark-mode .projects-created , .dark-mode .projects-created span ,.dark-mode .lastProject 
+    {
+        background-color:#5fcfb3 !important;
+        color:#fff !important;
+    }
+    
+</style>
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <main role="main">
     <div class="container-fluid px-0">

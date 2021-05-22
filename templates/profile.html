@@ -4,6 +4,14 @@
 {% block title %}PRO_Act | Profile{% endblock title %}
 
 {% block body %}
+<style>
+  .dark-mode .profile
+  {
+    background:linear-gradient(to bottom right, rgb(0 111 88) 15%, transparent),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,.2) 10%, transparent 20%) center center / 15px 15px,
+    linear-gradient(to bottom right, #080a1a, #506e7d);
+  }
+</style>
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 
     <!-- Begin Page Content -->
