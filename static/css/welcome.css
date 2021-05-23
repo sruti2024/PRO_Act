@@ -28,7 +28,6 @@
     }
 }
 
-/* CLIENT-SPECIFIC STYLES */
 body,
 table,
 td,
@@ -46,8 +45,6 @@ td {
 img {
     -ms-interpolation-mode: bicubic;
 }
-
-/* RESET STYLES */
 img {
     border: 0;
     height: auto;

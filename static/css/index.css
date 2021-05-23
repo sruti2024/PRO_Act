@@ -90,10 +90,6 @@ span.mon-projs.inactive{
 span.mon-projs.inactive:hover{
     background-color: rgb(118, 243, 172);
 }
-/* span.mon-projs:first-of-type{
-    background-color:seagreen;
-    color: white;
-} */
 div.lastProject{
     z-index: 5;
     border:1px #a39f9f;

@@ -28,7 +28,6 @@ from bokeh.palettes import Viridis9, Viridis3
 from email.mime.image import MIMEImage
 
 
-# Create your views here.
 def index(request):
     if request.user.is_anonymous:
         return redirect("/login")
@@ -350,7 +349,6 @@ def forgot_password(request):
     return render(request, "forgot_password.html")
 
 
-# making login required for project add page and redirecting it to the login page
 @login_required(login_url="/login")
 def project_add(request):
     context = {
@@ -409,20 +407,17 @@ def validateProjectName(request):
         return JsonResponse({"project_name_valid": "Project Name Available"})
 
 
-# Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def project_view(request):
     projects = Project_add.objects.all()
     return render(request, "project_view.html", {"projects": projects})
 
 
-# Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def profile(request):
     return render(request, "profile.html")
 
 
-# Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def profile_update(request):
     if request.method == "POST":
@@ -448,7 +443,6 @@ def profile_update(request):
     return render(request, "profile_update.html", context)
 
 
-# Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def changepassword(request):
     users = User.objects.all()
@@ -475,7 +469,6 @@ def changepassword(request):
     return render(request, "changepassword.html", context)
 
 
-# Redirecting anonymous login to the right login page
 @login_required(login_url="/login")
 def modules(request, p_id):
     obj = Project_add.objects.get(pid=p_id)
