@@ -13,6 +13,17 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<body style="padding:0px; margin:0px;">
+  <div id="preloader">
+    <div class="preloader-div">
+      <div class="rotator"></div>
+      <img class="preloader-img" src="{% static 'images/Proloadero.gif' %}" alt="">
+  
+    </div>
+  </div>
+
+
 </head>
 <body>
 	{% if user.is_authenticated %}
@@ -20,6 +31,8 @@
 		<h1>Welcome {{ user.username }} </h1>
 		<meta http-equiv="refresh" content="0.5; URL={% url 'home:login' %}" />
 	</div>
+
+
 	{% else %}
 <div class="signup-form">
 	{% if error %}
@@ -120,6 +133,20 @@
 <button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
   <i class="fa fa-facebook "></i>Log in with facebook
 </button> <br><br>
+
+<script>
+  
+  window.onload = function () {
+    var preloader = document.getElementById("preloader");
+    setTimeout(function () {
+      preloader.style.display = 'none';
+
+    }, 1000)
+  }
+</script>
+
+
+
 </center>
 {% endif %}
 <script>
