@@ -12,16 +12,18 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "f8%5k%h)k35_4km22c4l%tsp&@_u%p-@+!w73eihp0wp0vm^x("
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -57,6 +59,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     # facebook
     "allauth.socialaccount.providers.facebook",
+    # Github
+    "allauth.socialaccount.providers.github",
 ]
 
 MIDDLEWARE = [
@@ -175,11 +179,12 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 
-# facebook-auth
-SOCIAL_AUTH_FACEBOOK_KEY = "1180950695658575"
-SOCIAL_AUTH_FACEBOOK_SECRET = "ab9a447566e71d032ef40bc6d0741a3c"
 
-GOOGLE_RECAPTCHA_SECRET_KEY = "6Leyjo4aAAAAAAXeI5fn3ou2pk732fUayMcx9ZbZ"
+# facebook-auth
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
+
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get("GOOGLE_RECAPTCHA_SECRET_KEY ")
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -215,4 +220,4 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
-LOGIN_URl = "app/user_login"
+LOGIN_URL = "app/user_login"

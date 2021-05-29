@@ -32,3 +32,4 @@ bokeh==2.3.0
 urllib3==1.26.4
 black==20.8b1
 flake8==3.8.4
+python-dotenv==0.17.1
