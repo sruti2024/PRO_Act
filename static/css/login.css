@@ -226,6 +226,7 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
   #footer a {
       color: #ffffff;
       text-decoration: none !important;
@@ -282,4 +283,37 @@ body {
 
     padding-left:1px;
     padding-right: 8px;
+  }
+  .github{
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #424446;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  
+  }
+  .github i{
+  
+    padding-left:1px;
+    padding-right: 8px;
+  }
+  .google{
+  
+    width:240px;
+    height:40px;
+    border:0px;
+    border-radius: 50px;
+    background-color: #e25c3b;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    color:white;
+  
+  }
+  .google i{
+    padding-left:1px;
+    padding-right: 8px;
+  
   }

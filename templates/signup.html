@@ -17,7 +17,7 @@
 	{% if user.is_authenticated %}
 	<div class="container jumbotron cj">
 		<h1>Welcome {{ user.username }} </h1>
-		<meta http-equiv="refresh" content="0.5; URL={% url 'home:login' %}" />
+		<meta http-equiv="refresh" content="0.5; URL={% url 'login' %}" />
 	</div>
 	{% else %}
 	<div class="signup-form">
@@ -157,14 +157,24 @@
 		<center><a href="{% url 'forgot_password' %}" class="text-center">Forgot Password?</a></center>
 		<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div> <br>
 		<center>
-			<!-- Google -->
-			<p><button class="gg" onclick="location.href = '{% provider_login_url 'google' %}';">
-					<i class="fa fa-google fa-align-left" aria-hidden="true"></i>Log in with Google
-				</button></p>
-			<!-- facebook -->
-			<button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
-				<i class="fa fa-facebook "></i>Log in with facebook
-			</button>
+<!-- GITHUB  -->
+
+<button class="github" onclick="location.href='{% provider_login_url "github" method="oauth2" %}';">
+	<i class="fa fa-github "></i>Log in with Github
+  </button> <br><br>
+  
+  <!-- GOOGLE -->
+  
+  <button class="google" onclick="location.href='{% provider_login_url "google" method="oauth2" %}';">
+	<i class="fa fa-google "></i>Log in with Google
+  </button> <br><br>
+  <!-- FACEBOOK -->
+  
+  <button class="fb" onclick="location.href='{% provider_login_url "facebook" method="oauth2" %}';">
+	<i class="fa fa-facebook "></i>Log in with Facebook
+  </button> <br><br>
+  </center>
+  
 		</center>
 	</div>
 	<script>
